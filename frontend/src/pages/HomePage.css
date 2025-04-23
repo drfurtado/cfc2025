@@ -1,0 +1,384 @@
+/* HomePage.css */
+
+/* Hero Section Styling */
+.hero-section {
+  position: relative;
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat;
+  color: white; /* Text color on top of image */
+  padding: 120px 0; /* Adjust padding as needed */
+  text-align: center;
+  min-height: 70vh; /* Ensure it takes a good portion of the viewport height */
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 38, 77, 0.6); /* Dark blue overlay with transparency */
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative; /* Ensure content is above overlay */
+  z-index: 2;
+  max-width: 800px; /* Limit content width for readability */
+}
+
+.hero-title {
+  font-size: 3.5rem; /* Larger font size for title */
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for better contrast */
+}
+
+.hero-tagline {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Add shadow for better contrast */
+}
+
+.hero-cta-button {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  /* Using Bootstrap's btn-primary, but you can customize further */
+  background-color: #0d6efd; /* Default Bootstrap primary blue */
+  border-color: #0d6efd;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.hero-cta-button:hover {
+  background-color: #0a58ca; /* Darker blue on hover */
+  border-color: #0a58ca;
+}
+
+/* Matches Section Styling */
+.matches-section {
+  padding: 80px 0;
+  background-color: white;
+}
+
+.match-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  margin-bottom: 30px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.match-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.match-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  font-weight: bold;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.last-match .match-label {
+  background-color: #0d6efd; /* Blue for last match */
+}
+
+.next-match .match-label {
+  background-color: #198754; /* Green for next match */
+}
+
+.match-date {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #0d6efd;
+  margin: 25px 0 15px;
+}
+
+.match-teams {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team {
+  font-weight: bold;
+}
+
+.vs {
+  margin: 0 15px;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.score {
+  margin: 0 15px;
+  color: #212529;
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: #f8f9fa;
+  padding: 2px 10px;
+  border-radius: 4px;
+}
+
+.match-location, .match-time {
+  margin-top: 10px;
+  color: #6c757d;
+}
+
+.match-location i, .match-time i {
+  margin-right: 5px;
+  color: #0d6efd;
+}
+
+.match-result {
+  margin-top: 15px;
+  font-weight: bold;
+  padding: 8px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.match-result.win {
+  background-color: rgba(25, 135, 84, 0.1);
+  color: #198754;
+}
+
+.match-result.loss {
+  background-color: rgba(220, 53, 69, 0.1);
+  color: #dc3545;
+}
+
+.match-result.draw {
+  background-color: rgba(255, 193, 7, 0.1);
+  color: #ffc107;
+}
+
+.match-result i {
+  margin-right: 5px;
+}
+
+/* About Section Styling */
+.about-section {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+}
+
+.about-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.about-content {
+  padding: 20px;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #0d6efd; /* Blue color for titles */
+}
+
+.section-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #495057;
+}
+
+/* News/Matches Section Styling */
+.news-section {
+  padding: 80px 0;
+  background-color: white;
+}
+
+.match-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  margin-bottom: 30px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.match-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.match-date {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #0d6efd;
+  margin-bottom: 15px;
+}
+
+.match-teams {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team {
+  font-weight: bold;
+}
+
+.vs {
+  margin: 0 15px;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.match-location, .match-time {
+  margin-top: 10px;
+  color: #6c757d;
+}
+
+.match-location i, .match-time i {
+  margin-right: 5px;
+  color: #0d6efd;
+}
+
+/* Achievements Section Styling */
+.achievements-section {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+}
+
+.trophy-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 30px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.trophy-card:hover {
+  transform: translateY(-5px);
+}
+
+.trophy-icon {
+  font-size: 3rem;
+  color: #ffc107; /* Gold color for trophies */
+  margin-bottom: 20px;
+}
+
+.trophy-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #0d6efd;
+}
+
+.trophy-description {
+  color: #6c757d;
+}
+
+/* Join Section Styling */
+.join-section {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  padding: 100px 0;
+  text-align: center;
+}
+
+.join-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 38, 77, 0.7); /* Dark blue overlay */
+  z-index: 1;
+}
+
+.join-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.join-section .section-title {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.join-section .section-description {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+}
+
+.join-button {
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 80px 0;
+    min-height: 50vh;
+  }
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-tagline {
+    font-size: 1.1rem;
+  }
+  .section-title {
+    font-size: 1.8rem;
+  }
+  .about-content {
+    padding: 20px 0;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-tagline {
+    font-size: 1rem;
+  }
+  .hero-cta-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+  .section-title {
+    font-size: 1.6rem;
+  }
+}
