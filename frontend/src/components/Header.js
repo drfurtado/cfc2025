@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <header>
       <nav>
@@ -11,18 +19,22 @@ const Header = () => {
           <span className="logo-text">Classe FC</span>
         </Link>
         
-        <ul className="nav-links">
+        <button className="mobile-menu-btn" onClick={toggleMenu} aria-label="Toggle menu">
+          <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
+        </button>
+        
+        <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <li>
-            <NavLink to="/" end>Home</NavLink>
+            <NavLink to="/" end onClick={() => setMenuOpen(false)}>Home</NavLink>
           </li>
           <li>
-            <NavLink to="/historia">História</NavLink>
+            <NavLink to="/historia" onClick={() => setMenuOpen(false)}>História</NavLink>
           </li>
           <li>
-            <NavLink to="/time">Time</NavLink>
+            <NavLink to="/time" onClick={() => setMenuOpen(false)}>Time</NavLink>
           </li>
           <li>
-            <NavLink to="/campeonatos">Campeonatos</NavLink>
+            <NavLink to="/campeonatos" onClick={() => setMenuOpen(false)}>Campeonatos</NavLink>
           </li>
         </ul>
       </nav>
