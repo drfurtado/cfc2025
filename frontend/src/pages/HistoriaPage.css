@@ -1,0 +1,209 @@
+/* HistoriaPage.css */
+@import '../colors.css';
+
+/* Hero Section */
+.historia-page .hero-section {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  color: var(--neutral-white);
+  padding: 100px 0;
+  text-align: center;
+}
+
+.historia-page .hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.historia-page .hero-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.historia-page .page-title {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.historia-page .page-subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Content Sections */
+.historia-page .content-section {
+  padding: 60px 0;
+}
+
+.historia-page .history-section {
+  margin-bottom: 60px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.historia-page .history-section:last-child {
+  border-bottom: none;
+}
+
+.historia-page .section-title {
+  color: var(--primary-blue);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.historia-page p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+/* Quote Box */
+.historia-page .quote-box {
+  background-color: #f8f9fa;
+  border-left: 4px solid var(--primary-blue);
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 4px;
+}
+
+.historia-page blockquote {
+  font-style: italic;
+  color: #333;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Image Container */
+.historia-page .image-container {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.historia-page .image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.historia-page .image-caption {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Trophy Timeline */
+.historia-page .trophy-timeline {
+  background-color: var(--neutral-white);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+}
+
+.historia-page .trophy-item {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 30px;
+  border-left: 2px solid var(--primary-blue);
+}
+
+.historia-page .trophy-item:last-child {
+  margin-bottom: 0;
+}
+
+.historia-page .trophy-year {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--primary-blue);
+  margin-bottom: 5px;
+}
+
+.historia-page .trophy-name {
+  font-weight: 600;
+  color: #333;
+}
+
+.historia-page .trophy-highlight {
+  display: inline-block;
+  background-color: rgba(13, 110, 253, 0.1);
+  color: var(--primary-blue);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+/* Final Quote */
+.historia-page .final-quote {
+  background-color: var(--neutral-black);
+  color: var(--neutral-white);
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.historia-page .final-quote blockquote {
+  color: var(--neutral-white);
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .historia-page .page-title {
+    font-size: 2.5rem;
+  }
+  
+  .historia-page .page-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .historia-page .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .historia-page .content-section {
+    padding: 40px 0;
+  }
+  
+  .historia-page .history-section {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .historia-page .page-title {
+    font-size: 2rem;
+  }
+  
+  .historia-page .page-subtitle {
+    font-size: 1rem;
+  }
+  
+  .historia-page .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .historia-page .quote-box {
+    padding: 15px;
+  }
+  
+  .historia-page .final-quote blockquote {
+    font-size: 1.1rem;
+  }
+}

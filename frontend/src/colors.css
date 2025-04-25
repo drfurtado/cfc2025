@@ -1,0 +1,28 @@
+/* Global Color Variables */
+:root {
+  /* Primary Colors */
+  --primary-blue: #0d6efd;
+  --primary-blue-dark: #0a58ca;
+  --primary-blue-light: #6ea8fe;
+  
+  /* Neutral Colors */
+  --neutral-black: #212529;
+  --neutral-dark: #343a40;
+  --neutral-gray: #6c757d;
+  --neutral-light: #f8f9fa;
+  --neutral-white: #ffffff;
+  
+  /* Accent Colors */
+  --accent-gold: #ffc107;
+  --accent-success: #198754;
+  --accent-danger: #dc3545;
+  
+  /* Overlay Colors */
+  --overlay-blue: rgba(13, 110, 253, 0.8);
+  --overlay-dark: rgba(0, 38, 77, 0.7);
+  
+  /* Text Colors */
+  --text-dark: #212529;
+  --text-light: #f8f9fa;
+  --text-muted: #6c757d;
+}

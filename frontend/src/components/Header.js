@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import './Header.css';
 
 const Header = () => {
   return (
     <header>
       <nav>
         <Link to="/" className="logo">
-          <img src="/images/logo.png" alt="Classe FC Logo" />
+          <img src="/images/logo.svg" alt="Classe FC Logo" />
           <span className="logo-text">Classe FC</span>
         </Link>
         
@@ -22,9 +23,6 @@ const Header = () => {
           </li>
           <li>
             <NavLink to="/campeonatos">Campeonatos</NavLink>
-          </li>
-          <li>
-            <NavLink to="/midia">Mídia</NavLink>
           </li>
         </ul>
       </nav>
