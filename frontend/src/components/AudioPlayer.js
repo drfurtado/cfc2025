@@ -6,7 +6,6 @@ const AudioPlayer = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(0.5);
-  const [isExpanded, setIsExpanded] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   
@@ -146,8 +145,8 @@ const AudioPlayer = () => {
     return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   };
   
-  // Determine if player should be expanded based on screen width or user toggle
-  const shouldExpand = windowWidth <= 576 || isExpanded;
+  // Determine if player should be expanded based on screen width
+  const shouldExpand = windowWidth <= 576;
   
   return (
     <div className={`audio-player-bar ${shouldExpand ? 'expanded' : ''}`}>
