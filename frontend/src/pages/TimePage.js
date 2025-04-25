@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import './TimePage.css';
 
 // Define position order outside the component for stability
 const positionOrder = [
@@ -257,20 +258,30 @@ function TimePage() {
   
   if (loading) {
     return (
-      <div className="team-page container">
-        <div className="loading">Carregando...</div>
+      <div className="team-page">
+        <div className="hero-section" style={{ backgroundImage: `url('/images/cfc-atual4.png')` }}>
+          <div className="hero-overlay"></div>
+          <div className="container">
+            <h1 className="page-title">Nosso Time</h1>
+          </div>
+        </div>
+        <div className="container">
+          <div className="loading">
+            <i className="fas fa-spinner fa-spin mr-2"></i> Carregando informações do time...
+          </div>
+        </div>
       </div>
     );
   }
   
   return (
     <div className="team-page">
-      <div className="team-intro-section">
+      <div className="hero-section" style={{ backgroundImage: `url('/images/cfc-atual4.png')` }}>
+        <div className="hero-overlay"></div>
         <div className="container">
-          <h1>Nosso Time</h1>
-          <p className="intro-text">
-            Conheça os jogadores, comissão técnica e diretoria do Classe Futebol Clube. 
-            Nosso time é formado por amigos que compartilham a paixão pelo futebol e o espírito de companheirismo.
+          <h1 className="page-title">Nosso Time</h1>
+          <p className="page-subtitle">
+            Conheça os jogadores, comissão técnica e diretoria do Classe Futebol Clube
           </p>
         </div>
       </div>
@@ -281,25 +292,25 @@ function TimePage() {
             className={`category-button ${activeCategory === 'jogadores' ? 'active' : ''}`}
             onClick={() => setActiveCategory('jogadores')}
           >
-            Jogadores
+            <i className="fas fa-futbol mr-2"></i> Jogadores
           </button>
           <button 
             className={`category-button ${activeCategory === 'comissao' ? 'active' : ''}`}
             onClick={() => setActiveCategory('comissao')}
           >
-            Comissão Técnica
+            <i className="fas fa-clipboard mr-2"></i> Comissão Técnica
           </button>
           <button 
             className={`category-button ${activeCategory === 'diretoria' ? 'active' : ''}`}
             onClick={() => setActiveCategory('diretoria')}
           >
-            Diretoria
+            <i className="fas fa-user-tie mr-2"></i> Diretoria
           </button>
           <button 
             className={`category-button ${activeCategory === 'ex-jogadores' ? 'active' : ''}`}
             onClick={() => setActiveCategory('ex-jogadores')}
           >
-            Ex-Jogadores
+            <i className="fas fa-history mr-2"></i> Ex-Jogadores
           </button>
         </div>
         
@@ -312,13 +323,11 @@ function TimePage() {
                   {positionPlayers.map(player => (
                     <div key={player.id} className="player-card">
                       <div className="player-image">
-                        <div className="player-image">
-                          <img 
-                            src={player.image} 
-                            alt={player.name} 
-                            onError={handleImageError} // Add error handler
-                          />
-                        </div>
+                        <img 
+                          src={player.image} 
+                          alt={player.name} 
+                          onError={handleImageError}
+                        />
                       </div>
                       <div className="player-card-body">
                         <h3>{player.name}</h3>
@@ -334,6 +343,7 @@ function TimePage() {
         
         {activeCategory === 'comissao' && (
           <div className="staff-section">
+            <h2 className="position-title">Comissão Técnica</h2>
             <div className="staff-grid">
               {staff.map(staffMember => (
                 <div key={staffMember.id} className="staff-card">
@@ -341,7 +351,7 @@ function TimePage() {
                     <img 
                       src={staffMember.image} 
                       alt={staffMember.name} 
-                      onError={handleImageError} // Add error handler
+                      onError={handleImageError}
                     />
                   </div>
                   <div className="staff-card-body">
@@ -367,7 +377,7 @@ function TimePage() {
                           <img 
                             src={director.image} 
                             alt={director.name} 
-                            onError={handleImageError} // Add error handler
+                            onError={handleImageError}
                           />
                         </div>
                         <div className="board-card-body">
@@ -389,7 +399,7 @@ function TimePage() {
             <div className="past-players-list">
               {pastPlayers.map(player => (
                 <div key={player.id} className="past-player-item">
-                  {player.name}
+                  <i className="fas fa-user-alt mr-2"></i> {player.name}
                 </div>
               ))}
             </div>

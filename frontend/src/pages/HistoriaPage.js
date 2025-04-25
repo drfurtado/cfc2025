@@ -2,6 +2,52 @@ import React from 'react';
 import './HistoriaPage.css';
 
 function HistoriaPage() {
+  // Timeline data
+  const timelineEvents = [
+    {
+      year: 1984,
+      title: "Fundação da Classe FC",
+      description: "Um pequeno grupo de jovens jogadores, entre 10 e 14 anos de idade, começou a jogar futebol na praça ao lado do Colégio Dirce Celestino do Amaral, no CIC, em Curitiba. Marcos Dudda, o mais velho, organizou a turma para jogar contra times da região.",
+      image: "/images/cfc-atual3.jpeg",
+      achievement: "Início da jornada"
+    },
+    {
+      year: 1985,
+      title: "Primeiro Título - Torneio Jaime Lerner",
+      description: "O primeiro título veio um ano após a fundação, em 1985, num torneio realizado na Vila N. Sra da Luz, campanha para a Prefeitura de Curitiba. A Classe FC derrotou o Vasquinho na semifinal e, nos pênaltis, consagrou-se campeã contra o Expressinho.",
+      image: "/images/cfc-atual1.png",
+      achievement: "Campeão"
+    },
+    {
+      year: 1986,
+      title: "Criação do Escudo",
+      description: "Marcelo Duda, torcedor do Grêmio de Porto Alegre, criou o escudo do time inspirado no símbolo do Grêmio e na banda Engenheiros do Hawaii. O escudo foi uma junção do símbolo do Grêmio com as engrenagens, presentes nas capas dos discos da banda.",
+      image: "/images/logo-antigo.png",
+      achievement: "Identidade visual"
+    },
+    {
+      year: 1990,
+      title: "Copa Poupança Banestado",
+      description: "O título HISTÓRICO do time veio em 1990. A Copa Poupança Banestado, amplamente divulgada pela imprensa na época, tendo como veículo principal de divulgação a Tribuna do Paraná. O time conquistou o título de forma invicta.",
+      image: "/images/cfc-atual2.png",
+      achievement: "Campeão invicto"
+    },
+    {
+      year: 2010,
+      title: "Renovação do Time",
+      description: "Com o passar dos anos, o time foi se renovando, mas mantendo a essência e os valores que sempre nortearam o Classe FC. Novos jogadores foram se integrando ao grupo, trazendo novas ideias e energias para o time.",
+      image: "/images/cfc-atual5.png",
+      achievement: "Nova geração"
+    },
+    {
+      year: 2024,
+      title: "Copa Lillico",
+      description: "Em 2024, o Classe FC conquistou mais um título importante para sua história, sagrando-se campeão da Copa Lillico, mostrando que o time continua forte e competitivo após 40 anos de história.",
+      image: "/images/cfc-atual4.png",
+      achievement: "Campeão"
+    }
+  ];
+
   return (
     <div className="historia-page">
       <div className="hero-section" style={{ backgroundImage: `url('/images/cfc-atual3.jpeg')` }}>
@@ -28,6 +74,47 @@ function HistoriaPage() {
         </section>
 
         <section className="history-section">
+          <h2 className="section-title">Nossa Trajetória</h2>
+          
+          <div className="timeline-container">
+            <div className="timeline-line"></div>
+            
+            {timelineEvents.map((event, index) => (
+              <div className="timeline-item" key={index}>
+                <div className="timeline-content">
+                  <div className="timeline-badge">
+                    <i className="fas fa-star"></i>
+                  </div>
+                  <div className="timeline-card">
+                    <div className="timeline-card-header">
+                      <h3 className="timeline-year">{event.year}</h3>
+                      <p className="timeline-title">{event.title}</p>
+                    </div>
+                    {event.image && (
+                      <div className="timeline-image-container">
+                        <img 
+                          src={event.image} 
+                          alt={event.title} 
+                          className="timeline-image" 
+                        />
+                      </div>
+                    )}
+                    <div className="timeline-card-body">
+                      <p>{event.description}</p>
+                      {event.achievement && (
+                        <div className="timeline-achievement">
+                          <i className="fas fa-trophy mr-2"></i> {event.achievement}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="history-section">
           <div className="row align-items-center">
             <div className="col-lg-6">
               <h2 className="section-title">O Nome e as Cores do Time</h2>
@@ -48,42 +135,11 @@ function HistoriaPage() {
         </section>
 
         <section className="history-section">
-          <h2 className="section-title">Conquistas e Campeonatos</h2>
-          <div className="row">
-            <div className="col-lg-8">
-              <p>
-                Após muitos amistosos, era hora de enfrentar novos desafios. O primeiro título veio um ano após a fundação, em 1985, num torneio realizado na Vila N. Sra da Luz, campanha para a Prefeitura de Curitiba – Torneio Jaime Lerner. O torneio contou com alguns dos principais times da época na Vila, como Vasquinho e Expressinho. A Classe FC derrotou o Vasquinho na semifinal e, nos pênaltis, consagrou-se campeã contra o Expressinho, time sensação da época, com vários craques que ainda disputam campeonatos em Curitiba.
-              </p>
-              <p>
-                Vários outros títulos vieram em torneios e campeonatos disputados na Cidade Industrial de Curitiba, mas o título HISTÓRICO do time veio em 1990. A Copa Poupança Banestado, amplamente divulgada pela imprensa na época, tendo como veículo principal de divulgação a Tribuna do Paraná. O time conquistou o título de forma invicta, mostrando sua força e determinação em campo. Atualmente, a Classe FC disputa o campeonato 50tinha, na Vila N. Sra. da Luz, e tem projeto de disputar o campeonato no Santa Amélia, levando o nome do time para outras regiões da cidade e mostrando que o futebol amador ainda é uma paixão que move muitas pessoas.
-              </p>
-            </div>
-            <div className="col-lg-4">
-              <div className="trophy-timeline">
-                <div className="trophy-item">
-                  <div className="trophy-year">1985</div>
-                  <div className="trophy-name">Torneio Jaime Lerner</div>
-                </div>
-                <div className="trophy-item">
-                  <div className="trophy-year">1990</div>
-                  <div className="trophy-name">Copa Poupança Banestado</div>
-                  <div className="trophy-highlight">Invicto</div>
-                </div>
-                <div className="trophy-item">
-                  <div className="trophy-year">2024</div>
-                  <div className="trophy-name">Copa Vila</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="history-section">
           <div className="row align-items-center">
             <div className="col-lg-4">
               <div className="image-container">
-                <img src="/images/copa-vila-2024.jpg" alt="Time atual do Classe FC" className="img-fluid rounded shadow" />
-                <div className="image-caption">Time do Classe FC na Copa Vila 2024</div>
+                <img src="/images/cfc-atual4.png" alt="Time atual do Classe FC" className="img-fluid rounded shadow" />
+                <div className="image-caption">Time do Classe FC na Copa Lillico 2024</div>
               </div>
             </div>
             <div className="col-lg-8">
@@ -101,17 +157,8 @@ function HistoriaPage() {
             O time Classe FC é muito mais do que um time de futebol, é uma família formada pelos integrantes da "velha guarda", amigos que estão juntos há 40 anos e tomam as decisões do time, jogadores que foram se integrando ao longo dos anos, criando laços de amizade que ultrapassam os campos, e atletas convocados pontualmente para a disputa dos campeonatos, que logo se enturmam e passam a fazer parte dessa grande família.
           </p>
           <p>
-            Além das atividades comuns de um time de futebol, a união dessas pessoas se torna uma força nas iniciativas de ajuda humanitária aos mais necessitados. Nas confraternizações de fim de ano do time, eles promovem a arrecadação de alimentos, que são doados à igreja para distribuição às famílias carentes do bairro. São essas pequenas ações que tornam um time de futebol amador ainda mais importante para a vida das comunidades e por isso eles merecem ser valorizados e incentivados a seguir em frente e a crescer cada vez mais.
+            O time tem uma filosofia de jogo baseada no respeito ao adversário, na amizade entre os jogadores e na valorização do futebol como esporte que une pessoas. O Classe FC é um time que valoriza a história e a tradição, mas que está sempre aberto a novas ideias e desafios, mantendo viva a chama da paixão pelo futebol que move o time há mais de 40 anos.
           </p>
-          <p>
-            O time Classe FC é um exemplo de como o esporte amador pode transformar a vida das pessoas e das comunidades, promovendo amizades que perduram através do tempo, a paz, o lazer e combatendo a violência nos bairros da periferia. Iniciativas como essa merecem ser valorizadas e incentivadas, pois mostram que o futebol é muito mais que um esporte, é uma ferramenta de transformação social.
-          </p>
-
-          <div className="final-quote">
-            <blockquote>
-              O time Classe FC é um exemplo de dedicação, amizade e transformação social através do esporte. Que venham mais 40 anos de história e conquistas!
-            </blockquote>
-          </div>
         </section>
       </div>
     </div>
