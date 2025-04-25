@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faInstagram, faYoutube, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookF, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import './Footer.css';
 
 const Footer = () => {
@@ -13,7 +13,7 @@ const Footer = () => {
           <div className="footer-left">
             <div className="footer-brand">
               <div className="footer-logo-container">
-                <img src="/images/logo.png" alt="Classe FC Logo" className="footer-logo" />
+                <img src="/images/logo.svg" alt="Classe FC Logo" className="footer-logo" />
               </div>
               <h3>Classe Futebol Clube</h3>
               <p className="footer-tagline">Mais de 40 anos de paixão pelo futebol</p>
@@ -44,17 +44,11 @@ const Footer = () => {
         </div>
         <div className="footer-bottom">
           <div className="social-links">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <a href="https://www.facebook.com/share/1LMZZB9zjG/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <FontAwesomeIcon icon={faFacebookF} />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <FontAwesomeIcon icon={faInstagram} />
-            </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <a href="https://www.youtube.com/@classefutebolclube" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
               <FontAwesomeIcon icon={faYoutube} />
-            </a>
-            <a href="https://wa.me/5541999999999" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-              <FontAwesomeIcon icon={faWhatsapp} />
             </a>
           </div>
           <p className="copyright">&copy; {new Date().getFullYear()} Classe Futebol Clube. Todos os direitos reservados.</p>

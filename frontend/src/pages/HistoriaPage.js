@@ -8,14 +8,14 @@ function HistoriaPage() {
       year: 1984,
       title: "Fundação da Classe FC",
       description: "Um pequeno grupo de jovens jogadores, entre 10 e 14 anos de idade, começou a jogar futebol na praça ao lado do Colégio Dirce Celestino do Amaral, no CIC, em Curitiba. Marcos Dudda, o mais velho, organizou a turma para jogar contra times da região.",
-      image: "/images/cfc-atual3.jpeg",
+      image: "/images/cfc-historia1984.png",
       achievement: "Início da jornada"
     },
     {
       year: 1985,
       title: "Primeiro Título - Torneio Jaime Lerner",
       description: "O primeiro título veio um ano após a fundação, em 1985, num torneio realizado na Vila N. Sra da Luz, campanha para a Prefeitura de Curitiba. A Classe FC derrotou o Vasquinho na semifinal e, nos pênaltis, consagrou-se campeã contra o Expressinho.",
-      image: "/images/cfc-atual1.png",
+      image: "/images/cfc-historia1985.png",
       achievement: "Campeão"
     },
     {
@@ -29,14 +29,14 @@ function HistoriaPage() {
       year: 1990,
       title: "Copa Poupança Banestado",
       description: "O título HISTÓRICO do time veio em 1990. A Copa Poupança Banestado, amplamente divulgada pela imprensa na época, tendo como veículo principal de divulgação a Tribuna do Paraná. O time conquistou o título de forma invicta.",
-      image: "/images/cfc-atual2.png",
+      image: "/images/cfc-historia1990.png",
       achievement: "Campeão invicto"
     },
     {
       year: 2010,
       title: "Renovação do Time",
       description: "Com o passar dos anos, o time foi se renovando, mas mantendo a essência e os valores que sempre nortearam o Classe FC. Novos jogadores foram se integrando ao grupo, trazendo novas ideias e energias para o time.",
-      image: "/images/cfc-atual5.png",
+      image: "/images/cfc-historia2010.png",
       achievement: "Nova geração"
     },
     {
@@ -126,7 +126,7 @@ function HistoriaPage() {
               </p>
             </div>
             <div className="col-lg-6">
-              <div className="image-container">
+              <div className="image-container logo-image-container">
                 <img src="/images/logo-antigo.png" alt="Escudo do Classe FC" className="img-fluid rounded shadow" />
                 <div className="image-caption">O escudo do Classe FC, inspirado no Grêmio e na banda Engenheiros do Hawaii</div>
               </div>
