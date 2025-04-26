@@ -173,13 +173,26 @@ function HomePage() {
                   </div>
                 </div>
                 
-                <button 
-                  className="btn-match-video"
-                  style={{ backgroundColor: '#f0f1f4', color: '#0d6efd', border: 'none', borderRadius: '4px', padding: '8px 16px', margin: '10px auto', display: 'block' }}
-                  disabled
-                >
-                  <i className="fas fa-bell"></i> Lembrar
-                </button>
+                <div style={{ textAlign: 'center' }}>
+                  <button 
+                    className="btn-match-video"
+                    style={{ 
+                      backgroundColor: '#f0f1f4', 
+                      color: '#0d6efd', 
+                      border: 'none', 
+                      borderRadius: '4px', 
+                      padding: '8px 16px', 
+                      margin: '10px auto 5px', 
+                      display: 'block' 
+                    }}
+                    disabled
+                  >
+                    <i className="fas fa-video"></i> Assistir ao Vivo
+                  </button>
+                  <small style={{ display: 'block', color: '#6c757d', fontSize: '0.8rem', marginBottom: '10px' }}>
+                    Disponível 30 min antes do jogo iniciar
+                  </small>
+                </div>
               </div>
             </div>
           </div>

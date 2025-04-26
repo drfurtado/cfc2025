@@ -74,43 +74,33 @@ function HistoriaPage() {
         </section>
 
         <section className="history-section">
-          <h2 className="section-title">Nossa Trajetória</h2>
-          
-          <div className="timeline-container">
-            <div className="timeline-line"></div>
-            
-            {timelineEvents.map((event, index) => (
-              <div className="timeline-item" key={index}>
-                <div className="timeline-content">
-                  <div className="timeline-badge">
-                    <i className="fas fa-star"></i>
-                  </div>
-                  <div className="timeline-card">
-                    <div className="timeline-card-header">
-                      <h3 className="timeline-year">{event.year}</h3>
-                      <p className="timeline-title">{event.title}</p>
-                    </div>
-                    {event.image && (
-                      <div className="timeline-image-container">
-                        <img 
-                          src={event.image} 
-                          alt={event.title} 
-                          className="timeline-image" 
-                        />
-                      </div>
-                    )}
-                    <div className="timeline-card-body">
-                      <p>{event.description}</p>
-                      {event.achievement && (
-                        <div className="timeline-achievement">
-                          <i className="fas fa-trophy mr-2"></i> {event.achievement}
+          <div className="container">
+            <h2 className="section-title">Nossa Linha do Tempo</h2>
+            <div className="timeline-container">
+              <div className="timeline-line"></div>
+              <div className="timeline-items">
+                {timelineEvents.map((event, index) => (
+                  <div className="timeline-item" key={index}>
+                    <div className="timeline-dot"></div>
+                    <div className="timeline-content">
+                      <div className="timeline-card">
+                        <div className="timeline-card-header">
+                          <h3 className="timeline-year">{event.year}</h3>
+                          <h4 className="timeline-title">{event.title}</h4>
                         </div>
-                      )}
+                        <div className="timeline-image-container">
+                          <img src={event.image} alt={event.title} className="timeline-image" />
+                        </div>
+                        <div className="timeline-card-body">
+                          <p>{event.description}</p>
+                          <div className="timeline-badge">{event.achievement}</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </section>
 

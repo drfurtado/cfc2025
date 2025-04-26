@@ -133,8 +133,8 @@ function TimePage() {
             id: index + 1,
             name: name || `Jogador ${index + 1}`,
             position: position || 'Campo',
-            // Use silhouette for all players
-            image: `/images/player-silhouette.svg` 
+            // Use player headshots from the new folder, with fallback to silhouette
+            image: `/images/team/players/${createSafeFilename(name)}` 
           };
         });
         
