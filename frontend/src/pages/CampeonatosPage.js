@@ -37,20 +37,6 @@ const CampeonatosPage = () => {
   // Match data
   const matches = [
     {
-      id: 3,
-      tournament: 'Copa Lillico 2024',
-      tournamentId: 2,
-      date: '02/11/2024',
-      time: '15:00',
-      homeTeam: 'Classe FC',
-      awayTeam: 'Unidos do CIC',
-      homeScore: 2,
-      awayScore: 0,
-      location: 'Campo do Lillico',
-      status: 'completed',
-      stage: 'Final'
-    },
-    {
       id: 1,
       tournament: 'Copa 50tinha 2025',
       tournamentId: 1,
@@ -63,6 +49,20 @@ const CampeonatosPage = () => {
       location: 'Praça Central',
       status: 'completed',
       stage: 'Primeira Fase'
+    },
+    {
+      id: 3,
+      tournament: 'Copa Lillico 2024',
+      tournamentId: 2,
+      date: '02/11/2024',
+      time: '15:00',
+      homeTeam: 'Classe FC',
+      awayTeam: 'Unidos do CIC',
+      homeScore: 2,
+      awayScore: 0,
+      location: 'Campo do Lillico',
+      status: 'completed',
+      stage: 'Final'
     }
   ];
 
@@ -253,7 +253,13 @@ const CampeonatosPage = () => {
                     </div>
                     
                     <div className="match-team">
-                      <img src="/images/match-logos/generic.png" alt={match.awayTeam} className="match-team-logo" />
+                      <img 
+                        src={match.awayTeam === 'S. Paulinho' 
+                          ? "/images/match-logos/spaulinho.png" 
+                          : "/images/match-logos/generic.png"} 
+                        alt={match.awayTeam} 
+                        className="match-team-logo" 
+                      />
                       <div className="match-team-name">{match.awayTeam}</div>
                     </div>
                   </div>
