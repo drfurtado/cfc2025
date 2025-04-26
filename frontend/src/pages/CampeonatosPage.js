@@ -21,7 +21,7 @@ const CampeonatosPage = () => {
     },
     {
       id: 1,
-      name: 'Copa da Vila',
+      name: 'Copa 50tinha',
       year: 2025,
       organizer: 'Associação Vila N. Sra. da Luz',
       status: 'active',
@@ -52,16 +52,16 @@ const CampeonatosPage = () => {
     },
     {
       id: 1,
-      tournament: 'Copa da Vila 2025',
+      tournament: 'Copa 50tinha 2025',
       tournamentId: 1,
       date: '26/04/2025',
       time: '14:00',
       homeTeam: 'Classe FC',
       awayTeam: 'S. Paulinho',
-      homeScore: null,
-      awayScore: null,
+      homeScore: 2,
+      awayScore: 1,
       location: 'Praça Central',
-      status: 'upcoming',
+      status: 'completed',
       stage: 'Primeira Fase'
     }
   ];

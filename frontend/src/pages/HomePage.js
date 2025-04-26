@@ -137,7 +137,7 @@ function HomePage() {
                   <div className="match-info-row">
                     <div className="match-tournament">
                       <div className="tournament-badge" style={{ backgroundColor: '#f0f5ff', borderLeft: '4px solid var(--primary-blue)' }}>
-                        <span className="tournament-name" style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'var(--primary-blue)' }}>Copa da Vila 2025</span>
+                        <span className="tournament-name" style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'var(--primary-blue)' }}>Copa 50tinha 2025</span>
                         <span className="tournament-stage">Primeira Fase</span>
                       </div>
                     </div>
@@ -161,9 +161,13 @@ function HomePage() {
                       <span className="team">Classe FC</span>
                     </div>
                     
-                    <div className="match-score upcoming">
-                      <div className="vs-badge">VS</div>
-                      <div className="match-status">EM BREVE</div>
+                    <div className="match-score">
+                      <div className="score-box">
+                        <span>2</span>
+                        <span className="score-divider">:</span>
+                        <span>1</span>
+                      </div>
+                      <div className="match-status">FINALIZADO</div>
                     </div>
                     
                     <div className="team-logo away-team">
@@ -173,26 +177,15 @@ function HomePage() {
                   </div>
                 </div>
                 
-                <div style={{ textAlign: 'center' }}>
-                  <button 
-                    className="btn-match-video"
-                    style={{ 
-                      backgroundColor: '#f0f1f4', 
-                      color: '#0d6efd', 
-                      border: 'none', 
-                      borderRadius: '4px', 
-                      padding: '8px 16px', 
-                      margin: '10px auto 5px', 
-                      display: 'block' 
-                    }}
-                    disabled
-                  >
-                    <i className="fas fa-video"></i> Assistir ao Vivo
-                  </button>
-                  <small style={{ display: 'block', color: '#6c757d', fontSize: '0.8rem', marginBottom: '10px' }}>
-                    Disponível 30 min antes do jogo iniciar
-                  </small>
-                </div>
+                <button 
+                  onClick={() => openVideoModal('https://www.youtube.com/embed/HqelNrsrIEo')} 
+                  className="btn-match-video"
+                  style={{ backgroundColor: '#f0f1f4', color: '#dc3545', border: 'none', borderRadius: '4px', padding: '8px 16px', margin: '10px auto', display: 'block' }}
+                >
+                  <i className="fab fa-youtube"></i> Ver Jogo
+                </button>
+                <small style={{ display: 'block', color: '#6c757d', fontSize: '0.8rem', textAlign: 'center', marginBottom: '10px' }}>
+                </small>
               </div>
             </div>
           </div>
