@@ -55,11 +55,6 @@ function HomePage() {
                 <img src="/images/sponsors/patrocinio-estilo.png" alt="Estilo" className="sponsor-logo" />
               </a>
             </div>
-            <div className="sponsor-item">
-              <a href="https://www.autoprotegecuritiba.com.br/" target="_blank" rel="noopener noreferrer">
-                <img src="/images/sponsors/patrocinio-protege.png" alt="Protege" className="sponsor-logo" />
-              </a>
-            </div>
           </div>
           <div className="text-center mt-4">
             <a href="mailto:classefc84@gmail.com" className="btn btn-outline-primary">Torne-se um Patrocinador</a>
