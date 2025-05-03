@@ -131,6 +131,10 @@ function HistoriaPage() {
                 <img src="/images/cfc-atual4.png" alt="Time atual do Classe FC" className="img-fluid rounded shadow" />
                 <div className="image-caption">Time do Classe FC na Copa Lillico 2024</div>
               </div>
+              <div className="image-container" style={{ marginTop: '2rem' }}>
+                <img src="/images/team2025-1.jpg" alt="Time Classe FC 2025" className="img-fluid rounded shadow" />
+                <div className="image-caption">Time Classe FC 2025</div>
+              </div>
             </div>
             <div className="col-lg-8">
               <h2 className="section-title">O Time de Hoje</h2>
