@@ -15,7 +15,7 @@ import TournamentRules from '../components/TournamentRules';
 import StandingsTable from '../components/StandingsTable';
 
 const CampeonatosPage = () => {
-  const [activeTab, setActiveTab] = useState('todos');
+  const [activeTab, setActiveTab] = useState('em_andamento');
   const [showCalendar, setShowCalendar] = useState(false);
   const [showRules, setShowRules] = useState(false);
   const [showStandings, setShowStandings] = useState(false);
