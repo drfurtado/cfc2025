@@ -133,28 +133,22 @@ const CampeonatosPage = () => {
         {/* Tabs Navigation */}
         <div className="campeonatos-tabs">
           <button 
-            className={`campeonatos-tab ${activeTab === 'todos' ? 'active' : ''}`}
-            onClick={() => setActiveTab('todos')}
-          >
-            Todos
-          </button>
-          <button 
             className={`campeonatos-tab ${activeTab === 'active' ? 'active' : ''}`}
             onClick={() => setActiveTab('active')}
           >
             Em Andamento
           </button>
           <button 
-            className={`campeonatos-tab ${activeTab === 'upcoming' ? 'active' : ''}`}
-            onClick={() => setActiveTab('upcoming')}
-          >
-            Próximos
-          </button>
-          <button 
             className={`campeonatos-tab ${activeTab === 'completed' ? 'active' : ''}`}
             onClick={() => setActiveTab('completed')}
           >
             Anteriores
+          </button>
+          <button 
+            className={`campeonatos-tab ${activeTab === 'todos' ? 'active' : ''}`}
+            onClick={() => setActiveTab('todos')}
+          >
+            Todos
           </button>
         </div>
 
