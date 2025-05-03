@@ -1,84 +1,32 @@
 import React, { useState } from 'react';
 import './CampeonatosPage.css';
+import { 
+  getAllTournaments, 
+  getTournamentCalendar,
+  getTournamentRules, 
+  filterTournamentsByStatus, 
+  getUpcomingMatches, 
+  getRecentMatches,
+  getTeamLogo 
+} from '../data/tournamentDataLoader';
+import TournamentRules from '../components/TournamentRules';
 
 const CampeonatosPage = () => {
   const [activeTab, setActiveTab] = useState('todos');
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [showRules, setShowRules] = useState(false);
+  const [selectedTournament, setSelectedTournament] = useState(null);
 
-  // Tournament data
-  const tournaments = [
-    {
-      id: 2,
-      name: 'Copa Lillico',
-      year: 2024,
-      organizer: 'Liga Amadora do CIC',
-      status: 'completed',
-      position: 'Campeão',
-      location: 'Campo do Lillico, CIC',
-      startDate: '10/04/2024',
-      endDate: '2/11/2024',
-      teams: 8,
-      format: 'Eliminatórias'
-    },
-    {
-      id: 1,
-      name: 'Copa 50tinha',
-      year: 2025,
-      organizer: 'Associação Vila N. Sra. da Luz',
-      status: 'active',
-      position: 'Em andamento',
-      location: 'Praça Central, Vila N. Sra. da Luz',
-      startDate: '26/04/2025',
-      endDate: '30/08/2025',
-      teams: 7,
-      format: 'Grupos + Eliminatórias'
-    }
-  ];
-
-  // Match data
-  const matches = [
-    {
-      id: 1,
-      tournament: 'Copa 50tinha 2025',
-      tournamentId: 1,
-      date: '26/04/2025',
-      time: '14:00',
-      homeTeam: 'Classe FC',
-      awayTeam: 'S. Paulinho',
-      homeScore: 2,
-      awayScore: 1,
-      location: 'Praça Central',
-      status: 'completed',
-      stage: 'Primeira Fase'
-    },
-    {
-      id: 3,
-      tournament: 'Copa Lillico 2024',
-      tournamentId: 2,
-      date: '02/11/2024',
-      time: '15:00',
-      homeTeam: 'Classe FC',
-      awayTeam: 'Unidos do CIC',
-      homeScore: 2,
-      awayScore: 0,
-      location: 'Campo do Lillico',
-      status: 'completed',
-      stage: 'Final'
-    }
-  ];
+  // Get tournament data from the data loader
+  const tournaments = getAllTournaments();
+  
+  // Get matches data from the data loader
+  const upcomingMatches = getUpcomingMatches(3);
+  const recentMatches = getRecentMatches(3);
 
   // Filter tournaments based on active tab
-  const filteredTournaments = tournaments.filter(tournament => {
-    if (activeTab === 'todos') return true;
-    if (activeTab === 'ativos') return tournament.status === 'active';
-    if (activeTab === 'proximos') return tournament.status === 'upcoming';
-    if (activeTab === 'passados') return tournament.status === 'completed';
-    return true;
-  });
+  const filteredTournaments = filterTournamentsByStatus(activeTab);
 
-  // Filter matches to show only upcoming and recent
-  const upcomingMatches = matches.filter(match => match.status === 'upcoming');
-  const recentMatches = matches.filter(match => match.status === 'completed').slice(0, 3);
-  
   // Helper function to get position class
   const getPositionClass = (position) => {
     if (position === 'Campeão') return 'champion';
@@ -95,22 +43,63 @@ const CampeonatosPage = () => {
     return { class: '', text: '' };
   };
 
+  // Handle showing tournament calendar
+  const handleShowCalendar = (tournament) => {
+    setSelectedTournament(tournament);
+    setShowCalendar(true);
+    setShowRules(false);
+    // Scroll to the calendar section
+    setTimeout(() => {
+      document.getElementById('calendar-section').scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
+  // Handle showing tournament rules
+  const handleShowRules = (tournament) => {
+    setSelectedTournament(tournament);
+    setShowRules(true);
+    setShowCalendar(false);
+    // Scroll to the rules section
+    setTimeout(() => {
+      document.getElementById('rules-section').scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
+  // Handle closing tournament details
+  const handleCloseDetails = () => {
+    setShowCalendar(false);
+    setShowRules(false);
+    setSelectedTournament(null);
+  };
+
+  // Get calendar data for the selected tournament
+  const getCalendarData = (tournamentId) => {
+    return getTournamentCalendar(tournamentId);
+  };
+
+  // Get rules data for the selected tournament
+  const getRulesData = (tournamentId) => {
+    return getTournamentRules(tournamentId);
+  };
+
   return (
     <div className="campeonatos-page">
-      {/* Hero Section */}
-      <div className="campeonatos-hero">
-        <div className="campeonatos-hero-bg" style={{ backgroundImage: "url('/images/cfc-atual4.png')" }}></div>
-        <div className="campeonatos-hero-content">
-          <div className="container">
-            <h1 className="campeonatos-title">Campeonatos</h1>
-            <p className="campeonatos-subtitle">
-              Acompanhe a trajetória da Classe FC em todos os campeonatos e torneios disputados ao longo de nossa história
-            </p>
+      <div className="container py-5">
+        <h1 className="page-title text-center mb-5">Campeonatos</h1>
+        
+        {/* Hero Section */}
+        <div className="campeonatos-hero">
+          <div className="campeonatos-hero-bg" style={{ backgroundImage: "url('/images/cfc-atual4.png')" }}></div>
+          <div className="campeonatos-hero-content">
+            <div className="container">
+              <h1 className="campeonatos-title">Campeonatos</h1>
+              <p className="campeonatos-subtitle">
+                Acompanhe a trajetória da Classe FC em todos os campeonatos e torneios disputados ao longo de nossa história
+              </p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="container">
         {/* Tabs Navigation */}
         <div className="campeonatos-tabs">
           <button 
@@ -120,24 +109,110 @@ const CampeonatosPage = () => {
             Todos
           </button>
           <button 
-            className={`campeonatos-tab ${activeTab === 'ativos' ? 'active' : ''}`}
-            onClick={() => setActiveTab('ativos')}
+            className={`campeonatos-tab ${activeTab === 'active' ? 'active' : ''}`}
+            onClick={() => setActiveTab('active')}
           >
             Em Andamento
           </button>
           <button 
-            className={`campeonatos-tab ${activeTab === 'proximos' ? 'active' : ''}`}
-            onClick={() => setActiveTab('proximos')}
+            className={`campeonatos-tab ${activeTab === 'upcoming' ? 'active' : ''}`}
+            onClick={() => setActiveTab('upcoming')}
           >
             Próximos
           </button>
           <button 
-            className={`campeonatos-tab ${activeTab === 'passados' ? 'active' : ''}`}
-            onClick={() => setActiveTab('passados')}
+            className={`campeonatos-tab ${activeTab === 'completed' ? 'active' : ''}`}
+            onClick={() => setActiveTab('completed')}
           >
             Anteriores
           </button>
         </div>
+
+        {/* Tournament Rules Section */}
+        {showRules && selectedTournament && (
+          <div id="rules-section" className="rules-section">
+            <div className="section-header">
+              <h2 className="section-title">
+                {selectedTournament.name} {selectedTournament.year} - Regulamento
+              </h2>
+              <button 
+                onClick={handleCloseDetails} 
+                className="btn btn-sm btn-outline-secondary"
+              >
+                <i className="fas fa-times"></i> Fechar
+              </button>
+            </div>
+            
+            {getRulesData(selectedTournament.id) ? (
+              <TournamentRules rules={getRulesData(selectedTournament.id)} />
+            ) : (
+              <div className="no-rules-data">
+                <p>Regulamento não disponível para este torneio.</p>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Tournament Calendar Section */}
+        {showCalendar && selectedTournament && (
+          <div id="calendar-section" className="calendar-section">
+            <div className="section-header">
+              <h2 className="section-title">
+                {selectedTournament.name} {selectedTournament.year} - Calendário de Jogos
+              </h2>
+              <button 
+                onClick={handleCloseDetails} 
+                className="btn btn-sm btn-outline-secondary"
+              >
+                <i className="fas fa-times"></i> Fechar
+              </button>
+            </div>
+            
+            {selectedTournament.id && (
+              <div className="tournament-calendar">
+                <div className="calendar-info">
+                  <p>Confira abaixo o calendário completo do {selectedTournament.name} {selectedTournament.year}.</p>
+                  <p>Os jogos acontecem aos sábados em {selectedTournament.location}.</p>
+                </div>
+                
+                {getCalendarData(selectedTournament.id) ? (
+                  <div className="calendar-rounds">
+                    {getCalendarData(selectedTournament.id).map((round, index) => (
+                      <div className="calendar-round" key={index}>
+                        <div className="round-header">
+                          <span className="round-number">{round.round} Rodada</span>
+                          <span className="round-date">{round.date}</span>
+                        </div>
+                        
+                        <div className="round-matches">
+                          {round.matches.map((match, matchIndex) => (
+                            <div className="calendar-match" key={matchIndex}>
+                              <div className="match-time">{match.time}</div>
+                              <div className="match-teams">
+                                <div className={`team ${match.team1 === 'CLASSE' ? 'classe-team' : ''}`}>
+                                  {match.team1}
+                                </div>
+                                <div className="vs">x</div>
+                                <div className={`team ${match.team2 === 'CLASSE' ? 'classe-team' : ''}`}>
+                                  {match.team2}
+                                </div>
+                              </div>
+                              <div className="match-number">Jogo {match.game}</div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="no-calendar-data">
+                    <p>Calendário não disponível para este torneio.</p>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Tournament Cards */}
         <div className="tournament-list">
@@ -177,7 +252,24 @@ const CampeonatosPage = () => {
                 <div className={`tournament-position ${getPositionClass(tournament.position)}`}>
                   {tournament.position}
                 </div>
-                <button className="tournament-details-btn">Ver Detalhes</button>
+                <div className="tournament-actions">
+                  <button 
+                    className="btn-action btn-calendar"
+                    onClick={() => handleShowCalendar(tournament)}
+                    title="Ver Calendário"
+                  >
+                    <i className="far fa-calendar-alt"></i>
+                  </button>
+                  {getRulesData(tournament.id) && (
+                    <button 
+                      className="btn-action btn-rules"
+                      onClick={() => handleShowRules(tournament)}
+                      title="Ver Regulamento"
+                    >
+                      <i className="fas fa-gavel"></i>
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           ))}
@@ -201,7 +293,7 @@ const CampeonatosPage = () => {
                   
                   <div className="match-teams">
                     <div className="match-team">
-                      <img src="/images/match-logos/classefc.svg" alt={match.homeTeam} className="match-team-logo" />
+                      <img src={getTeamLogo(match.homeTeam)} alt={match.homeTeam} className="match-team-logo" />
                       <div className="match-team-name">{match.homeTeam}</div>
                     </div>
                     
@@ -210,7 +302,7 @@ const CampeonatosPage = () => {
                     </div>
                     
                     <div className="match-team">
-                      <img src="/images/match-logos/spaulinho.png" alt={match.awayTeam} className="match-team-logo" />
+                      <img src={getTeamLogo(match.awayTeam)} alt={match.awayTeam} className="match-team-logo" />
                       <div className="match-team-name">{match.awayTeam}</div>
                     </div>
                   </div>
@@ -242,7 +334,7 @@ const CampeonatosPage = () => {
                   
                   <div className="match-teams">
                     <div className="match-team">
-                      <img src="/images/match-logos/classefc.svg" alt={match.homeTeam} className="match-team-logo" />
+                      <img src={getTeamLogo(match.homeTeam)} alt={match.homeTeam} className="match-team-logo" />
                       <div className="match-team-name">{match.homeTeam}</div>
                     </div>
                     
@@ -253,13 +345,7 @@ const CampeonatosPage = () => {
                     </div>
                     
                     <div className="match-team">
-                      <img 
-                        src={match.awayTeam === 'S. Paulinho' 
-                          ? "/images/match-logos/spaulinho.png" 
-                          : "/images/match-logos/generic.png"} 
-                        alt={match.awayTeam} 
-                        className="match-team-logo" 
-                      />
+                      <img src={getTeamLogo(match.awayTeam)} alt={match.awayTeam} className="match-team-logo" />
                       <div className="match-team-name">{match.awayTeam}</div>
                     </div>
                   </div>

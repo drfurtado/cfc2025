@@ -2,12 +2,20 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import './HomePage.css'; 
 import MatchDetails from '../components/MatchDetails';
+import { getRecentMatches, getUpcomingMatches, getTeamLogo } from '../data/tournamentDataLoader';
 
 function HomePage() {
   const [videoModalOpen, setVideoModalOpen] = useState(false);
   const [videoUrl, setVideoUrl] = useState('');
   const [showMatchDetails, setShowMatchDetails] = useState(false);
   const [selectedMatch, setSelectedMatch] = useState(null);
+
+  // Get the most recent match and the next upcoming match
+  const recentMatches = getRecentMatches(1);
+  const upcomingMatches = getUpcomingMatches(1);
+  
+  const lastMatch = recentMatches.length > 0 ? recentMatches[0] : null;
+  const nextMatch = upcomingMatches.length > 0 ? upcomingMatches[0] : null;
 
   const openVideoModal = (url) => {
     setVideoUrl(url);
@@ -25,7 +33,7 @@ function HomePage() {
   };
 
   // Enhanced match data with statistics and highlights
-  const lastMatch = {
+  const lastMatchData = {
     id: 1,
     tournament: 'Copa 50tinha 2025',
     date: '26/04/2025',
@@ -177,258 +185,358 @@ function HomePage() {
           {!showMatchDetails && (
             <div className="row justify-content-center">
               <div className="col-lg-5 col-md-6">
-                <div className="match-card last-match">
-                  <div className="match-card-header">
-                    <div className="match-label">Última Partida</div>
-                  </div>
-                  
-                  <div className="match-card-body">
-                    <div className="match-info-row">
-                      <div className="match-tournament">
-                        <div className="tournament-badge" style={{ backgroundColor: '#f0f5ff', borderLeft: '4px solid var(--primary-blue)' }}>
-                          <span className="tournament-name" style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'var(--primary-blue)' }}>{lastMatch.tournament}</span>
-                          <span className="tournament-stage">{lastMatch.stage}</span>
-                        </div>
+                {/* Last Match Card - New Design */}
+                <div style={{ 
+                  backgroundColor: 'white', 
+                  borderRadius: '8px',
+                  boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+                  overflow: 'hidden',
+                  maxWidth: '100%',
+                  margin: '0 auto'
+                }}>
+                  <div style={{ display: 'flex' }}>
+                    <div style={{ 
+                      backgroundColor: '#f5f9ff', 
+                      padding: '20px',
+                      borderLeft: '4px solid #0d6efd',
+                      width: '50%'
+                    }}>
+                      <h3 style={{ 
+                        color: '#0d6efd', 
+                        fontSize: '24px',
+                        fontWeight: 'bold',
+                        margin: 0
+                      }}>{lastMatch.tournament}</h3>
+                      <p style={{ 
+                        color: '#6c757d',
+                        margin: '5px 0 0 0'
+                      }}>{lastMatch.stage}</p>
+                    </div>
+                    <div style={{ 
+                      padding: '20px',
+                      textAlign: 'right',
+                      width: '50%'
+                    }}>
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '5px' }}>
+                        <i className="far fa-calendar-alt" style={{ color: '#0d6efd', marginRight: '10px' }}></i>
+                        <span>{lastMatch.date}</span>
                       </div>
-                      
-                      <div className="match-info">
-                        <div className="match-date">
-                          <i className="far fa-calendar-alt"></i> {lastMatch.date.split('/').slice(0, 2).join('/')}
-                        </div>
-                        <div className="match-time">
-                          <i className="far fa-clock"></i> {lastMatch.time}
-                        </div>
-                        <div className="match-location">
-                          <i className="fas fa-map-marker-alt"></i> {lastMatch.location}
-                        </div>
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '5px' }}>
+                        <i className="far fa-clock" style={{ color: '#0d6efd', marginRight: '10px' }}></i>
+                        <span>{lastMatch.time}</span>
+                      </div>
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+                        <i className="fas fa-map-marker-alt" style={{ color: '#0d6efd', marginRight: '10px' }}></i>
+                        <span>{lastMatch.location}</span>
                       </div>
                     </div>
-                    
-                    <div className="match-teams-container">
-                      <div className="team-logo home-team">
-                        <img src="/images/match-logos/classefc.svg" alt="Classe FC" />
-                        <span className="team">{lastMatch.homeTeam}</span>
+                  </div>
+                  
+                  <div style={{ padding: '30px 20px', textAlign: 'center' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
+                      <div style={{ textAlign: 'center' }}>
+                        <img src={getTeamLogo(lastMatch.homeTeam)} alt={lastMatch.homeTeam} style={{ width: '80px', height: '80px', marginBottom: '10px' }} />
+                        <h4 style={{ fontWeight: 'bold', margin: 0 }}>{lastMatch.homeTeam}</h4>
                       </div>
                       
-                      <div className="match-score">
-                        <div className="score-box">
+                      <div style={{ textAlign: 'center' }}>
+                        <div style={{ 
+                          fontSize: '28px', 
+                          fontWeight: 'bold',
+                          margin: '0 20px'
+                        }}>
                           <span>{lastMatch.homeScore}</span>
-                          <span className="score-divider">:</span>
+                          <span style={{ margin: '0 5px' }}>:</span>
                           <span>{lastMatch.awayScore}</span>
                         </div>
-                        <div className="match-status">FINALIZADO</div>
+                        <div style={{ marginTop: '10px' }}>
+                          <span style={{ 
+                            backgroundColor: '#f8f9fa',
+                            color: '#6c757d',
+                            padding: '5px 15px',
+                            borderRadius: '20px',
+                            fontSize: '14px'
+                          }}>FINALIZADO</span>
+                        </div>
                       </div>
                       
-                      <div className="team-logo away-team">
-                        <img src="/images/match-logos/spaulinho.png" alt="S. Paulinho" />
-                        <span className="team">{lastMatch.awayTeam}</span>
-                      </div>
-                    </div>
-                    
-                    <div className="match-stats-preview">
-                      <div className="stat-preview-item">
-                        <span>Posse de Bola</span>
-                        <div className="stat-bar">
-                          <div className="stat-fill home" style={{ width: `${lastMatch.stats.possession.home}%` }}></div>
-                          <div className="stat-fill away" style={{ width: `${lastMatch.stats.possession.away}%` }}></div>
-                        </div>
-                        <div className="stat-values">
-                          <span>{lastMatch.stats.possession.home}%</span>
-                          <span>{lastMatch.stats.possession.away}%</span>
-                        </div>
+                      <div style={{ textAlign: 'center' }}>
+                        <img src={getTeamLogo(lastMatch.awayTeam)} alt={lastMatch.awayTeam} style={{ width: '80px', height: '80px', marginBottom: '10px' }} />
+                        <h4 style={{ fontWeight: 'bold', margin: 0 }}>{lastMatch.awayTeam}</h4>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="match-card-actions">
+                  <div style={{ display: 'flex', borderTop: '1px solid #eee' }}>
                     <button 
-                      onClick={() => openVideoModal(lastMatch.videoUrl)} 
-                      className="btn-match-action btn-video"
+                      onClick={() => openVideoModal(lastMatchData.videoUrl)}
+                      style={{ 
+                        backgroundColor: '#dc3545',
+                        color: 'white',
+                        padding: '12px 0',
+                        textAlign: 'center',
+                        textDecoration: 'none',
+                        fontWeight: 'bold',
+                        flex: 1,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        border: 'none',
+                        cursor: 'pointer'
+                      }}
                     >
-                      <i className="fab fa-youtube"></i> Ver Jogo
+                      <i className="fas fa-play-circle" style={{ marginRight: '8px' }}></i>
+                      Assistir Jogo
                     </button>
                     <button 
-                      onClick={() => toggleMatchDetails(lastMatch)} 
-                      className="btn-match-action btn-details"
+                      onClick={() => toggleMatchDetails(lastMatch)}
+                      style={{ 
+                        backgroundColor: '#0d6efd',
+                        color: 'white',
+                        padding: '12px 0',
+                        textAlign: 'center',
+                        textDecoration: 'none',
+                        fontWeight: 'bold',
+                        flex: 1,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        border: 'none',
+                        cursor: 'pointer'
+                      }}
                     >
-                      <i className="fas fa-chart-bar"></i> Estatísticas
+                      <i className="fas fa-chart-bar" style={{ marginRight: '8px' }}></i>
+                      Estatísticas
                     </button>
                   </div>
                 </div>
               </div>
               
               <div className="col-lg-5 col-md-6">
-                <div className="match-card next-match">
-                  <div className="match-card-header">
-                    <div className="match-label">Partida Anterior</div>
-                  </div>
-                  
-                  <div className="match-card-body">
-                    <div className="match-info-row">
-                      <div className="match-tournament">
-                        <div className="tournament-badge" style={{ backgroundColor: '#f0f5ff', borderLeft: '4px solid var(--primary-blue)' }}>
-                          <span className="tournament-name" style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'var(--primary-blue)' }}>{previousMatch.tournament}</span>
-                          <span className="tournament-stage">{previousMatch.stage}</span>
-                        </div>
-                      </div>
-                      
-                      <div className="match-info">
-                        <div className="match-date">
-                          <i className="far fa-calendar-alt"></i> {previousMatch.date.split('/').slice(0, 2).join('/')}
-                        </div>
-                        <div className="match-time">
-                          <i className="far fa-clock"></i> {previousMatch.time}
-                        </div>
-                        <div className="match-location">
-                          <i className="fas fa-map-marker-alt"></i> {previousMatch.location}
-                        </div>
-                      </div>
+                {/* Next Match Card - New Design */}
+                <div style={{ 
+                  backgroundColor: 'white', 
+                  borderRadius: '8px',
+                  boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+                  overflow: 'hidden',
+                  maxWidth: '100%',
+                  margin: '0 auto'
+                }}>
+                  <div style={{ display: 'flex' }}>
+                    <div style={{ 
+                      backgroundColor: '#f5f9ff', 
+                      padding: '20px',
+                      borderLeft: '4px solid #0d6efd',
+                      width: '50%'
+                    }}>
+                      <h3 style={{ 
+                        color: '#0d6efd', 
+                        fontSize: '24px',
+                        fontWeight: 'bold',
+                        margin: 0
+                      }}>{nextMatch.tournament}</h3>
+                      <p style={{ 
+                        color: '#6c757d',
+                        margin: '5px 0 0 0'
+                      }}>{nextMatch.stage}</p>
                     </div>
-                    
-                    <div className="match-teams-container">
-                      <div className="team-logo home-team">
-                        <img src="/images/match-logos/classefc.svg" alt="Classe FC" />
-                        <span className="team">{previousMatch.homeTeam}</span>
+                    <div style={{ 
+                      padding: '20px',
+                      textAlign: 'right',
+                      width: '50%'
+                    }}>
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '5px' }}>
+                        <i className="far fa-calendar-alt" style={{ color: '#0d6efd', marginRight: '10px' }}></i>
+                        <span>{nextMatch.date}</span>
                       </div>
-                      
-                      <div className="match-score">
-                        <div className="score-box">
-                          <span>{previousMatch.homeScore}</span>
-                          <span className="score-divider">:</span>
-                          <span>{previousMatch.awayScore}</span>
-                        </div>
-                        <div className="match-status">FINALIZADO</div>
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '5px' }}>
+                        <i className="far fa-clock" style={{ color: '#0d6efd', marginRight: '10px' }}></i>
+                        <span>{nextMatch.time}</span>
                       </div>
-                      
-                      <div className="team-logo away-team">
-                        <img src="/images/match-logos/generic.png" alt="Unidos do CIC" />
-                        <span className="team">{previousMatch.awayTeam}</span>
-                      </div>
-                    </div>
-                    
-                    <div className="match-stats-preview">
-                      <div className="stat-preview-item">
-                        <span>Posse de Bola</span>
-                        <div className="stat-bar">
-                          <div className="stat-fill home" style={{ width: `${previousMatch.stats.possession.home}%` }}></div>
-                          <div className="stat-fill away" style={{ width: `${previousMatch.stats.possession.away}%` }}></div>
-                        </div>
-                        <div className="stat-values">
-                          <span>{previousMatch.stats.possession.home}%</span>
-                          <span>{previousMatch.stats.possession.away}%</span>
-                        </div>
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
+                        <i className="fas fa-map-marker-alt" style={{ color: '#0d6efd', marginRight: '10px' }}></i>
+                        <span>{nextMatch.location}</span>
                       </div>
                     </div>
                   </div>
                   
-                  <div className="match-card-actions">
-                    <button 
-                      onClick={() => openVideoModal(previousMatch.videoUrl)} 
-                      className="btn-match-action btn-video"
+                  <div style={{ padding: '30px 20px', textAlign: 'center' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
+                      <div style={{ textAlign: 'center' }}>
+                        <img src={getTeamLogo(nextMatch.homeTeam)} alt={nextMatch.homeTeam} style={{ width: '80px', height: '80px', marginBottom: '10px' }} />
+                        <h4 style={{ fontWeight: 'bold', margin: 0 }}>{nextMatch.homeTeam}</h4>
+                      </div>
+                      
+                      <div style={{ textAlign: 'center' }}>
+                        <div style={{ 
+                          fontSize: '28px', 
+                          fontWeight: 'bold',
+                          margin: '0 20px'
+                        }}>VS</div>
+                        <div style={{ marginTop: '10px' }}>
+                          <span style={{ 
+                            backgroundColor: '#f8f9fa',
+                            color: '#6c757d',
+                            padding: '5px 15px',
+                            borderRadius: '20px',
+                            fontSize: '14px'
+                          }}>EM BREVE</span>
+                        </div>
+                      </div>
+                      
+                      <div style={{ textAlign: 'center' }}>
+                        <img src={getTeamLogo(nextMatch.awayTeam)} alt={nextMatch.awayTeam} style={{ width: '80px', height: '80px', marginBottom: '10px' }} />
+                        <h4 style={{ fontWeight: 'bold', margin: 0 }}>{nextMatch.awayTeam}</h4>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div style={{ display: 'flex', borderTop: '1px solid #eee' }}>
+                    <Link 
+                      to="/campeonatos" 
+                      style={{ 
+                        backgroundColor: '#0d6efd',
+                        color: 'white',
+                        padding: '12px 0',
+                        textAlign: 'center',
+                        textDecoration: 'none',
+                        fontWeight: 'bold',
+                        flex: 1,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}
                     >
-                      <i className="fab fa-youtube"></i> Ver Jogo
-                    </button>
-                    <button 
-                      onClick={() => toggleMatchDetails(previousMatch)} 
-                      className="btn-match-action btn-details"
+                      <i className="fas fa-trophy" style={{ marginRight: '8px' }}></i>
+                      Ver Campeonato
+                    </Link>
+                    <a 
+                      href="#" 
+                      style={{ 
+                        backgroundColor: '#dc3545',
+                        color: 'white',
+                        padding: '12px 0',
+                        textAlign: 'center',
+                        textDecoration: 'none',
+                        fontWeight: 'bold',
+                        flex: 1,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}
                     >
-                      <i className="fas fa-chart-bar"></i> Estatísticas
-                    </button>
+                      <i className="fas fa-play-circle" style={{ marginRight: '8px' }}></i>
+                      Assistir ao Vivo
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
           )}
           
-          <div className="text-center mt-4">
-            <Link to="/campeonatos" className="btn btn-outline-primary">
-              <i className="fas fa-calendar-week"></i> Ver Calendário Completo
-            </Link>
-          </div>
+          {/* Video Modal */}
+          {videoModalOpen && (
+            <div className="video-modal">
+              <div className="video-modal-overlay" onClick={closeVideoModal}></div>
+              <div className="video-modal-content">
+                <button className="video-modal-close" onClick={closeVideoModal}>
+                  <i className="fas fa-times"></i>
+                </button>
+                <div className="video-container">
+                  <iframe 
+                    src={videoUrl} 
+                    title="Match Video"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* About Us Section */}
+          <section className="about-section">
+            <div className="container">
+              <div className="row align-items-center">
+                <div className="col-lg-6">
+                  <div className="about-image">
+                    <img src="/images/cfc-atual2.png" alt="Classe FC Time" className="img-fluid rounded shadow" />
+                  </div>
+                </div>
+                <div className="col-lg-6">
+                  <div className="about-content">
+                    <h2 className="section-title">Sobre a Classe FC</h2>
+                    <p className="section-description">
+                      Fundada em 1984 por um pequeno grupo de jovens jogadores entre 10 e 14 anos de idade, a Classe Futebol Clube nasceu na praça ao lado do Colégio Dirce Celestino do Amaral, entre a Vila N. Sra. da Luz e Conjunto Osvaldo Cruz I, no CIC, em Curitiba.
+                    </p>
+                    <p className="section-description">
+                      O nome e as cores do time surgiram quando Marcos Dudda pediu um jogo de camisa ao seu pai, que trabalhava na Classe Industrial de Móveis. Com camisas azuis, calções pretos e meias brancas, nascia mais um time tricolor no Brasil. O escudo foi criado por Marcelo Duda, inspirado no Grêmio de Porto Alegre e na banda Engenheiros do Hawaii.
+                    </p>
+                    <Link to="/historia" className="btn btn-outline-primary">Nossa História</Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Achievements/Trophies Section */}
+          <section className="achievements-section">
+            <div className="container">
+              <h2 className="section-title text-center">Nossas Conquistas</h2>
+              <div className="row justify-content-center">
+                <div className="col-md-4 col-sm-6">
+                  <div className="trophy-card">
+                    <div className="trophy-icon">
+                      <i className="fas fa-trophy"></i>
+                    </div>
+                    <h3 className="trophy-title">Copa da Vila 2024</h3>
+                    <p className="trophy-description">Campeão da Copa da Vila 2024, nossa conquista mais recente.</p>
+                  </div>
+                </div>
+                <div className="col-md-4 col-sm-6">
+                  <div className="trophy-card">
+                    <div className="trophy-icon">
+                      <i className="fas fa-trophy"></i>
+                    </div>
+                    <h3 className="trophy-title">Copa Banestado 1990</h3>
+                    <p className="trophy-description">Título histórico conquistado de forma invicta, amplamente divulgado pela Tribuna do Paraná.</p>
+                  </div>
+                </div>
+                <div className="col-md-4 col-sm-6">
+                  <div className="trophy-card">
+                    <div className="trophy-icon">
+                      <i className="fas fa-trophy"></i>
+                    </div>
+                    <h3 className="trophy-title">Torneio Jaime Lerner 1985</h3>
+                    <p className="trophy-description">Nosso primeiro título, conquistado apenas um ano após a fundação do clube, vencendo o Expressinho nos pênaltis.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </section>
 
       {/* Video Modal */}
       {videoModalOpen && (
         <div className="video-modal">
-          <div className="video-modal-overlay" onClick={closeVideoModal}></div>
           <div className="video-modal-content">
-            <button className="video-modal-close" onClick={closeVideoModal}>
+            <button className="close-modal" onClick={closeVideoModal}>
               <i className="fas fa-times"></i>
             </button>
             <div className="video-container">
               <iframe 
                 src={videoUrl} 
                 title="Match Video"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowFullScreen
               ></iframe>
             </div>
           </div>
+          <div className="video-modal-overlay" onClick={closeVideoModal}></div>
         </div>
       )}
-
-      {/* About Us Section */}
-      <section className="about-section">
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-6">
-              <div className="about-image">
-                <img src="/images/cfc-atual2.png" alt="Classe FC Time" className="img-fluid rounded shadow" />
-              </div>
-            </div>
-            <div className="col-lg-6">
-              <div className="about-content">
-                <h2 className="section-title">Sobre a Classe FC</h2>
-                <p className="section-description">
-                  Fundada em 1984 por um pequeno grupo de jovens jogadores entre 10 e 14 anos de idade, a Classe Futebol Clube nasceu na praça ao lado do Colégio Dirce Celestino do Amaral, entre a Vila N. Sra. da Luz e Conjunto Osvaldo Cruz I, no CIC, em Curitiba.
-                </p>
-                <p className="section-description">
-                  O nome e as cores do time surgiram quando Marcos Dudda pediu um jogo de camisa ao seu pai, que trabalhava na Classe Industrial de Móveis. Com camisas azuis, calções pretos e meias brancas, nascia mais um time tricolor no Brasil. O escudo foi criado por Marcelo Duda, inspirado no Grêmio de Porto Alegre e na banda Engenheiros do Hawaii.
-                </p>
-                <Link to="/historia" className="btn btn-outline-primary">Nossa História</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Achievements/Trophies Section */}
-      <section className="achievements-section">
-        <div className="container">
-          <h2 className="section-title text-center">Nossas Conquistas</h2>
-          <div className="row justify-content-center">
-            <div className="col-md-4 col-sm-6">
-              <div className="trophy-card">
-                <div className="trophy-icon">
-                  <i className="fas fa-trophy"></i>
-                </div>
-                <h3 className="trophy-title">Copa da Vila 2024</h3>
-                <p className="trophy-description">Campeão da Copa da Vila 2024, nossa conquista mais recente.</p>
-              </div>
-            </div>
-            <div className="col-md-4 col-sm-6">
-              <div className="trophy-card">
-                <div className="trophy-icon">
-                  <i className="fas fa-trophy"></i>
-                </div>
-                <h3 className="trophy-title">Copa Banestado 1990</h3>
-                <p className="trophy-description">Título histórico conquistado de forma invicta, amplamente divulgado pela Tribuna do Paraná.</p>
-              </div>
-            </div>
-            <div className="col-md-4 col-sm-6">
-              <div className="trophy-card">
-                <div className="trophy-icon">
-                  <i className="fas fa-trophy"></i>
-                </div>
-                <h3 className="trophy-title">Torneio Jaime Lerner 1985</h3>
-                <p className="trophy-description">Nosso primeiro título, conquistado apenas um ano após a fundação do clube, vencendo o Expressinho nos pênaltis.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

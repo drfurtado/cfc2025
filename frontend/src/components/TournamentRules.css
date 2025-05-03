@@ -1,0 +1,189 @@
+/* TournamentRules.css */
+@import '../colors.css';
+
+.tournament-rules {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  padding: 0;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.rules-content {
+  padding: 0;
+}
+
+.rules-title {
+  color: white;
+  background-color: var(--primary-blue);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+  padding: 20px 15px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.rules-divider {
+  display: none;
+}
+
+.rules-section {
+  margin: 0;
+  padding: 25px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.rules-section:last-child {
+  border-bottom: none;
+}
+
+.section-title {
+  color: var(--primary-blue);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.section-divider {
+  width: 80px;
+  height: 3px;
+  background-color: var(--primary-blue);
+  margin: 0 auto 20px;
+  border: none;
+}
+
+.section-content {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center;
+}
+
+.section-list {
+  margin: 15px auto;
+  padding-left: 0;
+  list-style-position: inside;
+  max-width: 600px;
+}
+
+.section-list li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  padding: 8px 10px;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  text-align: center;
+  list-style-type: none;
+}
+
+.rules-subsection {
+  margin: 25px 0;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+}
+
+.subsection-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--primary-blue);
+  text-align: center;
+}
+
+.subsection-divider {
+  width: 60px;
+  height: 2px;
+  background-color: rgba(0, 123, 255, 0.3);
+  margin: 0 auto 15px;
+  border: none;
+}
+
+.subsection-content {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.subsection-list, .subsection-numbered-list {
+  margin: 15px auto;
+  padding-left: 0;
+  max-width: 600px;
+}
+
+.subsection-list li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+  font-size: 1rem;
+  padding: 8px 12px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  list-style-type: none;
+  text-align: center;
+}
+
+.subsection-numbered-list {
+  counter-reset: item;
+  list-style-type: none;
+}
+
+.subsection-numbered-list li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+  font-size: 1rem;
+  padding: 8px 12px 8px 40px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+  text-align: left;
+}
+
+.subsection-numbered-list li:before {
+  content: counter(item) "";
+  counter-increment: item;
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-color: var(--primary-blue);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .rules-title {
+    font-size: 1.5rem;
+    padding: 15px;
+  }
+  
+  .rules-section {
+    padding: 20px 15px;
+  }
+  
+  .section-title {
+    font-size: 1.3rem;
+  }
+  
+  .subsection-title {
+    font-size: 1.1rem;
+  }
+  
+  .section-content, 
+  .subsection-content {
+    font-size: 0.95rem;
+  }
+}
