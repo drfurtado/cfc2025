@@ -7,17 +7,17 @@ export const calendarData = [
     round: '1ª', 
     date: '26/04', 
     matches: [
-      { time: '14h', team1: 'CLASSE', team2: 'SÃO PAULO', game: 1 },
-      { time: '15h', team1: 'UNIÃO RIBEIRÃO', team2: 'TRIC0LOR', game: 2 },
-      { time: '16h', team1: 'COMETA', team2: 'OS MALAS', game: 3 }
+      { time: '14h', team1: 'CLASSE', team2: 'SÃO PAULO', game: 1, score: '2 x 1', completed: true },
+      { time: '15h', team1: 'UNIÃO RIBEIRÃO', team2: 'TRIC0LOR', game: 2, score: '2 x 3', completed: true },
+      { time: '16h', team1: 'COMETA', team2: 'OS MALAS', game: 3, score: '0 x 6', completed: true }
     ]
   },
   { 
     round: '2ª', 
     date: '03/05', 
     matches: [
-      { time: '14h', team1: 'COMETA', team2: 'CLASSE', game: 4 },
-      { time: '15h', team1: 'UNIÃO RIBEIRÃO', team2: 'GRÊMIO VITÓRIA RÉGIA', game: 5 },
+      { time: '14h', team1: 'COMETA', team2: 'CLASSE', game: 4, score: '1 x 1', completed: true },
+      { time: '15h', team1: 'UNIÃO RIBEIRÃO', team2: 'GRÊMIO VR', game: 5 },
       { time: '16h', team1: 'OS MALAS', team2: 'TRIC0LOR', game: 6 }
     ]
   },
@@ -26,7 +26,7 @@ export const calendarData = [
     date: '10/05', 
     matches: [
       { time: '14h', team1: 'COMETA', team2: 'UNIÃO RIBEIRÃO', game: 7 },
-      { time: '15h', team1: 'GRÊMIO VITÓRIA RÉGIA', team2: 'SÃO PAULO', game: 8 },
+      { time: '15h', team1: 'GRÊMIO VR', team2: 'SÃO PAULO', game: 8 },
       { time: '16h', team1: 'OS MALAS', team2: 'CLASSE', game: 9 }
     ]
   },
@@ -34,7 +34,7 @@ export const calendarData = [
     round: '4ª', 
     date: '17/05', 
     matches: [
-      { time: '14h', team1: 'GRÊMIO VITÓRIA RÉGIA', team2: 'COMETA', game: 10 },
+      { time: '14h', team1: 'GRÊMIO VR', team2: 'COMETA', game: 10 },
       { time: '15h', team1: 'CLASSE', team2: 'UNIÃO RIBEIRÃO', game: 11 },
       { time: '16h', team1: 'TRIC0LOR', team2: 'SÃO PAULO', game: 12 }
     ]
@@ -44,7 +44,7 @@ export const calendarData = [
     date: '24/05', 
     matches: [
       { time: '14h', team1: 'UNIÃO RIBEIRÃO', team2: 'OS MALAS', game: 13 },
-      { time: '15h', team1: 'GRÊMIO VITÓRIA RÉGIA', team2: 'TRIC0LOR', game: 14 },
+      { time: '15h', team1: 'GRÊMIO VR', team2: 'TRIC0LOR', game: 14 },
       { time: '16h', team1: 'SÃO PAULO', team2: 'COMETA', game: 15 }
     ]
   },
@@ -54,14 +54,14 @@ export const calendarData = [
     matches: [
       { time: '14h', team1: 'CLASSE', team2: 'TRIC0LOR', game: 16 },
       { time: '15h', team1: 'SÃO PAULO', team2: 'UNIÃO RIBEIRÃO', game: 17 },
-      { time: '16h', team1: 'OS MALAS', team2: 'GRÊMIO VITÓRIA RÉGIA', game: 18 }
+      { time: '16h', team1: 'OS MALAS', team2: 'GRÊMIO VR', game: 18 }
     ]
   },
   { 
     round: '7ª', 
     date: '07/06', 
     matches: [
-      { time: '14h', team1: 'GRÊMIO VITÓRIA RÉGIA', team2: 'CLASSE', game: 19 },
+      { time: '14h', team1: 'GRÊMIO VR', team2: 'CLASSE', game: 19 },
       { time: '15h', team1: 'SÃO PAULO', team2: 'OS MALAS', game: 20 },
       { time: '16h', team1: 'COMETA', team2: 'TRIC0LOR', game: 21 }
     ]
@@ -80,7 +80,7 @@ export const calendarData = [
     date: '21/06', 
     matches: [
       { time: '14h', team1: 'CLASSE', team2: 'COMETA', game: 25 },
-      { time: '15h', team1: 'GRÊMIO VITÓRIA RÉGIA', team2: 'UNIÃO RIBEIRÃO', game: 26 },
+      { time: '15h', team1: 'GRÊMIO VR', team2: 'UNIÃO RIBEIRÃO', game: 26 },
       { time: '16h', team1: 'TRIC0LOR', team2: 'OS MALAS', game: 27 }
     ]
   },
@@ -89,7 +89,7 @@ export const calendarData = [
     date: '28/06', 
     matches: [
       { time: '14h', team1: 'UNIÃO RIBEIRÃO', team2: 'COMETA', game: 28 },
-      { time: '15h', team1: 'SÃO PAULO', team2: 'GRÊMIO VITÓRIA RÉGIA', game: 29 },
+      { time: '15h', team1: 'SÃO PAULO', team2: 'GRÊMIO VR', game: 29 },
       { time: '16h', team1: 'CLASSE', team2: 'OS MALAS', game: 30 }
     ]
   },
@@ -97,7 +97,7 @@ export const calendarData = [
     round: '11ª', 
     date: '17/08', 
     matches: [
-      { time: '14h', team1: 'COMETA', team2: 'GRÊMIO VITÓRIA RÉGIA', game: 31 },
+      { time: '14h', team1: 'COMETA', team2: 'GRÊMIO VR', game: 31 },
       { time: '15h', team1: 'UNIÃO RIBEIRÃO', team2: 'CLASSE', game: 32 },
       { time: '16h', team1: 'SÃO PAULO', team2: 'TRIC0LOR', game: 33 }
     ]
@@ -107,7 +107,7 @@ export const calendarData = [
     date: '05/07', 
     matches: [
       { time: '14h', team1: 'OS MALAS', team2: 'UNIÃO RIBEIRÃO', game: 34 },
-      { time: '15h', team1: 'TRIC0LOR', team2: 'GRÊMIO VITÓRIA RÉGIA', game: 35 },
+      { time: '15h', team1: 'TRIC0LOR', team2: 'GRÊMIO VR', game: 35 },
       { time: '16h', team1: 'COMETA', team2: 'SÃO PAULO', game: 36 }
     ]
   },
@@ -117,14 +117,14 @@ export const calendarData = [
     matches: [
       { time: '14h', team1: 'TRIC0LOR', team2: 'CLASSE', game: 37 },
       { time: '15h', team1: 'UNIÃO RIBEIRÃO', team2: 'SÃO PAULO', game: 38 },
-      { time: '16h', team1: 'GRÊMIO VITÓRIA RÉGIA', team2: 'OS MALAS', game: 39 }
+      { time: '16h', team1: 'GRÊMIO VR', team2: 'OS MALAS', game: 39 }
     ]
   },
   { 
     round: '14ª', 
     date: '19/07', 
     matches: [
-      { time: '14h', team1: 'CLASSE', team2: 'GRÊMIO VITÓRIA RÉGIA', game: 40 },
+      { time: '14h', team1: 'CLASSE', team2: 'GRÊMIO VR', game: 40 },
       { time: '15h', team1: 'OS MALAS', team2: 'SÃO PAULO', game: 41 },
       { time: '16h', team1: 'TRIC0LOR', team2: 'COMETA', game: 42 }
     ]

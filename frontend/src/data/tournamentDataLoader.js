@@ -8,14 +8,17 @@ import copa50tinha2025Info from './tournaments/copa50tinha2025/info';
 import copaLillico2024Info from './tournaments/copaLillico2024/info';
 
 // Import tournament calendars
-import copa50tinha2025Calendar from './tournaments/copa50tinha2025/calendar';
+import { calendarData as copa50tinha2025Calendar } from './tournaments/copa50tinha2025/calendar';
 
 // Import tournament matches
-import copa50tinha2025Matches from './tournaments/copa50tinha2025/matches';
+import { matchesData as copa50tinha2025Matches } from './tournaments/copa50tinha2025/matches';
 import copaLillico2024Matches from './tournaments/copaLillico2024/matches';
 
 // Import tournament rules
-import copa50tinha2025Rules from './tournaments/copa50tinha2025/rules';
+import { rulesData as copa50tinha2025Rules } from './tournaments/copa50tinha2025/rules';
+
+// Import tournament standings
+import { getStandings as getCopa50tinha2025Standings, getStandingsLastUpdated as getCopa50tinha2025StandingsLastUpdated } from './tournaments/copa50tinha2025/standings';
 
 /**
  * Get all tournament information
@@ -142,5 +145,33 @@ export const getTeamLogo = (teamName) => {
     return '/images/logo.svg';
   } else {
     return '/images/match-logos/generic.png';
+  }
+};
+
+/**
+ * Get standings for a tournament
+ * @param {number} tournamentId - Tournament ID
+ * @returns {Object|null} Standings data or null if not found
+ */
+export const getStandings = (tournamentId) => {
+  switch (tournamentId) {
+    case 1: // Copa 50tinha 2025
+      return getCopa50tinha2025Standings();
+    default:
+      return null;
+  }
+};
+
+/**
+ * Get last updated timestamp for standings
+ * @param {number} tournamentId - Tournament ID
+ * @returns {number|null} Last updated timestamp or null if not found
+ */
+export const getStandingsLastUpdated = (tournamentId) => {
+  switch (tournamentId) {
+    case 1: // Copa 50tinha 2025
+      return getCopa50tinha2025StandingsLastUpdated();
+    default:
+      return null;
   }
 };

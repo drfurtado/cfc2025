@@ -29,30 +29,32 @@ function TimePage() {
   const [directors, setDirectors] = useState([]);
   const [pastPlayers, setPastPlayers] = useState([]);
   const [loading, setLoading] = useState(true);
-  
+  const [selectedPerson, setSelectedPerson] = useState(null);
+  const [showLightbox, setShowLightbox] = useState(false);
+
   // Function to sort players by position according to positionOrder
   const sortPlayersByPosition = useCallback((playersToSort) => {
     return [...playersToSort].sort((a, b) => {
       const posA = a.position.toLowerCase();
       const posB = b.position.toLowerCase();
-      
+
       // Get index of position in positionOrder (case insensitive)
-      const indexA = positionOrder.findIndex(pos => 
+      const indexA = positionOrder.findIndex(pos =>
         posA.includes(pos.toLowerCase())
       );
-      const indexB = positionOrder.findIndex(pos => 
+      const indexB = positionOrder.findIndex(pos =>
         posB.includes(pos.toLowerCase())
       );
-      
+
       // If both positions are found in positionOrder, sort by their order
       if (indexA !== -1 && indexB !== -1) {
         return indexA - indexB;
       }
-      
+
       // If only one position is found, prioritize it
       if (indexA !== -1) return -1;
       if (indexB !== -1) return 1;
-      
+
       // If neither is found, sort alphabetically
       return posA.localeCompare(posB);
     });
@@ -61,10 +63,10 @@ function TimePage() {
   // Group players by position
   const groupPlayersByPosition = useCallback((playersToGroup) => {
     const groups = {};
-    
+
     playersToGroup.forEach(player => {
       let position = player.position;
-      
+
       // Standardize position names
       for (const pos of positionOrder) {
         if (position.toLowerCase().includes(pos.toLowerCase())) {
@@ -72,20 +74,20 @@ function TimePage() {
           break;
         }
       }
-      
+
       // Default group if no match
       if (!positionOrder.some(pos => position.toLowerCase().includes(pos.toLowerCase()))) {
         position = 'Outros';
       }
-      
+
       // Create group if it doesn't exist
       if (!groups[position]) {
         groups[position] = [];
       }
-      
+
       groups[position].push(player);
     });
-    
+
     return groups;
   }, []); // Empty dependency array
 
@@ -95,7 +97,7 @@ function TimePage() {
       'Presidência': [],
       'Conselheiros': []
     };
-    
+
     directorsToGroup.forEach(director => {
       if (director.role.toLowerCase().includes('presidente')) {
         groups['Presidência'].push(director);
@@ -103,9 +105,23 @@ function TimePage() {
         groups['Conselheiros'].push(director);
       }
     });
-    
+
     return groups;
   }, []); // Empty dependency array
+
+  // Function to open lightbox
+  const openLightbox = (person) => {
+    setSelectedPerson(person);
+    setShowLightbox(true);
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when lightbox is open
+  };
+
+  // Function to close lightbox
+  const closeLightbox = () => {
+    setShowLightbox(false);
+    setSelectedPerson(null);
+    document.body.style.overflow = 'auto'; // Re-enable scrolling
+  };
 
   // Fetch data from CSV files
   useEffect(() => {
@@ -114,12 +130,12 @@ function TimePage() {
         // Fetch players from CSV
         const playersResponse = await fetch('/players.csv');
         const playersText = await playersResponse.text();
-        
+
         // Parse players CSV
         const playerLines = playersText.split('\n').filter(line => line.trim() !== '');
         const parsedPlayers = playerLines.map((line, index) => {
           let name, position;
-          
+
           if (line.includes(',')) {
             [name, position] = line.split(',').map(item => item.trim());
           } else {
@@ -128,7 +144,7 @@ function TimePage() {
             position = parts.pop(); // Last word is position
             name = parts.join(' '); // Rest is name
           }
-          
+
           return {
             id: index + 1,
             name: name || `Jogador ${index + 1}`,
@@ -137,32 +153,32 @@ function TimePage() {
             image: `/images/team/players/${createSafeFilename(name)}` 
           };
         });
-        
+
         // Sort players by position
         const sortedPlayers = sortPlayersByPosition(parsedPlayers);
         setPlayers(sortedPlayers);
-        
+
         // Fetch staff from CSV
         const staffResponse = await fetch('/comissao.csv');
         const staffText = await staffResponse.text();
-        
+
         // Parse staff CSV
         const staffLines = staffText.split('\n').filter(line => line.trim() !== '');
         const parsedStaff = staffLines.map((line, index) => {
           let name, role;
-          
+
           // Check if the line is likely a header (common pattern: contains 'nome' or 'cargo')
           if (index === 0 && (line.toLowerCase().includes('nome') || line.toLowerCase().includes('cargo'))) {
             return null; // Skip header row
           }
-          
+
           if (line.includes(',')) { 
              [name, role] = line.split(',').map(item => item.trim());
            } else {
              name = line.trim();
              role = 'Comissão Técnica';
            }
-          
+
           return {
             id: index + 1,
             name: name || `Staff ${index + 1}`,
@@ -171,30 +187,30 @@ function TimePage() {
             image: `/images/team/staff/${createSafeFilename(name)}` 
           };
         }).filter(Boolean); // Remove null entries (skipped header)
-         
+
          setStaff(parsedStaff);
-         
+
         // Fetch directors from CSV
         const directorsResponse = await fetch('/diretoria.csv');
         const directorsText = await directorsResponse.text();
-        
+
         // Parse directors CSV
         const directorLines = directorsText.split('\n').filter(line => line.trim() !== '');
         const parsedDirectors = directorLines.map((line, index) => {
           let name, role;
-          
+
           // Check if the line is likely a header
           if (index === 0 && (line.toLowerCase().includes('nome') || line.toLowerCase().includes('cargo') || line.toLowerCase().includes('diretor'))) {
              return null; // Skip header row
           }
-          
+
           if (line.includes(',')) {
              [name, role] = line.split(',').map(item => item.trim());
            } else {
              name = line.trim();
              role = 'Diretor';
            }
-          
+
           return {
             id: index + 1,
             name: name || `Diretor ${index + 1}`,
@@ -203,7 +219,7 @@ function TimePage() {
             image: `/images/team/directors/${createSafeFilename(name)}` 
           };
         }).filter(Boolean); // Remove null entries
-         
+
          // Sort directors to ensure president comes first
          const sortedDirectors = [...parsedDirectors].sort((a, b) => {
           if (a.role.toLowerCase().includes('presidente') && !a.role.toLowerCase().includes('vice')) return -1;
@@ -211,27 +227,27 @@ function TimePage() {
           if (a.role.toLowerCase().includes('vice')) return 0;
           return 0;
         });
-        
+
         setDirectors(sortedDirectors);
-        
+
         // Fetch past players from CSV
         try {
           const pastPlayersResponse = await fetch('/jogadores-antigos.csv');
           const pastPlayersText = await pastPlayersResponse.text();
-          
+
           // Parse past players CSV
           const pastPlayerLines = pastPlayersText.split('\n').filter(line => line.trim() !== '');
           const parsedPastPlayers = pastPlayerLines.map((line, index) => ({
             id: index + 1,
             name: line.trim()
           }));
-          
+
           setPastPlayers(parsedPastPlayers);
         } catch (error) {
           console.error('Error loading past players:', error);
           setPastPlayers([]);
         }
-        
+
       } catch (error) {
         console.error('Error loading data:', error);
         // Set default data if CSV loading fails
@@ -243,23 +259,23 @@ function TimePage() {
         setLoading(false);
       }
     };
-    
+
     fetchData();
   }, [sortPlayersByPosition]); // Keep sortPlayersByPosition here as it's defined outside but used inside
-  
+
   const playerGroups = groupPlayersByPosition(players); // Call grouping functions here
   const directorGroups = groupDirectorsByRole(directors);
-  
+
   // Image error handler
   const handleImageError = (e) => {
     e.target.onerror = null; // Prevent infinite loop if fallback fails
     e.target.src = '/images/player-silhouette.svg'; // Fallback to silhouette
   };
-  
+
   if (loading) {
     return (
       <div className="team-page">
-        <div className="hero-section" style={{ backgroundImage: `url('/images/cfc-atual4.png')` }}>
+        <div className="hero-section" style={{ backgroundImage: `url('/images/team2025-1.jpg')` }}>
           <div className="hero-overlay"></div>
           <div className="container">
             <h1 className="page-title">Nosso Time</h1>
@@ -273,10 +289,10 @@ function TimePage() {
       </div>
     );
   }
-  
+
   return (
     <div className="team-page">
-      <div className="hero-section" style={{ backgroundImage: `url('/images/cfc-atual4.png')` }}>
+      <div className="hero-section" style={{ backgroundImage: `url('/images/team2025-1.jpg')` }}>
         <div className="hero-overlay"></div>
         <div className="container">
           <h1 className="page-title">Nosso Time</h1>
@@ -285,7 +301,7 @@ function TimePage() {
           </p>
         </div>
       </div>
-      
+
       <div className="container">
         <div className="team-categories">
           <button 
@@ -313,7 +329,7 @@ function TimePage() {
             <i className="fas fa-history mr-2"></i> Ex-Jogadores
           </button>
         </div>
-        
+
         {activeCategory === 'jogadores' && (
           <div className="players-section">
             {Object.entries(playerGroups).map(([position, positionPlayers]) => (
@@ -321,7 +337,7 @@ function TimePage() {
                 <h2 className="position-title">{position}</h2>
                 <div className="players-grid">
                   {positionPlayers.map(player => (
-                    <div key={player.id} className="player-card">
+                    <div key={player.id} className="player-card" onClick={() => openLightbox(player)}>
                       <div className="player-image">
                         <img 
                           src={player.image} 
@@ -340,13 +356,13 @@ function TimePage() {
             ))}
           </div>
         )}
-        
+
         {activeCategory === 'comissao' && (
           <div className="staff-section">
             <h2 className="position-title">Comissão Técnica</h2>
             <div className="staff-grid">
               {staff.map(staffMember => (
-                <div key={staffMember.id} className="staff-card">
+                <div key={staffMember.id} className="staff-card" onClick={() => openLightbox(staffMember)}>
                   <div className="staff-image">
                     <img 
                       src={staffMember.image} 
@@ -363,7 +379,7 @@ function TimePage() {
             </div>
           </div>
         )}
-        
+
         {activeCategory === 'diretoria' && (
           <div className="board-section">
             {Object.entries(directorGroups).map(([role, roleDirectors]) => (
@@ -372,7 +388,7 @@ function TimePage() {
                   <h2 className="position-title">{role}</h2>
                   <div className="board-grid">
                     {roleDirectors.map(director => (
-                      <div key={director.id} className="board-card">
+                      <div key={director.id} className="board-card" onClick={() => openLightbox(director)}>
                         <div className="board-image">
                           <img 
                             src={director.image} 
@@ -392,16 +408,48 @@ function TimePage() {
             ))}
           </div>
         )}
-        
+
         {activeCategory === 'ex-jogadores' && (
           <div className="past-players-section">
             <h2 className="position-title">Ex-Jogadores</h2>
-            <div className="past-players-list">
+            <div className="past-players-grid">
               {pastPlayers.map(player => (
-                <div key={player.id} className="past-player-item">
-                  <i className="fas fa-user-alt mr-2"></i> {player.name}
+                <div key={player.id} className="past-player-card" onClick={() => openLightbox(player)}>
+                  <div className="past-player-image">
+                    <img 
+                      src={player.image} 
+                      alt={player.name} 
+                      onError={handleImageError}
+                    />
+                  </div>
+                  <div className="past-player-card-body">
+                    <h3>{player.name}</h3>
+                    <p className="past-player-position">{player.position}</p>
+                  </div>
                 </div>
               ))}
+            </div>
+          </div>
+        )}
+
+        {/* Lightbox Modal */}
+        {showLightbox && selectedPerson && (
+          <div className="lightbox-overlay" onClick={closeLightbox}>
+            <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+              <button className="lightbox-close" onClick={closeLightbox}>
+                <i className="fas fa-times"></i>
+              </button>
+              <div className="lightbox-image-container">
+                <img 
+                  src={selectedPerson.image} 
+                  alt={selectedPerson.name} 
+                  onError={handleImageError}
+                />
+              </div>
+              <div className="lightbox-details">
+                <h2>{selectedPerson.name}</h2>
+                <p>{selectedPerson.position || selectedPerson.role}</p>
+              </div>
             </div>
           </div>
         )}

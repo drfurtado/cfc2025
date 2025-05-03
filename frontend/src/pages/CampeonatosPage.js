@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './CampeonatosPage.css';
 import { 
   getAllTournaments, 
@@ -7,15 +7,27 @@ import {
   filterTournamentsByStatus, 
   getUpcomingMatches, 
   getRecentMatches,
-  getTeamLogo 
+  getTeamLogo,
+  getStandings,
+  getStandingsLastUpdated
 } from '../data/tournamentDataLoader';
 import TournamentRules from '../components/TournamentRules';
+import StandingsTable from '../components/StandingsTable';
 
 const CampeonatosPage = () => {
   const [activeTab, setActiveTab] = useState('todos');
   const [showCalendar, setShowCalendar] = useState(false);
   const [showRules, setShowRules] = useState(false);
+  const [showStandings, setShowStandings] = useState(false);
   const [selectedTournament, setSelectedTournament] = useState(null);
+
+  useEffect(() => {
+    // Always show standings for Copa 50tinha
+    const copa50tinha = getAllTournaments().find(t => t.id === 1);
+    if (copa50tinha) {
+      setSelectedTournament(copa50tinha);
+    }
+  }, []);
 
   // Get tournament data from the data loader
   const tournaments = getAllTournaments();
@@ -48,6 +60,7 @@ const CampeonatosPage = () => {
     setSelectedTournament(tournament);
     setShowCalendar(true);
     setShowRules(false);
+    setShowStandings(false);
     // Scroll to the calendar section
     setTimeout(() => {
       document.getElementById('calendar-section').scrollIntoView({ behavior: 'smooth' });
@@ -59,9 +72,25 @@ const CampeonatosPage = () => {
     setSelectedTournament(tournament);
     setShowRules(true);
     setShowCalendar(false);
+    setShowStandings(false);
     // Scroll to the rules section
     setTimeout(() => {
       document.getElementById('rules-section').scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
+  // Handle showing standings
+  const handleShowStandings = (tournament) => {
+    // Do nothing for Copa 50tinha as standings are always shown
+    if (tournament.id === 1) return;
+    
+    setSelectedTournament(tournament);
+    setShowStandings(true);
+    setShowCalendar(false);
+    setShowRules(false);
+    // Scroll to the standings section
+    setTimeout(() => {
+      document.getElementById('standings-section').scrollIntoView({ behavior: 'smooth' });
     }, 100);
   };
 
@@ -69,6 +98,7 @@ const CampeonatosPage = () => {
   const handleCloseDetails = () => {
     setShowCalendar(false);
     setShowRules(false);
+    setShowStandings(false);
     setSelectedTournament(null);
   };
 
@@ -128,6 +158,19 @@ const CampeonatosPage = () => {
           </button>
         </div>
 
+        {/* Standings display for Copa 50tinha */}
+        {selectedTournament && selectedTournament.id === 1 && (
+          <div className="standings-container">
+            <div className="standings-header">
+              <h3>Copa 50tinha 2025 - Classificação</h3>
+            </div>
+            <StandingsTable 
+              standings={getStandings(1)} 
+              lastUpdated={getStandingsLastUpdated(1)} 
+            />
+          </div>
+        )}
+
         {/* Tournament Rules Section */}
         {showRules && selectedTournament && (
           <div id="rules-section" className="rules-section">
@@ -186,18 +229,24 @@ const CampeonatosPage = () => {
                         
                         <div className="round-matches">
                           {round.matches.map((match, matchIndex) => (
-                            <div className="calendar-match" key={matchIndex}>
-                              <div className="match-time">{match.time}</div>
+                            <div className={`calendar-match ${match.completed ? 'completed-match' : ''}`} key={matchIndex}>
+                              <div className="match-header">
+                                <div className="match-time">{match.time}</div>
+                                <div className="match-number">Jogo {match.game}</div>
+                              </div>
                               <div className="match-teams">
                                 <div className={`team ${match.team1 === 'CLASSE' ? 'classe-team' : ''}`}>
                                   {match.team1}
                                 </div>
-                                <div className="vs">x</div>
+                                {match.completed ? (
+                                  <div className="match-score">{match.score}</div>
+                                ) : (
+                                  <div className="vs">x</div>
+                                )}
                                 <div className={`team ${match.team2 === 'CLASSE' ? 'classe-team' : ''}`}>
                                   {match.team2}
                                 </div>
                               </div>
-                              <div className="match-number">Jogo {match.game}</div>
                             </div>
                           ))}
                         </div>
@@ -214,10 +263,32 @@ const CampeonatosPage = () => {
           </div>
         )}
 
-        {/* Tournament Cards */}
+        {/* Standings Section */}
+        {showStandings && selectedTournament && (
+          <div id="standings-section" className="standings-section">
+            <div className="container">
+              <div className="section-header">
+                <h3>{selectedTournament.name} {selectedTournament.year} - Classificação</h3>
+              </div>
+              
+              {selectedTournament.id === 1 ? (
+                <StandingsTable 
+                  standings={getStandings(1)} 
+                  lastUpdated={getStandingsLastUpdated(1)} 
+                />
+              ) : (
+                <div className="no-standings-data">
+                  <p>Classificação não disponível para este torneio.</p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Tournaments List */}
         <div className="tournament-list">
-          {filteredTournaments.map(tournament => (
-            <div className="tournament-card" key={tournament.id}>
+          {filteredTournaments.map((tournament, index) => (
+            <div className="tournament-card" key={index}>
               <div className="tournament-header">
                 <div className="tournament-year">{tournament.year}</div>
                 <h3 className="tournament-name">{tournament.name}</h3>
@@ -242,16 +313,18 @@ const CampeonatosPage = () => {
                     <span>{tournament.format}</span>
                   </div>
                 </div>
-                
-                <div className={`tournament-status ${getStatusInfo(tournament.status).class}`}>
-                  {getStatusInfo(tournament.status).text}
-                </div>
               </div>
               
               <div className="tournament-footer">
-                <div className={`tournament-position ${getPositionClass(tournament.position)}`}>
-                  {tournament.position}
-                </div>
+                {tournament.id === 1 ? (
+                  <div className="tournament-status">
+                    Classificação
+                  </div>
+                ) : (
+                  <div className={`tournament-status ${getStatusInfo(tournament.status).class}`}>
+                    {getStatusInfo(tournament.status).text}
+                  </div>
+                )}
                 <div className="tournament-actions">
                   <button 
                     className="btn-action btn-calendar"
@@ -260,6 +333,7 @@ const CampeonatosPage = () => {
                   >
                     <i className="far fa-calendar-alt"></i>
                   </button>
+                  
                   {getRulesData(tournament.id) && (
                     <button 
                       className="btn-action btn-rules"
@@ -267,6 +341,15 @@ const CampeonatosPage = () => {
                       title="Ver Regulamento"
                     >
                       <i className="fas fa-gavel"></i>
+                    </button>
+                  )}
+                  {tournament.id !== 1 && (
+                    <button 
+                      className="btn-action btn-standings"
+                      onClick={() => handleShowStandings(tournament)}
+                      title="Ver Classificação"
+                    >
+                      <i className="fas fa-table"></i>
                     </button>
                   )}
                 </div>

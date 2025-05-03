@@ -34,43 +34,38 @@ function HomePage() {
 
   // Enhanced match data with statistics and highlights
   const lastMatchData = {
-    id: 1,
+    id: 4,
     tournament: 'Copa 50tinha 2025',
-    date: '26/04/2025',
+    date: '03/05/2025',
     time: '14:00',
-    homeTeam: 'Classe FC',
-    awayTeam: 'S. Paulinho',
-    homeScore: 2,
+    homeTeam: 'Cometa',
+    awayTeam: 'Classe FC',
+    homeScore: 1,
     awayScore: 1,
     location: 'Praça Central',
     status: 'completed',
     stage: 'Primeira Fase',
-    videoUrl: 'https://www.youtube.com/embed/HqelNrsrIEo',
-    // Temporarily hiding stats and highlights - will be updated later
+    videoUrl: 'https://www.youtube.com/embed/nM_xASzsn_s',
+    // Show stats and highlights
     showStats: false,
     stats: {
-      possession: { home: 55, away: 45 },
-      shots: { home: 12, away: 8 },
-      shotsOnTarget: { home: 5, away: 3 },
-      corners: { home: 6, away: 4 },
-      fouls: { home: 7, away: 10 },
-      yellowCards: { home: 1, away: 2 },
+      possession: { home: 48, away: 52 },
+      shots: { home: 9, away: 11 },
+      shotsOnTarget: { home: 4, away: 5 },
+      corners: { home: 5, away: 6 },
+      fouls: { home: 9, away: 7 },
+      yellowCards: { home: 2, away: 1 },
       redCards: { home: 0, away: 0 }
     },
-    showHighlights: false,
+    showHighlights: true,
     highlights: [
-      { time: 23, type: 'goal', team: 'Classe', player: 'Marcos Silva', description: 'Gol após cruzamento da direita' },
-      { time: 37, type: 'yellow-card', team: 'S.Paulinho', player: 'João Carlos', description: 'Falta dura no meio-campo' },
-      { time: 55, type: 'goal', team: 'S.Paulinho', player: 'Roberto Alves', description: 'Gol de pênalti' },
-      { time: 67, type: 'yellow-card', team: 'Classe', player: 'Pedro Santos', description: 'Falta tática' },
-      { time: 78, type: 'yellow-card', team: 'S.Paulinho', player: 'Lucas Mendes', description: 'Reclamação com o árbitro' },
-      { time: 89, type: 'goal', team: 'Classe', player: 'Carlos Eduardo', description: 'Gol de cabeça após escanteio' }
+      { time: 37, type: 'goal', team: 'Cometa', player: 'Marcelinho', description: 'Gol de falta' },
+      { time: 76, type: 'goal', team: 'Classe FC', player: 'Lucio', description: 'Gol após jogada pela esquerda' }
     ],
     gallery: [
-      { url: '/images/match-photos/cfc-spailinho-20250426/match1.jpg', alt: 'Comemoração do primeiro gol' },
-      { url: '/images/match-photos/cfc-spailinho-20250426/match2.jpg', alt: 'Jogada pela lateral' },
-      { url: '/images/match-photos/cfc-spailinho-20250426/match3.jpg', alt: 'Defesa importante do goleiro' },
-      { url: '/images/match-photos/cfc-spailinho-20250426/match4.jpg', alt: 'Comemoração da vitória' }
+      { url: '/images/match-photos/cometa-classe-20250503/photo1.jpg', alt: 'Jogadores em campo' },
+      { url: '/images/match-photos/cometa-classe-20250503/photo2.jpg', alt: 'Disputa de bola' },
+      { url: '/images/match-photos/cometa-classe-20250503/photo3.jpg', alt: 'Comemoração do gol' }
     ],
     galleryLink: 'https://photos.app.goo.gl/mYaFNEsMrKZT2JcWA'
   };
@@ -166,7 +161,7 @@ function HomePage() {
       {/* Matches Section - Last & Next Match */}
       <section className="matches-section">
         <div className="container">
-          <h2 className="section-title text-center">Partidas</h2>
+          <h2 className="section-title text-center mb-4">Partidas</h2>
           
           {showMatchDetails && selectedMatch && (
             <div className="row justify-content-center mb-4">
@@ -184,12 +179,12 @@ function HomePage() {
           
           {!showMatchDetails && (
             <div className="row justify-content-center">
-              <div className="col-lg-5 col-md-6">
-                {/* Last Match Card - New Design */}
+              <div className="col-md-6 mb-3">
+                {/* Last Match Card - Optimized for Mobile */}
                 <div style={{ 
                   backgroundColor: 'white', 
                   borderRadius: '8px',
-                  boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+                  boxShadow: '0 1px 6px rgba(0,0,0,0.1)',
                   overflow: 'hidden',
                   maxWidth: '100%',
                   margin: '0 auto'
@@ -197,72 +192,74 @@ function HomePage() {
                   <div style={{ display: 'flex' }}>
                     <div style={{ 
                       backgroundColor: '#f5f9ff', 
-                      padding: '20px',
+                      padding: '10px 15px',
                       borderLeft: '4px solid #0d6efd',
                       width: '50%'
                     }}>
                       <h3 style={{ 
                         color: '#0d6efd', 
-                        fontSize: '24px',
+                        fontSize: '18px',
                         fontWeight: 'bold',
                         margin: 0
                       }}>{lastMatch.tournament}</h3>
                       <p style={{ 
                         color: '#6c757d',
-                        margin: '5px 0 0 0'
+                        margin: '2px 0 0 0',
+                        fontSize: '14px'
                       }}>{lastMatch.stage}</p>
                     </div>
                     <div style={{ 
-                      padding: '20px',
+                      padding: '10px 15px',
                       textAlign: 'right',
-                      width: '50%'
+                      width: '50%',
+                      fontSize: '14px'
                     }}>
-                      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '5px' }}>
-                        <i className="far fa-calendar-alt" style={{ color: '#0d6efd', marginRight: '10px' }}></i>
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '3px' }}>
+                        <i className="far fa-calendar-alt" style={{ color: '#0d6efd', marginRight: '5px' }}></i>
                         <span>{lastMatch.date}</span>
                       </div>
-                      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '5px' }}>
-                        <i className="far fa-clock" style={{ color: '#0d6efd', marginRight: '10px' }}></i>
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '3px' }}>
+                        <i className="far fa-clock" style={{ color: '#0d6efd', marginRight: '5px' }}></i>
                         <span>{lastMatch.time}</span>
                       </div>
                       <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
-                        <i className="fas fa-map-marker-alt" style={{ color: '#0d6efd', marginRight: '10px' }}></i>
+                        <i className="fas fa-map-marker-alt" style={{ color: '#0d6efd', marginRight: '5px' }}></i>
                         <span>{lastMatch.location}</span>
                       </div>
                     </div>
                   </div>
                   
-                  <div style={{ padding: '30px 20px', textAlign: 'center' }}>
+                  <div style={{ padding: '15px 10px', textAlign: 'center' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
                       <div style={{ textAlign: 'center' }}>
-                        <img src={getTeamLogo(lastMatch.homeTeam)} alt={lastMatch.homeTeam} style={{ width: '80px', height: '80px', marginBottom: '10px' }} />
-                        <h4 style={{ fontWeight: 'bold', margin: 0 }}>{lastMatch.homeTeam}</h4>
+                        <img src={getTeamLogo(lastMatch.homeTeam)} alt={lastMatch.homeTeam} style={{ width: '50px', height: '50px', marginBottom: '5px' }} />
+                        <h4 style={{ fontWeight: 'bold', margin: 0, fontSize: '14px' }}>{lastMatch.homeTeam}</h4>
                       </div>
                       
                       <div style={{ textAlign: 'center' }}>
                         <div style={{ 
-                          fontSize: '28px', 
+                          fontSize: '22px', 
                           fontWeight: 'bold',
-                          margin: '0 20px'
+                          margin: '0 10px'
                         }}>
                           <span>{lastMatch.homeScore}</span>
                           <span style={{ margin: '0 5px' }}>:</span>
                           <span>{lastMatch.awayScore}</span>
                         </div>
-                        <div style={{ marginTop: '10px' }}>
+                        <div style={{ marginTop: '5px' }}>
                           <span style={{ 
                             backgroundColor: '#f8f9fa',
                             color: '#6c757d',
-                            padding: '5px 15px',
+                            padding: '3px 10px',
                             borderRadius: '20px',
-                            fontSize: '14px'
+                            fontSize: '12px'
                           }}>FINALIZADO</span>
                         </div>
                       </div>
                       
                       <div style={{ textAlign: 'center' }}>
-                        <img src={getTeamLogo(lastMatch.awayTeam)} alt={lastMatch.awayTeam} style={{ width: '80px', height: '80px', marginBottom: '10px' }} />
-                        <h4 style={{ fontWeight: 'bold', margin: 0 }}>{lastMatch.awayTeam}</h4>
+                        <img src={getTeamLogo(lastMatch.awayTeam)} alt={lastMatch.awayTeam} style={{ width: '50px', height: '50px', marginBottom: '5px' }} />
+                        <h4 style={{ fontWeight: 'bold', margin: 0, fontSize: '14px' }}>{lastMatch.awayTeam}</h4>
                       </div>
                     </div>
                   </div>
@@ -273,7 +270,7 @@ function HomePage() {
                       style={{ 
                         backgroundColor: '#dc3545',
                         color: 'white',
-                        padding: '12px 0',
+                        padding: '10px 0',
                         textAlign: 'center',
                         textDecoration: 'none',
                         fontWeight: 'bold',
@@ -282,10 +279,11 @@ function HomePage() {
                         alignItems: 'center',
                         justifyContent: 'center',
                         border: 'none',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        fontSize: '14px'
                       }}
                     >
-                      <i className="fas fa-play-circle" style={{ marginRight: '8px' }}></i>
+                      <i className="fas fa-play-circle" style={{ marginRight: '5px' }}></i>
                       Assistir Jogo
                     </button>
                     <button 
@@ -293,7 +291,7 @@ function HomePage() {
                       style={{ 
                         backgroundColor: '#0d6efd',
                         color: 'white',
-                        padding: '12px 0',
+                        padding: '10px 0',
                         textAlign: 'center',
                         textDecoration: 'none',
                         fontWeight: 'bold',
@@ -302,22 +300,23 @@ function HomePage() {
                         alignItems: 'center',
                         justifyContent: 'center',
                         border: 'none',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        fontSize: '14px'
                       }}
                     >
-                      <i className="fas fa-chart-bar" style={{ marginRight: '8px' }}></i>
+                      <i className="fas fa-chart-bar" style={{ marginRight: '5px' }}></i>
                       Estatísticas
                     </button>
                   </div>
                 </div>
               </div>
               
-              <div className="col-lg-5 col-md-6">
-                {/* Next Match Card - New Design */}
+              <div className="col-md-6 mb-3">
+                {/* Next Match Card - Optimized for Mobile */}
                 <div style={{ 
                   backgroundColor: 'white', 
                   borderRadius: '8px',
-                  boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+                  boxShadow: '0 1px 6px rgba(0,0,0,0.1)',
                   overflow: 'hidden',
                   maxWidth: '100%',
                   margin: '0 auto'
@@ -325,68 +324,72 @@ function HomePage() {
                   <div style={{ display: 'flex' }}>
                     <div style={{ 
                       backgroundColor: '#f5f9ff', 
-                      padding: '20px',
+                      padding: '10px 15px',
                       borderLeft: '4px solid #0d6efd',
                       width: '50%'
                     }}>
                       <h3 style={{ 
                         color: '#0d6efd', 
-                        fontSize: '24px',
+                        fontSize: '18px',
                         fontWeight: 'bold',
                         margin: 0
                       }}>{nextMatch.tournament}</h3>
                       <p style={{ 
                         color: '#6c757d',
-                        margin: '5px 0 0 0'
+                        margin: '2px 0 0 0',
+                        fontSize: '14px'
                       }}>{nextMatch.stage}</p>
                     </div>
                     <div style={{ 
-                      padding: '20px',
+                      padding: '10px 15px',
                       textAlign: 'right',
-                      width: '50%'
+                      width: '50%',
+                      fontSize: '14px'
                     }}>
-                      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '5px' }}>
-                        <i className="far fa-calendar-alt" style={{ color: '#0d6efd', marginRight: '10px' }}></i>
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '3px' }}>
+                        <i className="far fa-calendar-alt" style={{ color: '#0d6efd', marginRight: '5px' }}></i>
                         <span>{nextMatch.date}</span>
                       </div>
-                      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '5px' }}>
-                        <i className="far fa-clock" style={{ color: '#0d6efd', marginRight: '10px' }}></i>
+                      <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', marginBottom: '3px' }}>
+                        <i className="far fa-clock" style={{ color: '#0d6efd', marginRight: '5px' }}></i>
                         <span>{nextMatch.time}</span>
                       </div>
                       <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center' }}>
-                        <i className="fas fa-map-marker-alt" style={{ color: '#0d6efd', marginRight: '10px' }}></i>
+                        <i className="fas fa-map-marker-alt" style={{ color: '#0d6efd', marginRight: '5px' }}></i>
                         <span>{nextMatch.location}</span>
                       </div>
                     </div>
                   </div>
                   
-                  <div style={{ padding: '30px 20px', textAlign: 'center' }}>
+                  <div style={{ padding: '15px 10px', textAlign: 'center' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center' }}>
                       <div style={{ textAlign: 'center' }}>
-                        <img src={getTeamLogo(nextMatch.homeTeam)} alt={nextMatch.homeTeam} style={{ width: '80px', height: '80px', marginBottom: '10px' }} />
-                        <h4 style={{ fontWeight: 'bold', margin: 0 }}>{nextMatch.homeTeam}</h4>
+                        <img src={getTeamLogo(nextMatch.homeTeam)} alt={nextMatch.homeTeam} style={{ width: '50px', height: '50px', marginBottom: '5px' }} />
+                        <h4 style={{ fontWeight: 'bold', margin: 0, fontSize: '14px' }}>{nextMatch.homeTeam}</h4>
                       </div>
                       
                       <div style={{ textAlign: 'center' }}>
                         <div style={{ 
-                          fontSize: '28px', 
+                          fontSize: '22px', 
                           fontWeight: 'bold',
-                          margin: '0 20px'
-                        }}>VS</div>
-                        <div style={{ marginTop: '10px' }}>
+                          margin: '0 10px'
+                        }}>
+                          <span>VS</span>
+                        </div>
+                        <div style={{ marginTop: '5px' }}>
                           <span style={{ 
                             backgroundColor: '#f8f9fa',
                             color: '#6c757d',
-                            padding: '5px 15px',
+                            padding: '3px 10px',
                             borderRadius: '20px',
-                            fontSize: '14px'
+                            fontSize: '12px'
                           }}>EM BREVE</span>
                         </div>
                       </div>
                       
                       <div style={{ textAlign: 'center' }}>
-                        <img src={getTeamLogo(nextMatch.awayTeam)} alt={nextMatch.awayTeam} style={{ width: '80px', height: '80px', marginBottom: '10px' }} />
-                        <h4 style={{ fontWeight: 'bold', margin: 0 }}>{nextMatch.awayTeam}</h4>
+                        <img src={getTeamLogo(nextMatch.awayTeam)} alt={nextMatch.awayTeam} style={{ width: '50px', height: '50px', marginBottom: '5px' }} />
+                        <h4 style={{ fontWeight: 'bold', margin: 0, fontSize: '14px' }}>{nextMatch.awayTeam}</h4>
                       </div>
                     </div>
                   </div>
@@ -397,37 +400,43 @@ function HomePage() {
                       style={{ 
                         backgroundColor: '#0d6efd',
                         color: 'white',
-                        padding: '12px 0',
+                        padding: '10px 0',
                         textAlign: 'center',
                         textDecoration: 'none',
                         fontWeight: 'bold',
                         flex: 1,
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
+                        fontSize: '14px'
                       }}
                     >
-                      <i className="fas fa-trophy" style={{ marginRight: '8px' }}></i>
+                      <i className="fas fa-trophy" style={{ marginRight: '5px' }}></i>
                       Ver Campeonato
                     </Link>
-                    <a 
-                      href="#" 
-                      style={{ 
-                        backgroundColor: '#dc3545',
-                        color: 'white',
-                        padding: '12px 0',
-                        textAlign: 'center',
-                        textDecoration: 'none',
-                        fontWeight: 'bold',
-                        flex: 1,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center'
-                      }}
-                    >
-                      <i className="fas fa-play-circle" style={{ marginRight: '8px' }}></i>
-                      Assistir ao Vivo
-                    </a>
+                    {nextMatch.videoUrl && (
+                      <button 
+                        onClick={() => openVideoModal(nextMatch.videoUrl)}
+                        style={{ 
+                          backgroundColor: '#dc3545',
+                          color: 'white',
+                          padding: '10px 0',
+                          textAlign: 'center',
+                          textDecoration: 'none',
+                          fontWeight: 'bold',
+                          flex: 1,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          border: 'none',
+                          cursor: 'pointer',
+                          fontSize: '14px'
+                        }}
+                      >
+                        <i className="fas fa-play-circle" style={{ marginRight: '5px' }}></i>
+                        Assistir ao Vivo
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
@@ -437,21 +446,22 @@ function HomePage() {
           {/* Video Modal */}
           {videoModalOpen && (
             <div className="video-modal">
-              <div className="video-modal-overlay" onClick={closeVideoModal}></div>
               <div className="video-modal-content">
-                <button className="video-modal-close" onClick={closeVideoModal}>
+                <button className="close-modal" onClick={closeVideoModal}>
                   <i className="fas fa-times"></i>
                 </button>
                 <div className="video-container">
                   <iframe 
-                    src={videoUrl} 
+                    src={videoUrl.includes('youtu.be') 
+                      ? videoUrl.replace('youtu.be/', 'youtube.com/embed/') 
+                      : videoUrl} 
                     title="Match Video"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowFullScreen
                   ></iframe>
                 </div>
               </div>
+              <div className="video-modal-overlay" onClick={closeVideoModal}></div>
             </div>
           )}
 
@@ -461,7 +471,7 @@ function HomePage() {
               <div className="row align-items-center">
                 <div className="col-lg-6">
                   <div className="about-image">
-                    <img src="/images/cfc-atual2.png" alt="Classe FC Time" className="img-fluid rounded shadow" />
+                    <img src="/images/team2025-1.jpg" alt="Classe FC Time" className="img-fluid rounded shadow" />
                   </div>
                 </div>
                 <div className="col-lg-6">
@@ -527,7 +537,9 @@ function HomePage() {
             </button>
             <div className="video-container">
               <iframe 
-                src={videoUrl} 
+                src={videoUrl.includes('youtu.be') 
+                  ? videoUrl.replace('youtu.be/', 'youtube.com/embed/') 
+                  : videoUrl} 
                 title="Match Video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowFullScreen
