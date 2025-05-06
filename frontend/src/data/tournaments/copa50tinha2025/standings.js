@@ -4,9 +4,20 @@
  */
 
 export const standingsData = {
-  // Standings as of May 3, 2025 (after Round 2)
-  lastUpdated: "03/05/2025",
+  // Standings as of May 6, 2025 (after Round 2)
+  lastUpdated: "06/05/2025",
   teams: [
+    {
+      name: "Tricolor",
+      played: 2,
+      wins: 2,
+      draws: 0,
+      losses: 0,
+      goalsFor: 6,
+      goalsAgainst: 3,
+      points: 6,
+      position: 1
+    },
     {
       name: "Classe FC",
       played: 2,
@@ -16,39 +27,28 @@ export const standingsData = {
       goalsFor: 3,
       goalsAgainst: 2,
       points: 4,
-      position: 1
-    },
-    {
-      name: "Os Malas",
-      played: 1,
-      wins: 1,
-      draws: 0,
-      losses: 0,
-      goalsFor: 6,
-      goalsAgainst: 0,
-      points: 3,
       position: 2
     },
     {
-      name: "Tricolor",
-      played: 1,
+      name: "União Ribeirão",
+      played: 2,
       wins: 1,
       draws: 0,
-      losses: 0,
-      goalsFor: 3,
-      goalsAgainst: 2,
+      losses: 1,
+      goalsFor: 14,
+      goalsAgainst: 3,
       points: 3,
       position: 3
     },
     {
-      name: "Grêmio VR",
-      played: 0,
-      wins: 0,
+      name: "Os Malas",
+      played: 2,
+      wins: 1,
       draws: 0,
-      losses: 0,
-      goalsFor: 0,
-      goalsAgainst: 0,
-      points: 0,
+      losses: 1,
+      goalsFor: 7,
+      goalsAgainst: 3,
+      points: 3,
       position: 4
     },
     {
@@ -74,13 +74,13 @@ export const standingsData = {
       position: 6
     },
     {
-      name: "União Ribeirão",
+      name: "Grêmio VR",
       played: 1,
       wins: 0,
       draws: 0,
       losses: 1,
-      goalsFor: 2,
-      goalsAgainst: 3,
+      goalsFor: 0,
+      goalsAgainst: 12,
       points: 0,
       position: 7
     }

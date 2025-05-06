@@ -17,8 +17,8 @@ export const calendarData = [
     date: '03/05', 
     matches: [
       { time: '14h', team1: 'COMETA', team2: 'CLASSE', game: 4, score: '1 x 1', completed: true },
-      { time: '15h', team1: 'UNIÃO RIBEIRÃO', team2: 'GRÊMIO VR', game: 5 },
-      { time: '16h', team1: 'OS MALAS', team2: 'TRIC0LOR', game: 6 }
+      { time: '15h', team1: 'UNIÃO RIBEIRÃO', team2: 'GRÊMIO VR', game: 5, score: '12 x 0', completed: true },
+      { time: '16h', team1: 'OS MALAS', team2: 'TRIC0LOR', game: 6, score: '1 x 3', completed: true }
     ]
   },
   { 

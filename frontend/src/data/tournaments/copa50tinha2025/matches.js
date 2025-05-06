@@ -79,6 +79,38 @@ export const matchesData = [
     ]
   },
   {
+    id: 5,
+    tournament: 'Copa 50tinha 2025',
+    tournamentId: 1,
+    date: '03/05/2025',
+    time: '15:00',
+    homeTeam: 'União Ribeirão',
+    awayTeam: 'Grêmio VR',
+    homeScore: 12,
+    awayScore: 0,
+    location: 'Praça Central',
+    status: 'completed',
+    stage: 'Primeira Fase',
+    round: '2ª',
+    gameNumber: 5
+  },
+  {
+    id: 6,
+    tournament: 'Copa 50tinha 2025',
+    tournamentId: 1,
+    date: '03/05/2025',
+    time: '16:00',
+    homeTeam: 'Os Malas',
+    awayTeam: 'Tricolor',
+    homeScore: 1,
+    awayScore: 3,
+    location: 'Praça Central',
+    status: 'completed',
+    stage: 'Primeira Fase',
+    round: '2ª',
+    gameNumber: 6
+  },
+  {
     id: 9,
     tournament: 'Copa 50tinha 2025',
     tournamentId: 1,
