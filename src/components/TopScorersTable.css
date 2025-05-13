@@ -1,0 +1,212 @@
+@import '../colors.css';
+
+.scorers-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  margin-bottom: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.scorers-header {
+  background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+  color: white;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid rgba(0,0,0,0.1);
+  width: 100%; /* Ensure the header takes full width */
+  min-height: 52px; /* Fixed height for consistency */
+}
+
+.scorers-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap; /* Prevent wrapping */
+}
+
+.scorers-header .last-updated {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-left: 10px; /* Add some spacing */
+  white-space: nowrap; /* Prevent wrapping */
+}
+
+.scorers-table-container {
+  padding: 0;
+  width: 100%; /* Ensure this container takes full width */
+  flex-grow: 1; /* Allow container to grow and fill available space */
+  display: flex;
+  flex-direction: column;
+}
+
+.scorers-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 0.9rem;
+  table-layout: fixed;
+  margin: 0;
+}
+
+.scorers-table th {
+  background-color: #f8f9fa;
+  padding: 12px 8px;
+  font-weight: 600;
+  color: #495057;
+  border-bottom: 1px solid #dee2e6;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.scorers-table th.pos-col,
+.scorers-table th.goals-col {
+  text-align: center;
+}
+
+.scorers-table th.player-col,
+.scorers-table th.team-col {
+  text-align: left;
+  padding-left: 15px;
+}
+
+.scorers-table td {
+  padding: 12px 8px;
+  border-bottom: 1px solid #f0f0f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.scorers-table tr:last-child td {
+  border-bottom: none;
+}
+
+.scorers-table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.scorers-table tr:hover {
+  background-color: rgba(13, 110, 253, 0.05); /* Match standings table hover color */
+  transition: background-color 0.2s ease;
+}
+
+/* Top scorer highlighting */
+.scorers-table tbody tr:nth-child(1) .pos-col {
+  color: #198754;  /* Green, matching the standings table */
+  font-weight: 700;
+}
+
+.scorers-table tbody tr:nth-child(1) td {
+  background-color: rgba(25, 135, 84, 0.05); /* Light green background for first place */
+}
+
+.scorers-table tbody tr:nth-child(2) td,
+.scorers-table tbody tr:nth-child(3) td {
+  background-color: rgba(13, 110, 253, 0.03); /* Light blue background for 2nd/3rd place */
+}
+
+.scorers-table tr.top-scorer {
+  background-color: rgba(255, 222, 89, 0.1);
+}
+
+.pos-col {
+  width: 10%;
+  text-align: center;
+}
+
+.scorers-table .pos-col {
+  font-weight: 600;
+}
+
+.player-col {
+  width: 45%;
+  font-weight: 500;
+  text-align: left;
+  padding-left: 15px; /* Add some padding for better readability */
+}
+
+.team-col {
+  width: 30%;
+  text-align: left;
+  padding-left: 5px; /* Slight padding */
+}
+
+/* Styling for goals column */
+.goals-col {
+  width: 15%;
+  text-align: center; /* Center align goals */
+  color: #0d6efd; /* Blue color for goal numbers */
+  font-weight: 600; /* Make the goals stand out */
+}
+
+/* Player name column can be wider if needed */
+/* .player-name { */
+/*   white-space: nowrap; */
+/* } */
+
+/* Ensure team names also have enough space or wrap appropriately */
+/* .team-name { */
+/*   white-space: normal; */ /* or nowrap if preferred */
+/* } */
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .scorers-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .scorers-header .last-updated {
+    margin-top: 5px;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .scorers-table th, 
+  .scorers-table td {
+    padding: 8px 6px;
+    font-size: 0.85rem;
+  }
+
+  .scorers-header h3 {
+    font-size: 1rem;
+  }
+
+  .scorers-header .last-updated {
+    font-size: 0.75rem;
+  }
+
+  .pos-col { 
+    width: 8%; 
+  }
+  
+  .player-col {
+    width: 47%;
+  }
+  
+  .team-col {
+    width: 30%;
+  }
+  
+  .goals-col {
+    width: 15%;
+  }
+}
+
+@media (max-width: 480px) {
+  .team-col { 
+    width: 20%;
+  }
+  .player-col { 
+    width: 57%;
+  }
+}

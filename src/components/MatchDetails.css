@@ -1,0 +1,487 @@
+.match-details {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin-bottom: 20px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #e9ecef;
+}
+
+/* Header with tournament name and stage */
+.match-header-blue {
+  background-color: #0d6efd;
+  color: white;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.header-title {
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin-bottom: 0;
+}
+
+.header-stage {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Date, time and location info */
+.match-info-container {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  margin-top: 5px;
+}
+
+.date-time-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.date-info, .time-info, .location-info {
+  font-size: 0.85rem;
+  margin: 0;
+  gap: 5px;
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+}
+
+.date-info i, .time-info i, .location-info i {
+  color: rgba(255, 255, 255, 0.9);
+  margin-right: 4px;
+}
+
+/* Teams and score section */
+.match-teams-score {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.match-team-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: none;
+}
+
+.team-home, .team-away {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 35%;
+}
+
+.team-logo-container {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-logo {
+  max-width: 50px;
+  max-height: 50px;
+  object-fit: contain;
+}
+
+.team-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #343a40;
+  margin: 0;
+  text-align: center;
+}
+
+.match-score-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+
+.match-score-display > div:not(.match-status-text) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #212529;
+  padding: 0 2px;
+}
+
+.score-separator {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #6c757d;
+  padding: 0 5px;
+}
+
+.match-status-text {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  background-color: #f8f9fa;
+  color: #6c757d;
+  border-radius: 20px;
+  font-weight: 600;
+  margin-top: 5px;
+  text-transform: uppercase;
+}
+
+/* Goal Scorers Section */
+.match-scorers-section {
+  padding: 12px 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.home-team-scorers, .away-team-scorers {
+  flex: 1;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.home-team-scorers {
+  border-right: 1px solid #e9ecef;
+  padding-right: 8px;
+}
+
+.away-team-scorers {
+  padding-left: 8px;
+}
+
+.scorer-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 5px 0;
+  font-size: 0.85rem;
+  color: #343a40;
+  line-height: 1.3;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.scorer-item i {
+  color: #0d6efd;
+  font-size: 0.8rem;
+}
+
+.scorer-time {
+  font-weight: 600;
+}
+
+/* Team Photo Section */
+.team-photo-section {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  position: relative;
+}
+
+.team-photo {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.photo-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 0;
+  cursor: pointer;
+  max-width: none;
+  margin: 0 auto;
+}
+
+.play-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  background-color: rgba(220, 53, 69, 0.9);
+  border-radius: 50%;
+  color: white;
+  font-size: 24px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.play-button:hover {
+  background-color: #dc3545;
+  transform: scale(1.1);
+  color: white;
+  text-decoration: none;
+}
+
+/* Action Buttons */
+.match-action-buttons {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+  gap: 0;
+  background-color: transparent;
+  border-top: 1px solid #e9ecef;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  max-width: none;
+  padding: 12px;
+  font-size: 0.9rem;
+  border-radius: 0;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.action-button:first-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.action-button i {
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+.watch-video {
+  background-color: #dc3545;
+  color: white;
+}
+
+.watch-video:hover {
+  background-color: #c82333;
+  color: white;
+}
+
+.view-photos {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.view-photos:hover {
+  background-color: #0b5ed7;
+  color: white;
+}
+
+/* --- COMPACT CARD STYLES --- */
+.match-header-blue.compact {
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.header-title.compact {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.header-stage.compact {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 2px;
+}
+
+/* Move date/time/location into header for compact view */
+.match-info-container.compact {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  margin-top: 5px;
+}
+
+.date-time-info.compact {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.date-info.compact, .time-info.compact, .location-info.compact {
+  font-size: 0.85rem;
+  margin: 0;
+  gap: 5px;
+  color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+}
+
+.date-info.compact i, .time-info.compact i, .location-info.compact i {
+  color: rgba(255, 255, 255, 0.9);
+  margin-right: 4px;
+}
+
+/* Teams and score styling */
+.match-teams-score.compact {
+  padding: 15px;
+}
+
+.match-team-wrapper.compact {
+  max-width: none;
+  width: 100%;
+}
+
+.team-home.compact, .team-away.compact {
+  width: 35%;
+}
+
+.team-logo-container.compact {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 5px;
+}
+
+.team-logo.compact {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.team-name.compact {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.match-score-display.compact {
+  width: 30%;
+}
+
+.score-number.compact {
+  font-size: 1.8rem;
+}
+
+.score-separator.compact {
+  font-size: 1.5rem;
+}
+
+.match-status-text.compact {
+  font-size: 0.7rem;
+  margin-top: 5px;
+  padding: 2px 8px;
+}
+
+/* Goal scorers styling */
+.match-scorers-section.compact {
+  padding: 12px 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.team-photo-section.compact {
+  display: block;
+}
+
+/* Action buttons styling */
+.match-action-buttons.compact {
+  padding: 0;
+  margin: 0;
+  gap: 0;
+  flex-direction: row;
+}
+
+.action-button.compact {
+  padding: 12px;
+  font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .match-team-wrapper {
+    flex-direction: row;
+    gap: 0;
+  }
+  
+  .team-home, .team-away {
+    width: 35%;
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .match-score-display {
+    width: 30%;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+  }
+  
+  .match-status-text {
+    margin-left: 0;
+  }
+  
+  .team-name {
+    font-size: 0.9rem;
+  }
+  
+  .team-logo-container {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .team-logo {
+    max-width: 50px;
+    max-height: 50px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header-title {
+    font-size: 1.2rem;
+  }
+  
+  .header-stage {
+    font-size: 0.9rem;
+  }
+  
+  .match-info-container {
+    padding: 0;
+  }
+  
+  .score-number {
+    font-size: 1.8rem;
+  }
+}
