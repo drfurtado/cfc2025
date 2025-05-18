@@ -4,9 +4,11 @@
 .carousel-banner {
   position: relative;
   width: 100%;
-  height: 55vh; /* Reduced from 65vh */
-  min-height: 400px; /* Reduced from 450px */
-  max-height: 500px; /* Reduced from 600px */
+  padding-top: 170px; /* Increased further to prevent navbar overlap */
+  height: 40vh; /* Further Reduced from 48vh */
+  min-height: 330px; /* Further Reduced from 380px */
+  box-sizing: content-box; /* Ensures padding adds to the total height */
+  max-height: 420px; /* Further Reduced from 480px */
   overflow: hidden;
   background-color: var(--neutral-light-gray); /* Fallback background */
   display: flex; /* Use flex to manage slide layout */
@@ -131,16 +133,18 @@
   height: 12px;
   width: 12px;
   margin: 0 5px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: black; /* Changed to black for testing */
+  opacity: 0.5; /* Semi-transparent for inactive */
   border-radius: 50%;
   display: inline-block;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
 }
 
 .dot.active {
-  background-color: var(--neutral-white);
-  border: 1px solid var(--primary-color);
+  background-color: blue; /* Changed to blue for testing */
+  border: none;
+  opacity: 1; /* Fully opaque for active */
 }
 
 /* Animations for slide content */
@@ -190,21 +194,21 @@
   .carousel-text-content {
     flex-basis: auto; /* Auto basis for stacked layout */
     width: 100%;
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.5rem; /* Keep padding for text */
     text-align: center;
     order: 2; /* Text below image */
   }
   .carousel-image-content {
     flex-basis: auto; 
     width: 100%;
-    aspect-ratio: 1 / 1; /* Added for square aspect ratio on mobile */
+    aspect-ratio: 1 / 1; /* Keep square aspect ratio for now */
     order: 1; 
-    padding: 1rem; /* Adjusted padding for mobile */
+    padding: 0; /* MODIFIED: Remove padding to maximize image space */
   }
   .carousel-image-content img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Changed from cover to contain for mobile */
+    object-fit: cover; /* MODIFIED: Change to cover to fill space, may crop */
     border-radius: 15px; 
   }
   .carousel-text-content h1 {

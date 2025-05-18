@@ -15,15 +15,15 @@ const initialSlides = [
     altText: 'Classe FC team in action',
   },
   {
-    title: 'Comissão Técnica',
+    title: 'Directoria da Classe FC',
     subtitle: (
       <>
-        Conheça nossa comissão técnica e os profissionais que fazem a diferença!{' '}
+        Conheça nossa directoria e os profissionais que fazem a diferença!{' '}
         <a href="/time" className="carousel-subtitle-link">Saiba Mais</a>
       </>
     ),
-    imageName: 'chiquinho.png', // Replace with actual image names
-    altText: 'Comissão técnica do Classe FC',
+    imageName: 'diretoria.jpeg', // Replace with actual image names
+    altText: 'Directoria do Classe FC',
   },
   {
     title: 'Nossa História, Nossa Paixão',

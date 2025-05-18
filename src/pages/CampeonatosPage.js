@@ -462,13 +462,11 @@ const CampeonatosPage = () => {
             </div>
             
             <div className="tournament-stats-cards">
-              {/* Standings Card */}
-              <div className="standings-card">
+              {/* Standings - directly rendered, no extra card wrapper */}
                 <StandingsTable 
                   standings={getStandings(1)} 
                   lastUpdated={getStandingsLastUpdated(1)} 
                 />
-              </div>
               
               {/* Top Scorers Card */}
               <div className="top-scorers-card">

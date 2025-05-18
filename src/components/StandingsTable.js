@@ -44,12 +44,7 @@ const StandingsTable = ({ standings, lastUpdated }) => {
         </table>
       </div>
       
-      <div className="standings-legend">
-        <div className="legend-item qualification-zone">
-          <span className="legend-color"></span>
-          <span className="legend-text">Classificação</span>
-        </div>
-      </div>
+      {/* Legend removed to prevent it looking like part of the table */}
     </div>
   );
 };

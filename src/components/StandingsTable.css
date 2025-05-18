@@ -3,7 +3,7 @@
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 0; /* Removed margin-bottom that caused extra space */
   height: 100%; /* Fill the height of parent container */
   display: flex;
   flex-direction: column;
@@ -52,6 +52,7 @@
 .standings-table-container {
   overflow-x: auto;
   padding: 0;
+  margin: 0; /* Ensure no margin */
   flex-grow: 1; /* Allow container to expand */
   display: flex;
   flex-direction: column;
@@ -83,6 +84,11 @@
 .standings-table tbody tr:hover {
   background-color: rgba(13, 110, 253, 0.05);
   transition: background-color 0.2s ease;
+}
+
+/* Remove border from last table row to prevent empty row appearance */
+.standings-table tbody tr:last-child td {
+  border-bottom: none;
 }
 
 .pos-col {

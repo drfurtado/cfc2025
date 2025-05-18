@@ -2,7 +2,11 @@
 @import '../colors.css';
 
 .campeonatos-page {
-  padding-bottom: 60px;
+  padding-top: 0; /* Explicitly set top padding to 0 */
+  padding-bottom: 20px; /* Retain bottom padding */
+  padding-left: 16px; /* Add left padding */
+  padding-right: 16px; /* Add right padding */
+  margin-top: 0; /* Match Home page: element below carousel has 0 top margin */
 }
 
 /* Hero Section - these styles are now handled by PageBanner.css */
@@ -1060,4 +1064,15 @@ h2.section-title:first-of-type {
   background-color: #c82333;
   transform: translateY(-2px);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tournament-stats-cards > .standings-container {
+  /* Apply same layout properties as were applied to .standings-card, without the double border and shadow */
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  height: 100%; 
+}
+
+.tournament-stats-cards > .standings-container:hover {
+  transform: translateY(-5px);
 }
