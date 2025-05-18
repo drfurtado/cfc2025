@@ -128,30 +128,7 @@ const MatchCard = ({ match, onVideoClick, onDetailsClick }) => {
         </div>
       </div>
       
-      {/* Goal scorers in compact view - only for completed matches */}
-      {match.status === 'completed' && match.highlights && (
-        <div className="scorers-compact">
-          <div className="left-scorers">
-            {formattedHomeScorers.scorerList && formattedHomeScorers.scorerList.length > 0 ? (
-              <div className="scorer-item-compact">
-                {formattedHomeScorers.combinedString}
-              </div>
-            ) : (
-              <div className="no-goals">-</div>
-            )}
-          </div>
-          
-          <div className="right-scorers">
-            {formattedAwayScorers.scorerList && formattedAwayScorers.scorerList.length > 0 ? (
-              <div className="scorer-item-compact">
-                {formattedAwayScorers.combinedString}
-              </div>
-            ) : (
-              <div className="no-goals">-</div>
-            )}
-          </div>
-        </div>
-      )}
+      {/* Goal scorers have been removed from compact cards and will only show in details view */}
       
       {/* Action buttons */}
       <div className="match-actions-compact">

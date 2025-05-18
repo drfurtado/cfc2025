@@ -19,10 +19,12 @@ export const matchesData = [
     stage: 'Primeira Fase',
     round: '1ª',
     gameNumber: 1,
+    videoUrl: 'https://youtu.be/HqelNrsrIEo',
+    // Highlights for the match
     highlights: [
-      { time: 23, type: 'goal', team: 'Classe', player: 'Marcos Silva', description: 'Gol após cruzamento da direita' },
-      { time: 55, type: 'goal', team: 'São Paulo', player: 'Roberto Alves', description: 'Gol de pênalti' },
-      { time: 89, type: 'goal', team: 'Classe', player: 'Carlos Eduardo', description: 'Gol de cabeça após escanteio' }
+      { time: 10, type: 'goal', team: 'Classe FC', player: 'Mineiro' },
+      { time: 23, type: 'goal', team: 'Classe FC', player: 'Batata' }
+
     ]
   },
   {
@@ -74,8 +76,7 @@ export const matchesData = [
     gameNumber: 4,
     videoUrl: 'https://youtu.be/nM_xASzsn_s',
     highlights: [
-      { time: 37, type: 'goal', team: 'Cometa', player: 'Marcelinho', description: 'Gol de falta' },
-      { time: 76, type: 'goal', team: 'Classe FC', player: 'Lucio', description: 'Gol após jogada pela esquerda' }
+      { time: 23, type: 'goal', team: 'Classe FC', player: 'Lucio', description: 'Gol após jogada pela esquerda' }
     ]
   },
   {
@@ -129,9 +130,8 @@ export const matchesData = [
     highlights: [
       { time: 15, type: 'goal', team: 'Classe FC', player: 'Neno', description: 'Gol aos 15:39 do primeiro tempo' },
       { time: 23, type: 'goal', team: 'Classe FC', player: 'Batata', description: 'Gol aos 23:20 do primeiro tempo' },
-      { time: 19, type: 'goal', team: 'Os Malas', player: 'Chumbo', description: 'Gol aos 19:48 do primeiro tempo' },
       { time: 51, type: 'goal', team: 'Classe FC', player: 'Batata', description: 'Gol aos 51:30 do segundo tempo (segundo gol)' },
-      { time: 66, type: 'goal', team: 'Classe FC', player: 'Eleandro', description: 'Gol aos 1:05:52 do segundo tempo' }
+      { time: 55, type: 'goal', team: 'Classe FC', player: 'Eleandro', description: 'Gol aos 1:05:52 do segundo tempo' }
     ]
   },
   {
@@ -167,18 +167,55 @@ export const matchesData = [
     gameNumber: 8
   },
   {
-    id: 17,
+    id: 11,
     tournament: 'Copa 50tinha 2025',
     tournamentId: 1,
-    date: '31/05/2025',
+    date: '17/05/2025',
     time: '15:00',
     homeTeam: 'Classe FC',
     awayTeam: 'União R.',
+    homeScore: 3,
+    awayScore: 2,
+    location: 'Praça Central',
+    status: 'completed',
+    stage: 'Primeira Fase',
+    round: '4ª',
+    gameNumber: 11,
+    highlights: [
+      { time: '10', type: 'goal', team: 'Classe FC', player: 'Neno', description: 'Gol de Neno' },
+      { time: '25', type: 'goal', team: 'Classe FC', player: 'Rildo', description: 'Gol de Rildo' },
+      { time: '52', type: 'goal', team: 'Classe FC', player: 'Zé Luiz', description: 'Gol de Zé Luiz' }
+    ]
+  },
+  {
+    id: 10,
+    tournament: 'Copa 50tinha 2025',
+    tournamentId: 1,
+    date: '17/05/2025',
+    time: '14:00',
+    homeTeam: 'Grêmio VR',
+    awayTeam: 'Cometa',
+    homeScore: 4,
+    awayScore: 5,
+    location: 'Praça Central',
+    status: 'completed',
+    stage: 'Primeira Fase',
+    round: '4ª',
+    gameNumber: 10
+  },
+  {
+    id: 16,
+    tournament: 'Copa 50tinha 2025',
+    tournamentId: 1,
+    date: '31/05/2025',
+    time: '14:00',
+    homeTeam: 'Classe FC',
+    awayTeam: 'Tricolor',
     location: 'Praça Central',
     status: 'upcoming',
     stage: 'Primeira Fase',
     round: '6ª',
-    gameNumber: 17
+    gameNumber: 16
   }
 ];
 

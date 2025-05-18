@@ -1,12 +1,14 @@
 import React, { createContext, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
+import './styles/PageStyles.css';
 
 // Components
 import Header from './components/Header';
 import Footer from './components/Footer';
 import AudioPlayer from './components/AudioPlayer';
 import DirectVideoModal from './components/DirectVideoModal';
+import CarouselBanner from './components/CarouselBanner'; // Import the new CarouselBanner
 
 // Pages
 import HomePage from './pages/HomePage';
@@ -62,6 +64,7 @@ function App() {
         <div className="App">
           <AudioPlayer />
           <Header />
+          <CarouselBanner imageFolderName="images/carousel" /> {/* Updated imageFolderName */}
           <main>
             <Routes>
               <Route path="/" element={<HomePage />} />

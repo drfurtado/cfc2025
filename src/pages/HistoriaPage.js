@@ -50,14 +50,6 @@ function HistoriaPage() {
 
   return (
     <div className="historia-page">
-      <div className="hero-section" style={{ backgroundImage: `url('/images/cfc-atual3.jpeg')` }}>
-        <div className="hero-overlay"></div>
-        <div className="container">
-          <h1 className="page-title">Nossa História</h1>
-          <p className="page-subtitle">Mais de 40 anos de paixão pelo futebol</p>
-        </div>
-      </div>
-
       <div className="container content-section">
         <section className="history-section">
           <h2 className="section-title">Muito Mais Que Futebol</h2>

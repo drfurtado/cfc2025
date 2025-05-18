@@ -25,18 +25,18 @@ export const calendarData = [
     round: '3ª', 
     date: '10/05', 
     matches: [
-      { time: '14h', team1: 'COMETA', team2: 'UNIÃO R.', game: 7 },
-      { time: '15h', team1: 'GRÊMIO VR', team2: 'SÃO PAULO', game: 8 },
-      { time: '16h', team1: 'OS MALAS', team2: 'CLASSE', game: 9 }
+      { time: '14h', team1: 'COMETA', team2: 'UNIÃO R.', game: 7, score: '2 x 1', completed: true },
+      { time: '15h', team1: 'GRÊMIO VR', team2: 'SÃO PAULO', game: 8, score: '1 x 11', completed: true },
+      { time: '16h', team1: 'OS MALAS', team2: 'CLASSE', game: 9, score: '1 x 4', completed: true }
     ]
   },
   { 
     round: '4ª', 
     date: '17/05', 
     matches: [
-      { time: '14h', team1: 'GRÊMIO VR', team2: 'COMETA', game: 10 },
-      { time: '15h', team1: 'CLASSE', team2: 'UNIÃO R.', game: 11 },
-      { time: '16h', team1: 'TRIC0LOR', team2: 'SÃO PAULO', game: 12 }
+      { time: '14h', team1: 'GRÊMIO VR', team2: 'COMETA', game: 10, score: '4 x 5', completed: true },
+      { time: '15h', team1: 'CLASSE', team2: 'UNIÃO R.', game: 11, score: '3 x 2', completed: true },
+      { time: '16h', team1: 'TRIC0LOR', team2: 'SÃO PAULO', game: 12, score: '1 x 0', completed: true }
     ]
   },
   { 

@@ -54,45 +54,24 @@ function HomePage() {
     navigate('/campeonatos', { state: { showMatchDetails: true, match } });
   };
 
-  // Enhanced match data with statistics and highlights
-  // Get the most recent match from Copa 50tinha 2025
-  const lastMatchData = {
-    id: 9,
+  // Use the actual most recent match from the data source
+  const lastMatchData = lastMatch || {
+    id: 11,
     tournament: 'Copa 50tinha 2025',
-    date: '10/05/2025',
-    time: '16:00',
-    homeTeam: 'Os Malas',
-    awayTeam: 'Classe FC',
-    homeScore: 1,
-    awayScore: 4,
+    date: '17/05/2025',
+    time: '15:00',
+    homeTeam: 'Classe FC',
+    awayTeam: 'União R.',
+    homeScore: 3,
+    awayScore: 2,
     location: 'Praça Central',
     status: 'completed',
     stage: 'Primeira Fase',
-    videoUrl: 'https://youtu.be/9NA9OtYltwg',
-    // Show stats and highlights
+    round: '4ª',
+    gameNumber: 11,
+    // Don't show stats or highlights on the home card
     showStats: false,
-    stats: {
-      possession: { home: 42, away: 58 },
-      shots: { home: 8, away: 14 },
-      shotsOnTarget: { home: 4, away: 9 },
-      corners: { home: 3, away: 7 },
-      fouls: { home: 11, away: 6 },
-      yellowCards: { home: 3, away: 1 },
-      redCards: { home: 0, away: 0 }
-    },
-    showHighlights: true,
-    highlights: [
-      { time: 15, type: 'goal', team: 'Classe FC', player: 'Neno', description: 'Gol aos 15:39 do primeiro tempo' },
-      { time: 23, type: 'goal', team: 'Classe FC', player: 'Batata', description: 'Gol aos 23:20 do primeiro tempo' },
-      { time: 19, type: 'goal', team: 'Os Malas', player: 'Chumbo', description: 'Gol aos 19:48 do primeiro tempo' },
-      { time: 51, type: 'goal', team: 'Classe FC', player: 'Batata', description: 'Gol aos 51:30 do segundo tempo (segundo gol)' },
-      { time: 66, type: 'goal', team: 'Classe FC', player: 'Eleandro', description: 'Gol aos 1:05:52 do segundo tempo' }
-    ],
-    gallery: [
-      { url: '/images/match-photos/osmalas-classe-20250510/photo1.jpg', alt: 'Jogadores em campo' },
-      { url: '/images/match-photos/osmalas-classe-20250510/photo2.jpg', alt: 'Disputa de bola' },
-      { url: '/images/match-photos/osmalas-classe-20250510/photo3.jpg', alt: 'Comemoração do gol' }
-    ],
+    showHighlights: false,
     galleryLink: 'https://photos.app.goo.gl/mYaFNEsMrKZT2JcWA'
   };
 
@@ -101,25 +80,8 @@ function HomePage() {
 
   return (
     <div className="home-page">
-      {/* Hero Section */}
-      <section 
-        className="hero-section" 
-        style={{ backgroundImage: "url('/images/cfc-atual1.png')" }} 
-      >
-        <div className="hero-overlay"></div> 
-        <div className="hero-content container">
-          <h1 className="hero-title">Classe Futebol Clube</h1>
-          <p className="hero-tagline">
-            Paixão pelo futebol, unida pela amizade e pelo espírito de companheirismo.
-          </p>
-          <Link to="/time" className="btn btn-primary hero-cta-button">
-            Conheça Nosso Time
-          </Link>
-        </div>
-      </section>
-
       {/* About Classe FC Section */}
-      <section className="about-section">
+      <section className="about-section" style={{ marginTop: '-100px' }}>
         <div className="container">
           <div className="row align-items-center">
             <div className="col-lg-5 mb-4 mb-lg-0">

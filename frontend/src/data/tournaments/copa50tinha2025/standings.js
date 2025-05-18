@@ -1,89 +1,100 @@
 /**
- * copa50tinha2025 Tournament Standings
+ * Copa 50tinha 2025 Tournament Standings
  * Generated automatically from match results
- * Last updated: 26/02/2025
+ * Last updated: 17/05/2025
  */
 
-export const standingsData = {
-  lastUpdated: "26/02/2025",
+const standingsData = { // Changed to const
+  lastUpdated: "17/05/2025",
   teams: [
   {
-    "name": "Classe FC",
-    "played": 5,
-    "wins": 5,
-    "draws": 0,
+    "name": "CLASSE",
+    "played": 4,
+    "wins": 3,
+    "draws": 1,
     "losses": 0,
-    "goalsFor": 14,
-    "goalsAgainst": 3,
-    "points": 15,
+    "goalsFor": 10,
+    "goalsAgainst": 5,
+    "points": 10,
     "position": 1
   },
   {
-    "name": "São Paulo",
-    "played": 1,
-    "wins": 0,
+    "name": "TRIC0LOR",
+    "played": 3,
+    "wins": 3,
     "draws": 0,
-    "losses": 1,
-    "goalsFor": 1,
-    "goalsAgainst": 2,
-    "points": 0,
+    "losses": 0,
+    "goalsFor": 7,
+    "goalsAgainst": 3,
+    "points": 9,
     "position": 2
   },
   {
-    "name": "Os Malas",
-    "played": 1,
-    "wins": 0,
-    "draws": 0,
+    "name": "COMETA",
+    "played": 4,
+    "wins": 2,
+    "draws": 1,
     "losses": 1,
-    "goalsFor": 1,
-    "goalsAgainst": 3,
-    "points": 0,
+    "goalsFor": 8,
+    "goalsAgainst": 12,
+    "points": 7,
     "position": 3
   },
   {
-    "name": "Libertadores FC",
-    "played": 1,
-    "wins": 0,
+    "name": "UNIÃO R.",
+    "played": 4,
+    "wins": 1,
     "draws": 0,
-    "losses": 1,
-    "goalsFor": 0,
-    "goalsAgainst": 2,
-    "points": 0,
+    "losses": 3,
+    "goalsFor": 17,
+    "goalsAgainst": 8,
+    "points": 3,
     "position": 4
   },
   {
-    "name": "Preston FC",
-    "played": 1,
-    "wins": 0,
+    "name": "SÃO PAULO",
+    "played": 3,
+    "wins": 1,
     "draws": 0,
-    "losses": 1,
-    "goalsFor": 1,
+    "losses": 2,
+    "goalsFor": 12,
     "goalsAgainst": 4,
-    "points": 0,
+    "points": 3,
     "position": 5
   },
   {
-    "name": "GaviõesFC",
-    "played": 1,
+    "name": "OS MALAS",
+    "played": 3,
+    "wins": 1,
+    "draws": 0,
+    "losses": 2,
+    "goalsFor": 8,
+    "goalsAgainst": 7,
+    "points": 3,
+    "position": 6
+  },
+  {
+    "name": "GRÊMIO VR",
+    "played": 3,
     "wins": 0,
     "draws": 0,
-    "losses": 1,
-    "goalsFor": 0,
-    "goalsAgainst": 3,
+    "losses": 3,
+    "goalsFor": 5,
+    "goalsAgainst": 28,
     "points": 0,
-    "position": 6
+    "position": 7
   }
 ]
 };
 
 // Helper function to get standings sorted by position
-export const getStandings = () => {
+const getStandings = () => { // Changed to const
   return [...standingsData.teams].sort((a, b) => a.position - b.position);
 };
 
 // Helper function to get the last updated date
-export const getStandingsLastUpdated = () => {
+const getStandingsLastUpdated = () => { // Changed to const
   return standingsData.lastUpdated;
 };
 
-export default standingsData;
+module.exports = { standingsData, getStandings, getStandingsLastUpdated };

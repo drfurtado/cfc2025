@@ -1,13 +1,15 @@
 import React from 'react';
+import PageBanner from '../components/PageBanner';
+import './MidiaPage.css';
 
 const MidiaPage = () => {
   return (
     <div className="midia-page">
-      <div className="page-header">
-        <div className="container">
-          <h1>Mídia</h1>
-        </div>
-      </div>
+      <PageBanner
+        backgroundImage="/images/cfc-atual5.jpeg"
+        title="Mídia"
+        subtitle="Fotos, vídeos e conteúdo da Classe FC"
+      />
       
       <div className="container">
         <div className="midia-content">

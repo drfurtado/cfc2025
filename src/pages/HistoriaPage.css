@@ -1,47 +1,8 @@
 /* HistoriaPage.css */
 @import '../colors.css';
 
-/* Hero Section */
-.historia-page .hero-section {
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  color: var(--neutral-white);
-  padding: 100px 0;
-  text-align: center;
-}
-
-.historia-page .hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 1;
-}
-
-.historia-page .hero-section .container {
-  position: relative;
-  z-index: 2;
-  padding-left: 30px;
-  padding-right: 30px;
-  max-width: 1200px;
-}
-
-.historia-page .page-title {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.historia-page .page-subtitle {
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-bottom: 2rem;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-}
+/* Hero Section - these styles are now handled by PageBanner.css */
+/* Old hero section styles removed in favor of the shared PageBanner component */
 
 /* Content Sections */
 .historia-page .content-section {

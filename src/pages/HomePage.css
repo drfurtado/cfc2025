@@ -1,49 +1,8 @@
 /* HomePage.css */
 @import '../colors.css';
 
-/* Hero Section Styling */
-.hero-section {
-  position: relative;
-  background-size: cover; 
-  background-position: center; 
-  background-repeat: no-repeat;
-  color: var(--neutral-white); /* Text color on top of image */
-  padding: 80px 0; /* Adjust padding as needed */
-  text-align: center;
-  min-height: 50vh; /* Ensure it takes a good portion of the viewport height */
-  display: flex;
-  align-items: center; /* Center content vertically */
-  justify-content: center; /* Center content horizontally */
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: var(--overlay-dark); /* Dark blue overlay with transparency */
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative; /* Ensure content is above overlay */
-  z-index: 2;
-  max-width: 800px; /* Limit content width for readability */
-}
-
-.hero-title {
-  font-size: 28px; /* Larger font size for title */
-  font-weight: bold;
-  margin-bottom: 1rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for better contrast */
-}
-
-.hero-tagline {
-  font-size: 16px;
-  margin-bottom: 2rem;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Add shadow for better contrast */
-}
+/* Hero Section Styling - these styles are now handled by PageBanner.css */
+/* Old hero section styles removed in favor of the shared PageBanner component */
 
 .hero-cta-button {
   padding: 8px 16px;

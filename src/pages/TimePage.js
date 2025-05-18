@@ -275,12 +275,6 @@ function TimePage() {
   if (loading) {
     return (
       <div className="team-page">
-        <div className="hero-section" style={{ backgroundImage: `url('/images/team2025-1.jpg')` }}>
-          <div className="hero-overlay"></div>
-          <div className="container">
-            <h1 className="page-title">Nosso Time</h1>
-          </div>
-        </div>
         <div className="container">
           <div className="loading">
             <i className="fas fa-spinner fa-spin mr-2"></i> Carregando informações do time...
@@ -292,16 +286,6 @@ function TimePage() {
 
   return (
     <div className="team-page">
-      <div className="hero-section" style={{ backgroundImage: `url('/images/team2025-1.jpg')` }}>
-        <div className="hero-overlay"></div>
-        <div className="container">
-          <h1 className="page-title">Nosso Time</h1>
-          <p className="page-subtitle">
-            Conheça os jogadores, comissão técnica e diretoria do Classe Futebol Clube
-          </p>
-        </div>
-      </div>
-
       <div className="container">
         <div className="team-categories">
           <button 

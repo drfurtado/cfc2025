@@ -1,0 +1,16 @@
+/* BannerCleanup.css - Neutralize old hero/banner styles */
+
+/* Neutralize old hero section styles in component CSS files */
+.hero-section, .page-header, .campeonatos-hero {
+  display: none !important;
+}
+
+/* Make sure page banners are displayed with appropriate spacing */
+.page-banner {
+  margin: 0 0 2rem 0;
+}
+
+/* Ensure proper spacing after page banner */
+.page-banner + .container {
+  margin-top: 2rem;
+}

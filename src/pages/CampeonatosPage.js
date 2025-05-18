@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import './CampeonatosPage.css';
 import { 
   getAllTournaments, 
-  getTournamentCalendar,
+  // getTournamentCalendar, // We will use the component directly
   getTournamentRules, 
   filterTournamentsByStatus, 
   getUpcomingMatches, 
@@ -19,6 +19,7 @@ import TournamentRules from '../components/TournamentRules';
 import StandingsTable from '../components/StandingsTable';
 import TopScorersTable from '../components/TopScorersTable';
 import MatchDetails from '../components/MatchDetails';
+import TournamentCalendar from '../components/TournamentCalendar'; // Import TournamentCalendar
 import { VideoContext } from '../App';
 
 const CampeonatosPage = () => {
@@ -84,7 +85,7 @@ const CampeonatosPage = () => {
   
   // Get matches data from the data loader
   const upcomingMatches = getUpcomingMatches(3);
-  const recentMatches = getRecentMatches(3);
+  const recentMatches = getRecentMatches(4); // MODIFIED: Fetch 4 recent matches
 
   // Filter tournaments based on active tab
   const filteredTournaments = filterTournamentsByStatus(activeTab);
@@ -112,9 +113,13 @@ const CampeonatosPage = () => {
     setShowRules(false);
     setShowStandings(false);
     setShowTopScorers(false);
+    setShowMatchDetails(false); // Close match details when showing calendar
     // Scroll to the calendar section
     setTimeout(() => {
-      document.getElementById('calendar-section').scrollIntoView({ behavior: 'smooth' });
+      const calendarElement = document.getElementById('calendar-section');
+      if (calendarElement) {
+        calendarElement.scrollIntoView({ behavior: 'smooth' });
+      }
     }, 100);
   };
 
@@ -182,11 +187,6 @@ const CampeonatosPage = () => {
     setShowStandings(false);
     setShowTopScorers(false);
     setSelectedTournament(null);
-  };
-
-  // Get calendar data for the selected tournament
-  const getCalendarData = (tournamentId) => {
-    return getTournamentCalendar(tournamentId);
   };
 
   // Get rules data for the selected tournament
@@ -272,22 +272,14 @@ const CampeonatosPage = () => {
       {/* Local fallback video overlay */}
       {videoOverlayOpen && <LocalVideoOverlay />}
       
-      <div className="container py-5">
-        <h1 className="page-title text-center mb-5">Campeonatos</h1>
-        
-        {/* Hero Section */}
-        <div className="campeonatos-hero">
-          <div className="campeonatos-hero-bg" style={{ backgroundImage: "url('/images/cfc-atual4.png')" }}></div>
-          <div className="campeonatos-hero-content">
-            <div className="container">
-              <h1 className="campeonatos-title">Campeonatos</h1>
-              <p className="campeonatos-subtitle">
-                Acompanhe a trajetória da Classe FC em todos os campeonatos e torneios disputados ao longo de nossa história
-              </p>
-            </div>
-          </div>
+      <div className="container content-section">
+        <div className="page-header text-center">
+          <h1 className="page-title">Campeonatos</h1>
+          <p className="page-subtitle">
+            Acompanhe a trajetória da Classe FC em todos os campeonatos e torneios disputados ao longo de nossa história
+          </p>
         </div>
-
+        
         {/* Tabs Navigation */}
         <div className="campeonatos-tabs">
           <button 
@@ -338,6 +330,7 @@ const CampeonatosPage = () => {
         {/* Tournament Calendar Section */}
         {showCalendar && selectedTournament && (
           <div id="calendar-section" className="calendar-section">
+            {/* The header for the calendar section can be simplified or removed if TournamentCalendar has its own title */}
             <div className="section-header">
               <h2 className="section-title">
                 {selectedTournament.name} {selectedTournament.year} - Calendário de Jogos
@@ -350,55 +343,10 @@ const CampeonatosPage = () => {
               </button>
             </div>
             
-            {selectedTournament.id && (
-              <div className="tournament-calendar">
-                <div className="calendar-info">
-                  <p>Confira abaixo o calendário completo do {selectedTournament.name} {selectedTournament.year}.</p>
-                  <p>Os jogos acontecem aos sábados em {selectedTournament.location}.</p>
-                </div>
-                
-                {getCalendarData(selectedTournament.id) ? (
-                  <div className="calendar-rounds">
-                    {getCalendarData(selectedTournament.id).map((round, index) => (
-                      <div className="calendar-round" key={index}>
-                        <div className="round-header">
-                          <span className="round-number">{round.round} Rodada</span>
-                          <span className="round-date">{round.date}</span>
-                        </div>
-                        
-                        <div className="round-matches">
-                          {round.matches.map((match, matchIndex) => (
-                            <div className={`calendar-match ${match.completed ? 'completed-match' : ''}`} key={matchIndex}>
-                              <div className="match-header">
-                                <div className="match-time">{match.time}</div>
-                                <div className="match-number">Jogo {match.game}</div>
-                              </div>
-                              <div className="match-teams">
-                                <div className={`team ${match.team1 === 'CLASSE' ? 'classe-team' : ''}`}>
-                                  {match.team1}
-                                </div>
-                                {match.completed ? (
-                                  <div className="match-score">{match.score}</div>
-                                ) : (
-                                  <div className="vs">x</div>
-                                )}
-                                <div className={`team ${match.team2 === 'CLASSE' ? 'classe-team' : ''}`}>
-                                  {match.team2}
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="no-calendar-data">
-                    <p>Calendário não disponível para este torneio.</p>
-                  </div>
-                )}
-              </div>
-            )}
+            {/* Render the TournamentCalendar component directly */}
+            {/* We might need to pass the selectedTournament.id if the calendar component needs to fetch specific data */}
+            {/* However, based on the previous change, TournamentCalendar now imports its own data for Copa 50tinha */}
+            <TournamentCalendar />
           </div>
         )}
 
@@ -617,40 +565,41 @@ const CampeonatosPage = () => {
           ))}
         </div>
 
-        {/* Upcoming Matches Section */}
+        {/* Upcoming Matches Section - MODIFIED STRUCTURE AND CLASSES */}
         {upcomingMatches.length > 0 && (
           <div className="matches-section">
             <h2 className="section-title">Próximas Partidas</h2>
             <div className="matches-list">
               {upcomingMatches.map(match => (
-                <div className="match-item" key={match.id}>
-                  <div className="match-tournament-badge">
-                    {match.tournament} • {match.stage}
+                <div className="match-item compact" key={match.id}>
+                  <div className="match-row-1">
+                    <span className="match-date-time-location">
+                      {match.date} - {match.time} <span className="match-location-inline"><i className="fas fa-map-marker-alt"></i> {match.location}</span>
+                    </span>
+                    <span className="match-tournament-badge compact-badge">
+                      {match.tournament} • {match.stage}
+                    </span>
                   </div>
                   
-                  <div className="match-date-time">
-                    <div className="match-date">{match.date}</div>
-                    <div className="match-time">{match.time}</div>
-                  </div>
-                  
-                  <div className="match-teams">
-                    <div className="match-team">
-                      <img src={getTeamLogo(match.homeTeam)} alt={match.homeTeam} className="match-team-logo" />
-                      <div className="match-team-name">{match.homeTeam}</div>
+                  <div className="match-row-2">
+                    <div className="match-team home-team">
+                      <img src={getTeamLogo(match.homeTeam)} alt={match.homeTeam} className="match-team-logo compact-logo" />
+                      <span className="match-team-name compact-name">{match.homeTeam}</span>
                     </div>
                     
-                    <div className="match-score-container">
-                      <div className="match-vs">VS</div>
+                    <div className="match-score-container compact-score upcoming-match-vs">
+                      <span>VS</span>
                     </div>
                     
-                    <div className="match-team">
-                      <img src={getTeamLogo(match.awayTeam)} alt={match.awayTeam} className="match-team-logo" />
-                      <div className="match-team-name">{match.awayTeam}</div>
+                    <div className="match-team away-team">
+                      <img src={getTeamLogo(match.awayTeam)} alt={match.awayTeam} className="match-team-logo compact-logo" />
+                      <span className="match-team-name compact-name">{match.awayTeam}</span>
                     </div>
-                  </div>
-                  
-                  <div className="match-location">
-                    <i className="fas fa-map-marker-alt"></i> {match.location}
+                    
+                    {/* Upcoming matches typically don't have action buttons like details/video,
+                        but if they were needed, the structure would be similar to recent matches 
+                        <div className="match-actions compact-actions"> ... </div> 
+                    */}
                   </div>
                 </div>
               ))}
@@ -664,65 +613,61 @@ const CampeonatosPage = () => {
             <h2 className="section-title">Resultados Recentes</h2>
             <div className="matches-list">
               {recentMatches.map(match => (
-                <div className="match-item" key={match.id}>
-                  <div className="match-tournament-badge">
-                    {match.tournament} • {match.stage}
+                <div className="match-item compact" key={match.id}> {/* ADDED compact class */}
+                  <div className="match-row-1">
+                    <span className="match-date-time-location">
+                      {match.date} - {match.time} <span className="match-location-inline"><i className="fas fa-map-marker-alt"></i> {match.location}</span>
+                    </span>
+                    <span className="match-tournament-badge compact-badge">
+                      {match.tournament} • {match.stage}
+                    </span>
                   </div>
                   
-                  <div className="match-date-time">
-                    <div className="match-date">{match.date}</div>
-                    <div className="match-time">{match.time}</div>
-                  </div>
-                  
-                  <div className="match-teams">
-                    <div className="match-team">
-                      <img src={getTeamLogo(match.homeTeam)} alt={match.homeTeam} className="match-team-logo" />
-                      <div className="match-team-name">{match.homeTeam}</div>
+                  <div className="match-row-2">
+                    <div className="match-team home-team">
+                      <img src={getTeamLogo(match.homeTeam)} alt={match.homeTeam} className="match-team-logo compact-logo" />
+                      <span className="match-team-name compact-name">{match.homeTeam}</span>
                     </div>
                     
-                    <div className="match-score-container">
-                      <div className="match-score">{match.homeScore}</div>
-                      <div>:</div>
-                      <div className="match-score">{match.awayScore}</div>
+                    <div className="match-score-container compact-score">
+                      <span className="match-score">{match.homeScore}</span>
+                      <span className="score-separator">:</span>
+                      <span className="match-score">{match.awayScore}</span>
                     </div>
                     
-                    <div className="match-team">
-                      <img src={getTeamLogo(match.awayTeam)} alt={match.awayTeam} className="match-team-logo" />
-                      <div className="match-team-name">{match.awayTeam}</div>
+                    <div className="match-team away-team">
+                      <img src={getTeamLogo(match.awayTeam)} alt={match.awayTeam} className="match-team-logo compact-logo" />
+                      <span className="match-team-name compact-name">{match.awayTeam}</span>
                     </div>
-                  </div>
-                  
-                  <div className="match-location">
-                    <i className="fas fa-map-marker-alt"></i> {match.location}
-                  </div>
-                  
-                  {match.tournamentId === 1 && match.status === 'completed' && (
-                    <div className="match-actions">
-                      <button 
-                        className="btn-match-details"
-                        onClick={() => handleShowMatchDetails(match)}
-                      >
-                        <i className="fas fa-info-circle"></i> Ver detalhes
-                      </button>
-                      
-                      {match.videoUrl && (
+                    
+                    {match.tournamentId === 1 && match.status === 'completed' && (
+                      <div className="match-actions compact-actions">
                         <button 
-                          className="btn-match-video"
-                          onClick={() => {
-                            console.log('DEBUG - CampeonatosPage video button clicked with URL:', match.videoUrl);
-                            if (typeof handleOpenVideo === 'function') {
-                              handleOpenVideo(match.videoUrl);
-                            } else {
-                              console.log('DEBUG - Direct openVideoOverlay from context');
-                              openVideoOverlay(match.videoUrl);
-                            }
-                          }}
+                          className="btn-match-details compact-button"
+                          onClick={() => handleShowMatchDetails(match)}
+                          title="Ver detalhes"
                         >
-                          <i className="fas fa-play"></i> Assistir Jogo
+                          <i className="fas fa-info-circle"></i> <span className="button-text">Detalhes</span>
                         </button>
-                      )}
-                    </div>
-                  )}
+                        
+                        {match.videoUrl && (
+                          <button 
+                            className="btn-match-video compact-button"
+                            onClick={() => {
+                              if (typeof handleOpenVideo === 'function') {
+                                handleOpenVideo(match.videoUrl);
+                              } else {
+                                openVideoOverlay(match.videoUrl);
+                              }
+                            }}
+                            title="Assistir Jogo"
+                          >
+                            <i className="fas fa-play"></i> <span className="button-text">Vídeo</span>
+                          </button>
+                        )}
+                      </div>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>

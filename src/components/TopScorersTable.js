@@ -5,7 +5,7 @@ const TopScorersTable = ({ scorers, lastUpdated }) => {
   return (
     <div className="scorers-container">
       <div className="scorers-header">
-        <h3 style={{ color: 'white' }}>Artilheiros</h3>
+        <h3 style={{ color: 'white' }}>Artilheiros Classe FC</h3>
         <span className="last-updated">Atualizado em: {lastUpdated}</span>
       </div>
       

@@ -3,20 +3,20 @@
  * This utility reads match data from CSV files and generates standings tables
  */
 
-import { readFileSync } from 'fs';
-import { parse } from 'csv-parse/sync';
-import { format } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
-import path from 'path';
+const fs = require('fs'); // Changed from import
+const { parse } = require('csv-parse/sync'); // Changed from import
+const { format } = require('date-fns'); // Changed from import
+const { ptBR } = require('date-fns/locale'); // Changed from import
+const path = require('path'); // Changed from import
 
 /**
  * Read and parse a CSV file
  * @param {string} filePath - Path to the CSV file
  * @returns {Array} - Parsed CSV data as array of objects
  */
-export const readCsvFile = (filePath) => {
+const readCsvFile = (filePath) => { // Changed to const
   try {
-    const fileContent = readFileSync(filePath, 'utf8');
+    const fileContent = fs.readFileSync(filePath, 'utf8'); // fs.readFileSync
     return parse(fileContent, {
       columns: true,
       skip_empty_lines: true,
@@ -33,19 +33,19 @@ export const readCsvFile = (filePath) => {
  * @param {Array} matches - Array of match objects
  * @returns {Object} - Standings data with teams array and lastUpdated date
  */
-export const generateStandings = (matches) => {
+const generateStandings = (matches) => { // Changed to const
   // Filter only completed matches
   const completedMatches = matches.filter(match => match.status === 'completed');
   
   if (completedMatches.length === 0) {
-    return { teams: [], lastUpdated: format(new Date(), 'dd/MM/yyyy') };
+    return { teams: [], lastUpdated: format(new Date(), 'dd/MM/yyyy', { locale: ptBR }) }; // Added locale
   }
 
   // Get unique team names
   const teamNames = new Set();
   completedMatches.forEach(match => {
-    teamNames.add(match.homeTeam);
-    teamNames.add(match.awayTeam);
+    if (match.homeTeam) teamNames.add(match.homeTeam); // Check for undefined
+    if (match.awayTeam) teamNames.add(match.awayTeam); // Check for undefined
   });
 
   // Initialize team statistics
@@ -67,36 +67,41 @@ export const generateStandings = (matches) => {
   completedMatches.forEach(match => {
     const homeTeam = match.homeTeam;
     const awayTeam = match.awayTeam;
-    const homeScore = parseInt(match.homeScore, 10);
-    const awayScore = parseInt(match.awayScore, 10);
+    // Ensure scores are valid numbers, default to 0 if not
+    const homeScore = parseInt(match.homeScore, 10) || 0;
+    const awayScore = parseInt(match.awayScore, 10) || 0;
 
-    // Update home team stats
-    teamStats[homeTeam].played += 1;
-    teamStats[homeTeam].goalsFor += homeScore;
-    teamStats[homeTeam].goalsAgainst += awayScore;
+    if (homeTeam && teamStats[homeTeam]) { // Check if homeTeam and its stats object exist
+      teamStats[homeTeam].played += 1;
+      teamStats[homeTeam].goalsFor += homeScore;
+      teamStats[homeTeam].goalsAgainst += awayScore;
+    }
 
-    // Update away team stats
-    teamStats[awayTeam].played += 1;
-    teamStats[awayTeam].goalsFor += awayScore;
-    teamStats[awayTeam].goalsAgainst += homeScore;
+    if (awayTeam && teamStats[awayTeam]) { // Check if awayTeam and its stats object exist
+      teamStats[awayTeam].played += 1;
+      teamStats[awayTeam].goalsFor += awayScore;
+      teamStats[awayTeam].goalsAgainst += homeScore;
+    }
 
     // Update wins, draws, losses, and points
-    if (homeScore > awayScore) {
-      // Home team wins
-      teamStats[homeTeam].wins += 1;
-      teamStats[homeTeam].points += 3;
-      teamStats[awayTeam].losses += 1;
-    } else if (homeScore < awayScore) {
-      // Away team wins
-      teamStats[awayTeam].wins += 1;
-      teamStats[awayTeam].points += 3;
-      teamStats[homeTeam].losses += 1;
-    } else {
-      // Draw
-      teamStats[homeTeam].draws += 1;
-      teamStats[homeTeam].points += 1;
-      teamStats[awayTeam].draws += 1;
-      teamStats[awayTeam].points += 1;
+    if (homeTeam && teamStats[homeTeam] && awayTeam && teamStats[awayTeam]) { // Ensure both teams exist
+        if (homeScore > awayScore) {
+        // Home team wins
+        teamStats[homeTeam].wins += 1;
+        teamStats[homeTeam].points += 3;
+        teamStats[awayTeam].losses += 1;
+        } else if (homeScore < awayScore) {
+        // Away team wins
+        teamStats[awayTeam].wins += 1;
+        teamStats[awayTeam].points += 3;
+        teamStats[homeTeam].losses += 1;
+        } else {
+        // Draw
+        teamStats[homeTeam].draws += 1;
+        teamStats[homeTeam].points += 1;
+        teamStats[awayTeam].draws += 1;
+        teamStats[awayTeam].points += 1;
+        }
     }
   });
 
@@ -123,15 +128,17 @@ export const generateStandings = (matches) => {
   });
 
   // Get the most recent match date for lastUpdated
-  const lastMatch = completedMatches.sort((a, b) => {
-    const dateA = new Date(a.date.split('/').reverse().join('-'));
-    const dateB = new Date(b.date.split('/').reverse().join('-'));
-    return dateB - dateA;
-  })[0];
+  const lastMatch = completedMatches
+    .filter(match => match.date) // Ensure match.date exists
+    .sort((a, b) => {
+        const dateA = new Date(a.date.split('/').reverse().join('-'));
+        const dateB = new Date(b.date.split('/').reverse().join('-'));
+        return dateB - dateA;
+    })[0];
 
   return {
     teams,
-    lastUpdated: lastMatch.date
+    lastUpdated: lastMatch ? lastMatch.date : format(new Date(), 'dd/MM/yyyy', { locale: ptBR }) // Handle case where lastMatch is undefined
   };
 };
 
@@ -140,7 +147,7 @@ export const generateStandings = (matches) => {
  * @param {Object} standings - Standings data
  * @param {string} outputPath - Path to output the JS file
  */
-export const writeStandingsToJsFile = (standings, outputPath) => {
+const writeStandingsToJsFile = (standings, outputPath) => { // Changed to const
   try {
     const standingsJs = `/**
  * Copa 50tinha 2025 Tournament Standings
@@ -148,26 +155,24 @@ export const writeStandingsToJsFile = (standings, outputPath) => {
  * Last updated: ${standings.lastUpdated}
  */
 
-export const standingsData = {
+const standingsData = { // Changed to const
   lastUpdated: "${standings.lastUpdated}",
   teams: ${JSON.stringify(standings.teams, null, 2)}
 };
 
 // Helper function to get standings sorted by position
-export const getStandings = () => {
+const getStandings = () => { // Changed to const
   return [...standingsData.teams].sort((a, b) => a.position - b.position);
 };
 
 // Helper function to get the last updated date
-export const getStandingsLastUpdated = () => {
+const getStandingsLastUpdated = () => { // Changed to const
   return standingsData.lastUpdated;
 };
 
-export default standingsData;`;
+module.exports = { standingsData, getStandings, getStandingsLastUpdated };`; // Changed to module.exports
 
-    // Use fs to write the file (import fs if needed)
-    const fs = require('fs');
-    fs.writeFileSync(outputPath, standingsJs);
+    fs.writeFileSync(outputPath, standingsJs); // fs.writeFileSync
     console.log(`Standings written to ${outputPath}`);
   } catch (error) {
     console.error(`Error writing standings to ${outputPath}:`, error);
@@ -176,10 +181,10 @@ export default standingsData;`;
 
 /**
  * Main function to generate standings from match CSV
- * @param {string} tournamentId - ID of the tournament
+ * @param {string} tournamentFolder - Folder name of the tournament
  */
-export const updateStandingsFromMatchesCsv = (tournamentFolder) => {
-  const baseDir = path.resolve(__dirname, '..', 'tournaments', tournamentFolder);
+const updateStandingsFromMatchesCsv = (tournamentFolder) => { // Changed to const
+  const baseDir = path.resolve(__dirname, '../data/tournaments', tournamentFolder); // Corrected path
   const matchesCsvPath = path.join(baseDir, 'matches.csv');
   const standingsJsPath = path.join(baseDir, 'standings.js');
   
@@ -201,5 +206,9 @@ export const updateStandingsFromMatchesCsv = (tournamentFolder) => {
   console.log(`Standings for ${tournamentFolder} updated successfully!`);
 };
 
-// Example usage:
-// updateStandingsFromMatchesCsv('copa50tinha2025');
+module.exports = { // Exporting functions
+  readCsvFile,
+  generateStandings,
+  writeStandingsToJsFile,
+  updateStandingsFromMatchesCsv
+};

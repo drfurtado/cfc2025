@@ -40,8 +40,40 @@ tournamentFolders.forEach(folder => {
     } catch (error) {
       console.error(`Error copying standings.js for ${folder}:`, error);
     }
+
+    // Copy calendar.js
+    try {
+      fs.copyFileSync(
+        path.join(srcPath, 'calendar.js'),
+        path.join(frontendPath, 'calendar.js')
+      );
+      console.log(`Copied calendar.js to frontend directory for ${folder}`);
+    } catch (error) {
+      console.error(`Error copying calendar.js for ${folder}:`, error);
+    }
+
+    // Copy matches.js
+    try {
+      fs.copyFileSync(
+        path.join(srcPath, 'matches.js'),
+        path.join(frontendPath, 'matches.js')
+      );
+      console.log(`Copied matches.js to frontend directory for ${folder}`);
+    } catch (error) {
+      console.error(`Error copying matches.js for ${folder}:`, error);
+    }
     
-    // You could also generate and copy other files like matches.js from matches.csv here
+    // Copy scorers.js
+    try {
+      fs.copyFileSync(
+        path.join(srcPath, 'scorers.js'),
+        path.join(frontendPath, 'scorers.js')
+      );
+      console.log(`Copied scorers.js to frontend directory for ${folder}`);
+    } catch (error) {
+      console.error(`Error copying scorers.js for ${folder}:`, error);
+    }
+    
   }
 });
 

@@ -1,11 +1,11 @@
 /**
- * Copa 50tinha 2025 Top Scorers
+ * Copa 50tinha 2025 Artilheiros Classe FC
  * Based on match results
  */
 
 export const scorersData = {
-  // Top Scorers as of May 10, 2025 (after Round 3)
-  lastUpdated: "10/05/2025",
+  // Top Scorers as of May 17, 2025 (after Round 4)
+  lastUpdated: "17/05/2025",
   scorers: [
     {
       name: "Batata",
@@ -16,33 +16,51 @@ export const scorersData = {
     {
       name: "Neno",
       team: "Classe FC",
-      goals: 1,
+      goals: 2,
       position: 2
     },
     {
       name: "Eleandro",
       team: "Classe FC",
       goals: 1,
-      position: 2
+      position: 3
     },
     {
       name: "Lucio",
       team: "Classe FC",
       goals: 1,
-      position: 2
+      position: 3
     },
     {
-      name: "Chumbo",
-      team: "Os Malas",
+      name: "Rildo",
+      team: "Classe FC",
       goals: 1,
-      position: 2
+      position: 3
+    },
+    {
+      name: "Zé Luiz",
+      team: "Classe FC",
+      goals: 1,
+      position: 3
+    },
+    {
+      name: "Mineiro",
+      team: "Classe FC",
+      goals: 1,
+      position: 3
     }
   ]
 };
 
 // Helper function to get top scorers sorted by goals (descending)
 export const getTopScorers = () => {
-  return [...scorersData.scorers].sort((a, b) => b.goals - a.goals);
+  // Sort first by goals descending, then by name ascending for tie-breaking
+  return [...scorersData.scorers].sort((a, b) => {
+    if (b.goals !== a.goals) {
+      return b.goals - a.goals;
+    }
+    return a.name.localeCompare(b.name);
+  });
 };
 
 // Helper function to get the last updated date
