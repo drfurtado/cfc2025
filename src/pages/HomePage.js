@@ -130,11 +130,14 @@ function HomePage() {
                 <img src="/images/sponsors/patrocinio-estilo.png" alt="Estilo" className="sponsor-logo" />
               </a>
             </div>
+<<<<<<< HEAD
             <div className="sponsor-item">
               <a href="tel:+5541996385718" target="_blank" rel="noopener noreferrer">
                 <img src="/images/sponsors/patrocinio-grp.png" alt="GRP Turismo" className="sponsor-logo" />
               </a>
             </div>
+=======
+>>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b
           </div>
           <div className="text-center mt-4">
             <a href="mailto:classefc84@gmail.com" className="btn btn-outline-primary">Torne-se um Patrocinador</a>

@@ -14,12 +14,17 @@ const positionOrder = [
 // Helper function to create safe filenames from names
 const createSafeFilename = (name) => {
   if (!name) return '';
+<<<<<<< HEAD
   const result = name
+=======
+  return name
+>>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b
     .toLowerCase()
     .replace(/\s+/g, '_') // Replace spaces with underscores
     .replace(/[^a-z0-9_.-]/g, '') // Remove other special characters except underscore, dot, hyphen
     .replace(/\.+/g, '.') // Avoid multiple dots
     + '.png'; // Assume PNG format
+<<<<<<< HEAD
   
   // Debug console log for Santarém
   if (name === 'Santarém') {
@@ -27,6 +32,8 @@ const createSafeFilename = (name) => {
   }
   
   return result;
+=======
+>>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b
 };
 
 function TimePage() {
@@ -186,16 +193,23 @@ function TimePage() {
              role = 'Comissão Técnica';
            }
 
+<<<<<<< HEAD
           const imagePath = `/images/team/staff/${createSafeFilename(name)}`;
           // Debug log for staff image paths
           console.log(`Staff member: ${name}, Role: ${role}, Image path: ${imagePath}`);
 
+=======
+>>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b
           return {
             id: index + 1,
             name: name || `Staff ${index + 1}`,
             role: role || 'Comissão Técnica',
             // Generate image path based on name
+<<<<<<< HEAD
             image: imagePath
+=======
+            image: `/images/team/staff/${createSafeFilename(name)}` 
+>>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b
           };
         }).filter(Boolean); // Remove null entries (skipped header)
 
@@ -280,6 +294,7 @@ function TimePage() {
   // Image error handler
   const handleImageError = (e) => {
     e.target.onerror = null; // Prevent infinite loop if fallback fails
+<<<<<<< HEAD
     console.log('Image failed to load:', e.target.src); // Log failed image paths
     e.target.src = '/images/player-silhouette.svg'; // Fallback to silhouette
   };
@@ -291,6 +306,11 @@ function TimePage() {
     return `${url}?t=${timestamp}`;
   };
 
+=======
+    e.target.src = '/images/player-silhouette.svg'; // Fallback to silhouette
+  };
+
+>>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b
   if (loading) {
     return (
       <div className="team-page">
@@ -368,7 +388,11 @@ function TimePage() {
                 <div key={staffMember.id} className="staff-card" onClick={() => openLightbox(staffMember)}>
                   <div className="staff-image">
                     <img 
+<<<<<<< HEAD
                       src={addCacheBuster(staffMember.image)} 
+=======
+                      src={staffMember.image} 
+>>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b
                       alt={staffMember.name} 
                       onError={handleImageError}
                     />

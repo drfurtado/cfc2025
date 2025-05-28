@@ -1,6 +1,7 @@
 import React from 'react';
 import './TopScorersTable.css';
 
+<<<<<<< HEAD
 // Helper function to create safe filenames from names (matching the TimePage.js function)
 const createSafeFilename = (name) => {
   if (!name) return '';
@@ -29,6 +30,8 @@ const getPlayerImagePath = (playerName) => {
   return headshots[playerName] || `/images/team/players/${createSafeFilename(playerName)}`;
 };
 
+=======
+>>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b
 const TopScorersTable = ({ scorers, lastUpdated }) => {
   return (
     <div className="scorers-container">
@@ -51,6 +54,7 @@ const TopScorersTable = ({ scorers, lastUpdated }) => {
             {scorers.map((scorer, index) => (
               <tr key={index} className={index < 3 ? 'top-scorer' : ''}>
                 <td className="pos-col">{scorer.position || index + 1}</td>
+<<<<<<< HEAD
                 <td className="player-col">
                   <div className="player-info">
                     <div className="player-headshot">
@@ -66,6 +70,9 @@ const TopScorersTable = ({ scorers, lastUpdated }) => {
                     <span>{scorer.name}</span>
                   </div>
                 </td>
+=======
+                <td className="player-col">{scorer.name}</td>
+>>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b
                 <td className="team-col">{scorer.team}</td>
                 <td className="goals-col">{scorer.goals}</td>
               </tr>
