@@ -18,7 +18,14 @@ export const matchesData = [
     status: 'completed',
     stage: 'Primeira Fase',
     round: '1ª',
-    gameNumber: 1
+    gameNumber: 1,
+    videoUrl: 'https://youtu.be/HqelNrsrIEo',
+    // Highlights for the match
+    highlights: [
+      { time: 10, type: 'goal', team: 'Classe FC', player: 'Mineiro' },
+      { time: 23, type: 'goal', team: 'Classe FC', player: 'Batata' }
+
+    ]
   },
   {
     id: 2,

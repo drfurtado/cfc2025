@@ -42,6 +42,12 @@ export const scorersData = {
       team: "Classe FC",
       goals: 1,
       position: 3
+    },
+    {
+      name: "Mineiro",
+      team: "Classe FC",
+      goals: 1,
+      position: 3
     }
   ]
 };
