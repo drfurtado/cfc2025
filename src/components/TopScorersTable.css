@@ -85,7 +85,6 @@
   text-overflow: ellipsis;
 }
 
-<<<<<<< HEAD
 /* Player headshot styling */
 .player-info {
   display: flex;
@@ -137,9 +136,6 @@
 }
 
 /* Special handling removed - now using consistent style for all players */
-
-=======
->>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b
 .scorers-table tr:last-child td {
   border-bottom: none;
 }
@@ -154,7 +150,6 @@
 }
 
 /* Top scorer highlighting */
-<<<<<<< HEAD
 .scorers-table tr.top-scorer {
   background-color: rgba(255, 215, 0, 0.15); /* Gold background for top 3 */
 }
@@ -178,8 +173,6 @@
   box-shadow: 0 0 0 2px #CD7F32; /* Double border effect for third place */
 }
 
-=======
->>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b
 .scorers-table tbody tr:nth-child(1) .pos-col {
   color: #198754;  /* Green, matching the standings table */
   font-weight: 700;
@@ -281,7 +274,6 @@
   .goals-col {
     width: 15%;
   }
-<<<<<<< HEAD
   
   /* Mobile responsiveness */
   .player-headshot {
@@ -302,8 +294,6 @@
   .player-info {
     gap: 6px;
   }
-=======
->>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b
 }
 
 @media (max-width: 480px) {
@@ -314,8 +304,5 @@
     width: 57%;
   }
 }
-<<<<<<< HEAD
 
 /* Removed player-specific styling as we're now using actual headshot images */
-=======
->>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b

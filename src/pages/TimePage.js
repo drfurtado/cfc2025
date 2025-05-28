@@ -14,26 +14,12 @@ const positionOrder = [
 // Helper function to create safe filenames from names
 const createSafeFilename = (name) => {
   if (!name) return '';
-<<<<<<< HEAD
-  const result = name
-=======
   return name
->>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b
     .toLowerCase()
     .replace(/\s+/g, '_') // Replace spaces with underscores
     .replace(/[^a-z0-9_.-]/g, '') // Remove other special characters except underscore, dot, hyphen
     .replace(/\.+/g, '.') // Avoid multiple dots
     + '.png'; // Assume PNG format
-<<<<<<< HEAD
-  
-  // Debug console log for Santarém
-  if (name === 'Santarém') {
-    console.log('Santarém filename conversion:', name, '→', result);
-  }
-  
-  return result;
-=======
->>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b
 };
 
 function TimePage() {
