@@ -1,0 +1,47 @@
+/* PageStyles.css - Shared styles for page layout consistency */
+
+/* Import common banner component and cleanup old banner styles */
+/* @import '../components/PageBanner.css'; */ /* Commented out old PageBanner */
+/* @import '../components/PageBannerFix.css'; */ /* Commented out old PageBannerFix */
+/* @import './BannerCleanup.css'; */ /* Commented out old BannerCleanup */
+
+/* Common page styles */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-content {
+  flex: 1;
+  padding-bottom: 60px;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 1.5rem 0;
+  color: var(--primary-dark);
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--neutral-gray);
+}
+
+/* For consistent section spacing */
+.content-section {
+  padding: 2rem 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+}

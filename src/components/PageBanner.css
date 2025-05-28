@@ -1,0 +1,79 @@
+/* PageBanner.css - Common styles for page banners/hero sections */
+@import '../colors.css';
+
+/* Common Hero/Banner Section for Parallax Effect */
+.page-banner {
+  position: relative;
+  width: 100%; /* Full width */
+  min-height: 60vh; /* Taller for hero effect */
+  padding: 0; /* Padding will be on content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--neutral-white);
+  
+  /* Parallax Background */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 0;
+  overflow: hidden; /* Ensure nothing spills out */
+}
+
+.page-banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 100%); /* Adjusted gradient for parallax */
+  z-index: 1; /* Overlay above background, below content */
+}
+
+.page-banner-content {
+  position: relative; 
+  z-index: 2; /* Content above overlay */
+  width: 100%;
+  max-width: 900px; /* Max width for content readability */
+  padding: 100px 20px; /* Generous padding for content */
+  margin: 0 auto;
+}
+
+.page-banner-title {
+  font-size: 3.5rem; /* Larger title for hero */
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); 
+  letter-spacing: 0.05em;
+}
+
+.page-banner-subtitle {
+  font-size: 1.5rem; 
+  max-width: 700px; /* Subtitle width */
+  margin: 0 auto 2rem auto;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.7); 
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+  .page-banner {
+    min-height: 50vh; /* Adjust height for mobile */
+    background-attachment: scroll; /* Parallax can be jerky on mobile, so disable it */
+  }
+  
+  .page-banner-content {
+    padding: 60px 20px;
+  }
+
+  .page-banner-title {
+    font-size: 2.5rem;
+  }
+  
+  .page-banner-subtitle {
+    font-size: 1.2rem;
+  }
+}

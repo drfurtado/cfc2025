@@ -1,0 +1,21 @@
+/* Additional CSS to improve banners - This file might no longer be needed or can be simplified */
+
+/* Ensure proper stacking context if still needed, but parallax handles this */
+.page-banner {
+  /* overflow: hidden; */ /* Already in main PageBanner.css */
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */ /* Removed for a cleaner look with parallax */
+}
+
+/* The :before pseudo-element for zoom effect is not ideal with background-attachment: fixed. */
+/* Parallax effect is achieved directly on .page-banner */
+.page-banner:before {
+  /* display: none; */ /* Commenting out as it might conflict or be unnecessary */
+}
+
+/* Content container styling is now primarily in PageBanner.css */
+.page-banner-content {
+  /* width: 100%; */
+  /* max-width: 1200px; */
+  /* padding: 0 20px; */
+  /* margin: 0 auto; */
+}

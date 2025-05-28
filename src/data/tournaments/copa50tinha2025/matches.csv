@@ -1,0 +1,16 @@
+id,date,time,homeTeam,awayTeam,homeScore,awayScore,location,status,stage,round,gameNumber,videoUrl,tournament,tournamentId
+1,26/04/2025,14:00,CLASSE,SÃO PAULO,2,1,Praça Central,completed,Primeira Fase,1ª,1,,Copa 50tinha 2025,1
+2,26/04/2025,15:00,UNIÃO R.,TRIC0LOR,2,3,Praça Central,completed,Primeira Fase,1ª,2,,Copa 50tinha 2025,1
+3,26/04/2025,16:00,COMETA,OS MALAS,0,6,Praça Central,completed,Primeira Fase,1ª,3,,Copa 50tinha 2025,1
+4,03/05/2025,14:00,COMETA,CLASSE,1,1,Praça Central,completed,Primeira Fase,2ª,4,,Copa 50tinha 2025,1
+5,03/05/2025,15:00,UNIÃO R.,GRÊMIO VR,12,0,Praça Central,completed,Primeira Fase,2ª,5,,Copa 50tinha 2025,1
+6,03/05/2025,16:00,OS MALAS,TRIC0LOR,1,3,Praça Central,completed,Primeira Fase,2ª,6,,Copa 50tinha 2025,1
+7,10/05/2025,14:00,COMETA,UNIÃO R.,2,1,Praça Central,completed,Primeira Fase,3ª,7,,Copa 50tinha 2025,1
+8,10/05/2025,15:00,GRÊMIO VR,SÃO PAULO,1,11,Praça Central,completed,Primeira Fase,3ª,8,,Copa 50tinha 2025,1
+9,10/05/2025,16:00,OS MALAS,CLASSE,1,4,Praça Central,completed,Primeira Fase,3ª,9,,Copa 50tinha 2025,1
+10,17/05/2025,14:00,GRÊMIO VR,COMETA,4,5,Praça Central,completed,Primeira Fase,4ª,10,,Copa 50tinha 2025,1
+11,17/05/2025,15:00,CLASSE,UNIÃO R.,3,2,Praça Central,completed,Primeira Fase,4ª,11,,Copa 50tinha 2025,1
+12,17/05/2025,16:00,TRIC0LOR,SÃO PAULO,1,0,Praça Central,completed,Primeira Fase,4ª,12,,Copa 50tinha 2025,1
+13,24/05/2025,14:00,UNIÃO R.,OS MALAS,2,4,Praça Central,completed,Primeira Fase,5ª,13,,Copa 50tinha 2025,1
+14,24/05/2025,15:00,GRÊMIO VR,TRIC0LOR,0,9,Praça Central,completed,Primeira Fase,5ª,14,,Copa 50tinha 2025,1
+15,24/05/2025,16:00,SÃO PAULO,COMETA,1,3,Praça Central,completed,Primeira Fase,5ª,15,,Copa 50tinha 2025,1

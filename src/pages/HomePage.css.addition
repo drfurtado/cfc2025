@@ -1,0 +1,8 @@
+.matches-section .tournament-name {
+  color: var(--primary-blue);
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
