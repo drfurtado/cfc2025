@@ -179,23 +179,14 @@ function TimePage() {
              role = 'Comissão Técnica';
            }
 
-<<<<<<< HEAD
           const imagePath = `/images/team/staff/${createSafeFilename(name)}`;
-          // Debug log for staff image paths
-          console.log(`Staff member: ${name}, Role: ${role}, Image path: ${imagePath}`);
 
-=======
->>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b
           return {
             id: index + 1,
             name: name || `Staff ${index + 1}`,
             role: role || 'Comissão Técnica',
             // Generate image path based on name
-<<<<<<< HEAD
             image: imagePath
-=======
-            image: `/images/team/staff/${createSafeFilename(name)}` 
->>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b
           };
         }).filter(Boolean); // Remove null entries (skipped header)
 
@@ -280,23 +271,9 @@ function TimePage() {
   // Image error handler
   const handleImageError = (e) => {
     e.target.onerror = null; // Prevent infinite loop if fallback fails
-<<<<<<< HEAD
-    console.log('Image failed to load:', e.target.src); // Log failed image paths
     e.target.src = '/images/player-silhouette.svg'; // Fallback to silhouette
   };
 
-  // Add timestamp to image URLs to bypass cache
-  const addCacheBuster = (url) => {
-    if (!url) return url;
-    const timestamp = new Date().getTime();
-    return `${url}?t=${timestamp}`;
-  };
-
-=======
-    e.target.src = '/images/player-silhouette.svg'; // Fallback to silhouette
-  };
-
->>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b
   if (loading) {
     return (
       <div className="team-page">
@@ -374,11 +351,7 @@ function TimePage() {
                 <div key={staffMember.id} className="staff-card" onClick={() => openLightbox(staffMember)}>
                   <div className="staff-image">
                     <img 
-<<<<<<< HEAD
-                      src={addCacheBuster(staffMember.image)} 
-=======
                       src={staffMember.image} 
->>>>>>> d1ee34e46f224a79dbc54fdb95a455872d6aa04b
                       alt={staffMember.name} 
                       onError={handleImageError}
                     />
