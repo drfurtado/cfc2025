@@ -868,6 +868,7 @@ a.sponsor-contact:hover {
   flex-wrap: wrap;
   gap: 20px;
   margin-bottom: 20px;
+  align-items: flex-start; /* This will prevent stretching */
 }
 
 .stats-card {
@@ -881,12 +882,30 @@ a.sponsor-contact:hover {
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 }
 
-.standings-wrapper, .scorers-wrapper {
+.standings-wrapper {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   overflow: hidden;
-  height: 100%;
+  height: max-content; /* Force height to be exactly the content size */
+  padding: 0;
+}
+
+.scorers-wrapper {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  height: auto;
+  padding: 0;
+}
+
+.scorers-wrapper {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  height: 100%; /* Keep this at 100% for the right card */
 }
 
 .section-header {

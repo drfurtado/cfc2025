@@ -1,10 +1,9 @@
 .standings-container {
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   overflow: hidden;
-  margin-bottom: 0; /* Removed margin-bottom that caused extra space */
-  height: 100%; /* Fill the height of parent container */
+  margin-bottom: 0;
   display: flex;
   flex-direction: column;
 }
@@ -31,7 +30,6 @@
   align-items: center;
   border-bottom: 3px solid rgba(0,0,0,0.1);
   width: 100%; /* Ensure the header takes full width */
-  min-height: 52px; /* Fixed height for consistency */
 }
 
 .standings-header h3 {
@@ -50,23 +48,28 @@
 }
 
 .standings-table-container {
-  overflow-x: auto;
-  padding: 0;
-  margin: 0; /* Ensure no margin */
-  flex-grow: 1; /* Allow container to expand */
+  width: 100%; /* Ensure this container takes full width */
   display: flex;
   flex-direction: column;
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 0 12px; /* Keep only horizontal padding */
+  padding-top: 8px; /* Add a little padding on top */
+  padding-bottom: 0; /* Force no padding at bottom */
 }
 
 .standings-table {
   width: 100%;
   border-collapse: collapse;
+  border-spacing: 0;
   font-size: 0.9rem;
+  table-layout: fixed;
+  margin: 0;
+  margin-bottom: 0;
 }
 
 .standings-table th,
 .standings-table td {
-  padding: 12px 8px;
+  padding: 8px 8px;
   text-align: center;
   border-bottom: 1px solid #f0f0f0;
 }
@@ -79,6 +82,9 @@
   letter-spacing: 0.5px;
   text-transform: uppercase;
   font-size: 0.8rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .standings-table tbody tr:hover {
@@ -89,6 +95,7 @@
 /* Remove border from last table row to prevent empty row appearance */
 .standings-table tbody tr:last-child td {
   border-bottom: none;
+  padding-bottom: 4px; /* Minimal padding at the bottom of the last row */
 }
 
 .pos-col {
