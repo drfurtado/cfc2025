@@ -43,9 +43,9 @@ export const calendarData = [
     round: '5ª', 
     date: '24/05', 
     matches: [
-      { time: '14h', team1: 'UNIÃO R.', team2: 'OS MALAS', game: 13 },
-      { time: '15h', team1: 'GRÊMIO VR', team2: 'TRIC0LOR', game: 14 },
-      { time: '16h', team1: 'SÃO PAULO', team2: 'COMETA', game: 15 }
+      { time: '14h', team1: 'UNIÃO R.', team2: 'OS MALAS', game: 13, score: '2 x 4', completed: true },
+      { time: '15h', team1: 'GRÊMIO VR', team2: 'TRIC0LOR', game: 14, score: '0 x 9', completed: true },
+      { time: '16h', team1: 'SÃO PAULO', team2: 'COMETA', game: 15, score: '1 x 3', completed: true }
     ]
   },
   { 
