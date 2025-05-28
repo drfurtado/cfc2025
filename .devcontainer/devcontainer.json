@@ -1,0 +1,24 @@
+{
+  "name": "CFC2025 React Dev Container",
+  "dockerFile": "Dockerfile",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-next",
+        "formulahendry.auto-rename-tag",
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  },
+  "forwardPorts": [3000],
+  "postCreateCommand": "npm install",
+  "remoteUser": "node",
+  "features": {
+    "git": "latest"
+  }
+}
