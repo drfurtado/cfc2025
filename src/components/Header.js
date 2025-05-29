@@ -2,13 +2,24 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes, faHome, faHistory, faUsers, faTrophy } from '@fortawesome/free-solid-svg-icons';
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(true); // Set to true to always show on mobile
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  // Helper function to get the icon for each menu item
+  const getNavIcon = (index) => {
+    switch (index) {
+      case 0: return faHome;
+      case 1: return faHistory;
+      case 2: return faUsers;
+      case 3: return faTrophy;
+      default: return faHome;
+    }
   };
 
   return (
@@ -24,18 +35,26 @@ const Header = () => {
         </button>
         
         <ul className={`nav-links ${menuOpen ? 'open' : ''}`}>
-          <li>
-            <NavLink to="/" end onClick={() => setMenuOpen(false)}>Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/historia" onClick={() => setMenuOpen(false)}>História</NavLink>
-          </li>
-          <li>
-            <NavLink to="/time" onClick={() => setMenuOpen(false)}>Time</NavLink>
-          </li>
-          <li>
-            <NavLink to="/campeonatos" onClick={() => setMenuOpen(false)}>Campeonatos</NavLink>
-          </li>
+          {[
+            { path: "/", text: "Home", exact: true },
+            { path: "/historia", text: "História" },
+            { path: "/time", text: "Time" },
+            { path: "/campeonatos", text: "Campeonatos" }
+          ].map((item, index) => (
+            <li key={item.path}>
+              <NavLink 
+                to={item.path} 
+                end={item.exact} 
+                onClick={() => setMenuOpen(true)}
+                className={({isActive}) => isActive ? 'active' : ''}
+              >
+                <span className="nav-icon">
+                  <FontAwesomeIcon icon={getNavIcon(index)} />
+                </span>
+                <span className="nav-text">{item.text}</span>
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>

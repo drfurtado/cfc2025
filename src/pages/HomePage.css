@@ -24,23 +24,58 @@
 .sponsors-section {
   padding: 40px 0;
   background-color: var(--neutral-white);
+  width: 100%;
+  overflow: hidden; /* Prevent horizontal scroll of entire section */
 }
 
-.sponsors-container {
+/* New scroll container for horizontal scrolling */
+.sponsors-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-blue) var(--neutral-light-gray);
+  -webkit-overflow-scrolling: touch;
+  padding: 20px 0;
+}
+
+/* Webkit scrollbar styling */
+.sponsors-scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.sponsors-scroll-container::-webkit-scrollbar-track {
+  background: var(--neutral-light-gray);
+  border-radius: 10px;
+}
+
+.sponsors-scroll-container::-webkit-scrollbar-thumb {
+  background-color: var(--primary-blue);
+  border-radius: 10px;
+  border: 2px solid var(--neutral-light-gray);
+}
+
+/* Inner wrapper to hold all sponsors */
+.sponsors-scroll-wrapper {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
-  gap: 40px;
-  margin: 30px 0;
+  gap: 0; /* Remove gap completely */
+  padding: 0 20px; /* Add side padding */
+  width: max-content; /* Allow it to expand as needed */
+  min-width: 100%; /* At minimum, take full width */
 }
 
+/* Individual sponsor items */
 .sponsor-item {
+  flex: 0 0 auto; /* Don't grow or shrink */
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 200px;
+  padding: 5px; /* Reduced padding */
+  margin: 0 5px; /* Small horizontal margin */
   transition: transform 0.3s ease;
+  min-width: 150px;
 }
 
 .sponsor-item:hover {
@@ -51,7 +86,6 @@
   max-width: 150px;
   max-height: 100px;
   object-fit: contain;
-  margin-bottom: 15px;
 }
 
 .sponsor-placeholder {
@@ -96,18 +130,20 @@ a.sponsor-contact:hover {
 
 /* Mobile Optimizations */
 @media (max-width: 768px) {
-  .sponsors-container {
-    flex-wrap: wrap;
-    justify-content: center;
+  .sponsors-scroll-wrapper {
+    gap: 0; /* Remove gap completely */
+    padding: 0 15px; /* Less padding on mobile */
   }
   
   .sponsor-item {
-    width: 120px;
-    margin-bottom: 15px;
+    min-width: 120px;
+    margin: 0 2px; /* Even smaller margin on mobile */
+    padding: 2px; /* Smaller padding on mobile */
   }
   
   .sponsor-logo {
-    max-width: 100%;
+    max-width: 100px;
+    max-height: 80px;
   }
 }
 
@@ -935,9 +971,24 @@ a.sponsor-contact:hover {
 @media (max-width: 768px) {
   .stats-cards-container {
     flex-direction: column;
+    gap: 30px;
   }
   
   .stats-card {
     width: 100%;
+    min-width: unset; /* Remove min-width constraint on mobile */
+  }
+  
+  .standings-wrapper,
+  .scorers-wrapper {
+    overflow-x: auto; /* Ensure horizontal scrolling works on mobile */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    width: 100%;
+  }
+  
+  /* Remove hover effects on mobile */
+  .stats-card:hover {
+    transform: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
 }

@@ -7,6 +7,7 @@ import MatchCard from '../components/MatchCard';
 import StandingsTable from '../components/StandingsTable';
 import TopScorersTable from '../components/TopScorersTable';
 import TournamentCalendar from '../components/TournamentCalendar';
+import SponsorsScroller from '../components/SponsorsScroller';
 import { VideoContext } from '../App';
 import { 
   getRecentMatches, 
@@ -110,37 +111,8 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Sponsors Section */}
-      <section className="sponsors-section">
-        <div className="container">
-          <h2 className="section-title text-center">Nossos Patrocinadores</h2>
-          <div className="sponsors-container">
-            <div className="sponsor-item">
-              <a href="https://aurigalabs.netlify.app" target="_blank" rel="noopener noreferrer">
-                <img src="/images/sponsors/patrocinio-auriga.png" alt="AurigaLabs" className="sponsor-logo" />
-              </a>
-            </div>
-            <div className="sponsor-item">
-              <a href="https://www.instagram.com/despachante_coture/" target="_blank" rel="noopener noreferrer">
-                <img src="/images/sponsors/patrocinio-coture.png" alt="Coture" className="sponsor-logo" />
-              </a>
-            </div>
-            <div className="sponsor-item">
-              <a href="https://www.instagram.com/estiloraropremiumcwb/" target="_blank" rel="noopener noreferrer">
-                <img src="/images/sponsors/patrocinio-estilo.png" alt="Estilo" className="sponsor-logo" />
-              </a>
-            </div>
-            <div className="sponsor-item">
-              <a href="tel:+5541996385718" target="_blank" rel="noopener noreferrer">
-                <img src="/images/sponsors/patrocinio-grp.png" alt="GRP Turismo" className="sponsor-logo" />
-              </a>
-            </div>
-          </div>
-          <div className="text-center mt-4">
-            <a href="mailto:classefc84@gmail.com" className="btn btn-outline-primary">Torne-se um Patrocinador</a>
-          </div>
-        </div>
-      </section>
+      {/* New Modern Sponsors Section with Horizontal Scroll */}
+      <SponsorsScroller />
 
       {/* Matches Section - Last & Next Match */}
       <section className="matches-section">

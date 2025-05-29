@@ -51,10 +51,9 @@
   width: 100%; /* Ensure this container takes full width */
   display: flex;
   flex-direction: column;
-  overflow-y: auto; /* Enable vertical scrolling */
-  padding: 0 12px; /* Keep only horizontal padding */
+  overflow-x: auto; /* Enable horizontal scrolling for mobile */
+  padding: 0; /* Remove padding to maximize space */
   padding-top: 8px; /* Add a little padding on top */
-  padding-bottom: 0; /* Force no padding at bottom */
 }
 
 .standings-table {
@@ -122,60 +121,64 @@
 
 .pts-col {
   font-weight: 700;
-  background-color: #f8f9fa;
+  color: #212529;
 }
 
 .stats-col {
-  width: 30px;
-}
-
-.qualification-zone {
-  background-color: rgba(13, 110, 253, 0.05);
-}
-
-.qualification-zone .pos-col {
-  color: #0d6efd;
-}
-
-.standings-legend {
-  padding: 10px 15px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #6c757d;
-  border-top: 1px solid #f0f0f0;
 }
 
-.legend-item {
-  display: flex;
-  align-items: center;
-}
-
-.legend-color {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin-right: 5px;
-  border-radius: 2px;
-}
-
-.qualification-zone .legend-color {
-  background-color: rgba(13, 110, 253, 0.2);
-}
-
-/* Mobile responsiveness */
+/* Mobile optimizations */
 @media (max-width: 768px) {
   .standings-table {
-    font-size: 0.75rem;
+    font-size: 0.8rem; /* Smaller font on mobile */
+    min-width: 500px; /* Ensure minimum width for scrolling */
   }
   
   .standings-table th,
   .standings-table td {
-    padding: 6px 3px;
+    padding: 6px 4px; /* Reduce cell padding */
+  }
+  
+  .standings-header h3 {
+    font-size: 1rem; /* Smaller header font */
+  }
+  
+  .last-updated {
+    font-size: 0.7rem; /* Smaller timestamp font */
+  }
+  
+  .stats-col {
+    font-size: 0.75rem; /* Even smaller stats font */
   }
   
   .team-col {
-    min-width: 90px;
+    min-width: 80px; /* Smaller team name column */
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Ensure the table container allows scrolling */
+  .standings-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    padding: 0;
+    margin: 0;
+    width: 100%;
+  }
+}
+
+/* Small phone optimizations */
+@media (max-width: 375px) {
+  .standings-table {
+    font-size: 0.75rem; /* Even smaller font on very small devices */
+  }
+  
+  .standings-table th,
+  .standings-table td {
+    padding: 5px 3px; /* Minimal cell padding */
   }
 }

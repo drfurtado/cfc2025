@@ -51,6 +51,25 @@ body {
   text-align: center;
 }
 
+/* Mobile navigation padding for bottom bar */
+@media (max-width: 768px) {
+  main {
+    padding-bottom: 80px; /* Add padding to account for bottom navigation */
+  }
+  
+  /* Apply safe area inset padding for iOS devices */
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    main {
+      padding-bottom: calc(80px + env(safe-area-inset-bottom));
+    }
+  }
+  
+  /* Hide footer on mobile devices when using bottom navigation */
+  footer {
+    margin-bottom: 80px;
+  }
+}
+
 /* Header and Navigation */
 header {
   background-color: var(--white);

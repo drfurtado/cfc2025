@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './StandingsTable.css';
 
 const StandingsTable = ({ standings, lastUpdated }) => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  
+  // Responsive handler for window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="standings-container">
       <div className="standings-header">
@@ -14,7 +26,7 @@ const StandingsTable = ({ standings, lastUpdated }) => {
           <thead>
             <tr>
               <th className="pos-col">#</th>
-              <th className="team-col">Time</th>
+              <th className="team-col">TIME</th>
               <th className="pts-col">P</th>
               <th className="stats-col">J</th>
               <th className="stats-col">V</th>
@@ -29,7 +41,9 @@ const StandingsTable = ({ standings, lastUpdated }) => {
             {standings.map((team, index) => (
               <tr key={index} className={index < 4 ? 'qualification-zone' : ''}>
                 <td className="pos-col">{team.position}</td>
-                <td className="team-col">{team.name}</td>
+                <td className="team-col">{isMobile && team.name.length > 10 
+                  ? team.name.substring(0, 9) + '.' 
+                  : team.name}</td>
                 <td className="pts-col">{team.points}</td>
                 <td className="stats-col">{team.played}</td>
                 <td className="stats-col">{team.wins}</td>
@@ -43,8 +57,6 @@ const StandingsTable = ({ standings, lastUpdated }) => {
           </tbody>
         </table>
       </div>
-      
-      {/* Legend removed to prevent it looking like part of the table */}
     </div>
   );
 };

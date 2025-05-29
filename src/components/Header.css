@@ -55,6 +55,9 @@ nav {
   padding: 0.5rem 0;
   transition: color 0.3s ease;
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px; /* Reduced space between icon and text */
 }
 
 .nav-links a:hover {
@@ -76,6 +79,19 @@ nav {
   border-radius: 2px;
 }
 
+/* Default styles for nav icons (non-mobile) */
+.nav-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 3px; /* Reduced spacing between icon and text */
+}
+
+/* Default styles for nav text (non-mobile) */
+.nav-text {
+  display: inline;
+}
+
 /* Mobile menu button - will be used for responsive design */
 .mobile-menu-btn {
   display: none;
@@ -88,29 +104,173 @@ nav {
 
 /* Responsive styles */
 @media (max-width: 768px) {
+  header {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+  }
+
   .mobile-menu-btn {
-    display: block;
+    display: none; /* Hide the hamburger menu button */
+  }
+
+  nav {
+    padding: 0;
+    width: 100%;
+  }
+
+  .logo {
+    display: none; /* Hide the logo on mobile for more space */
   }
 
   .nav-links {
-    position: fixed;
-    top: 106px; /* Updated to accommodate audio player height */
-    left: 0;
-    right: 0;
+    position: static;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0.5rem 0 0.6rem;
+    transform: none;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     background-color: var(--neutral-white);
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    transform: translateY(-150%);
-    transition: transform 0.3s ease;
-  }
-
-  .nav-links.open {
-    transform: translateY(0);
   }
 
   .nav-links li {
-    margin: 0.5rem 0;
+    margin: 0;
+    flex: 1;
+    text-align: center;
+  }
+
+  .nav-links a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.7rem 0;
+    font-size: 0.8rem;
+    height: 100%;
+    gap: 8px; /* This adds space between icon and text */
+  }
+
+  .nav-icon {
+    font-size: 1.4rem;
+    display: block;
+    color: var(--neutral-gray);
+    margin-bottom: 0; /* Remove margin as we're using gap instead */
+  }
+
+  .nav-links a.active .nav-icon {
+    color: var(--primary-blue);
+  }
+
+  .nav-text {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  .nav-links a.active::after {
+    display: none; /* Remove the underline and use color for active state */
+  }
+
+  /* Add padding to main content area to prevent overlap with bottom nav */
+  #root > div:not(header) {
+    padding-bottom: 70px;
+  }
+  
+  /* Apply safe area inset padding for iOS devices */
+  @supports (padding-bottom: env(safe-area-inset-bottom)) {
+    header {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    #root > div:not(header) {
+      padding-bottom: calc(70px + env(safe-area-inset-bottom));
+    }
+  }
+}
+
+/* Mobile navigation - bottom bar specific styles */
+@media (max-width: 768px) {
+  /* Override any existing styles to ensure navigation is at the bottom */
+  header {
+    position: fixed !important;
+    bottom: 0 !important;
+    top: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+    background-color: var(--neutral-white) !important;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1) !important;
+    width: 100% !important;
+  }
+  
+  /* Hide the hamburger button completely */
+  .mobile-menu-btn {
+    display: none !important;
+  }
+  
+  /* Always show the navigation links in mobile view */
+  .nav-links {
+    display: flex !important;
+    transform: none !important;
+    position: static !important;
+    flex-direction: row !important;
+    top: auto !important;
+    box-shadow: none !important;
+    padding: 8px 0 !important;
+    justify-content: space-around !important;
+    width: 100% !important;
+  }
+  
+  /* Style each navigation item */
+  .nav-links li {
+    margin: 0 !important;
+    flex: 1 !important;
+    text-align: center !important;
+  }
+  
+  /* Force vertical layout for icon and text */
+  .nav-links a {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 8px 0 !important;
+    gap: 8px !important;
+  }
+  
+  /* Style the icon */
+  .nav-icon {
+    display: block !important;
+    margin: 0 auto 4px auto !important;
+  }
+  
+  /* Style the text */
+  .nav-text {
+    display: block !important;
+  }
+}
+
+/* iOS Safe Area Support */
+@supports (padding: env(safe-area-inset-bottom)) {
+  @media (max-width: 768px) {
+    header {
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    
+    .nav-links {
+      padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+    
+    /* Update the main content padding to avoid overlap */
+    body {
+      padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+    }
   }
 }
