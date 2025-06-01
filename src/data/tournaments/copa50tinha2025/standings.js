@@ -1,31 +1,31 @@
 /**
  * Copa 50tinha 2025 Tournament Standings
  * Generated automatically from match results
- * Last updated: 24/05/2025
+ * Last updated: 31/05/2025
  */
 
 const standingsData = { // Changed to const
-  lastUpdated: "24/05/2025",
+  lastUpdated: "31/05/2025",
   teams: [
   {
     "name": "TRIC0LOR",
-    "played": 4,
-    "wins": 4,
+    "played": 5,
+    "wins": 5,
     "draws": 0,
     "losses": 0,
-    "goalsFor": 16,
+    "goalsFor": 18,
     "goalsAgainst": 3,
-    "points": 12,
+    "points": 15,
     "position": 1
   },
   {
     "name": "CLASSE",
-    "played": 4,
+    "played": 5,
     "wins": 3,
     "draws": 1,
-    "losses": 0,
+    "losses": 1,
     "goalsFor": 10,
-    "goalsAgainst": 5,
+    "goalsAgainst": 7,
     "points": 10,
     "position": 2
   },
@@ -42,45 +42,45 @@ const standingsData = { // Changed to const
   },
   {
     "name": "OS MALAS",
-    "played": 4,
-    "wins": 2,
+    "played": 5,
+    "wins": 3,
     "draws": 0,
     "losses": 2,
-    "goalsFor": 12,
+    "goalsFor": 18,
     "goalsAgainst": 9,
-    "points": 6,
+    "points": 9,
     "position": 4
   },
   {
     "name": "UNIÃO R.",
-    "played": 5,
-    "wins": 1,
+    "played": 6,
+    "wins": 2,
     "draws": 0,
     "losses": 4,
-    "goalsFor": 19,
-    "goalsAgainst": 12,
-    "points": 3,
+    "goalsFor": 22,
+    "goalsAgainst": 14,
+    "points": 6,
     "position": 5
   },
   {
     "name": "SÃO PAULO",
-    "played": 4,
+    "played": 5,
     "wins": 1,
     "draws": 0,
-    "losses": 3,
-    "goalsFor": 13,
-    "goalsAgainst": 7,
+    "losses": 4,
+    "goalsFor": 15,
+    "goalsAgainst": 10,
     "points": 3,
     "position": 6
   },
   {
     "name": "GRÊMIO VR",
-    "played": 4,
+    "played": 5,
     "wins": 0,
     "draws": 0,
-    "losses": 4,
+    "losses": 5,
     "goalsFor": 5,
-    "goalsAgainst": 37,
+    "goalsAgainst": 43,
     "points": 0,
     "position": 7
   }
