@@ -191,11 +191,11 @@ export const getUpcomingMatches = (limit = 3) => {
  */
 export const getTeamLogo = (team) => {
   const teamLogos = {
-    'Classe FC': '/images/logo.svg',
-    'União R.': '/images/match-logos/generic.png',
-    'Tricolor': '/images/match-logos/generic.png',
+    'Classe FC': '/images/match-logos/classefc.svg',
+    'União R.': '/images/match-logos/uniao-r.png',
+    'Tricolor': '/images/match-logos/tricolor-new.png',
     'Os Malas': '/images/match-logos/generic.png',
-    'Cometa': '/images/match-logos/generic.png',
+    'Cometa': '/images/match-logos/cometa-new.png',
     'São Paulo': '/images/match-logos/spaulinho.png',
     'Grêmio VR': '/images/match-logos/generic.png',
     'Unidos do CIC': '/images/match-logos/generic.png',

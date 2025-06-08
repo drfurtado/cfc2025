@@ -148,7 +148,19 @@ export const filterTournamentsByStatus = (status) => {
  */
 export const getTeamLogo = (teamName) => {
   if (teamName === 'Classe FC') {
-    return '/images/logo.svg';
+    return '/images/match-logos/classefc.svg';
+  } else if (teamName === 'São Paulo') {
+    return '/images/match-logos/spaulinho.png';
+  } else if (teamName === 'Os Malas') {
+    return '/images/match-logos/generic.png';
+  } else if (teamName === 'União R.') {
+    return '/images/match-logos/uniao-r.png';
+  } else if (teamName === 'Tricolor') {
+    return '/images/match-logos/tricolor-new.png';
+  } else if (teamName === 'Grêmio VR') {
+    return '/images/match-logos/generic.png';
+  } else if (teamName === 'Cometa') {
+    return '/images/match-logos/cometa-new.png';
   } else {
     return '/images/match-logos/generic.png';
   }

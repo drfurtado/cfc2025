@@ -21,6 +21,10 @@ const MatchDetails = ({ match }) => {
     if (team === 'Classe FC') return '/images/match-logos/classefc.svg';
     if (team === 'São Paulo') return '/images/match-logos/spaulinho.png';
     if (team === 'Os Malas') return '/images/match-logos/generic.png';
+    if (team === 'União R.') return '/images/match-logos/uniao-r.png';
+    if (team === 'Tricolor') return '/images/match-logos/tricolor-new.png';
+    if (team === 'Grêmio VR') return '/images/match-logos/generic.png';
+    if (team === 'Cometa') return '/images/match-logos/cometa-new.png';
     return '/images/match-logos/generic.png';
   };
   

@@ -56,25 +56,7 @@ function HomePage() {
   };
 
   // Use the actual most recent match from the data source
-  const lastMatchData = lastMatch || {
-    id: 11,
-    tournament: 'Copa 50tinha 2025',
-    date: '17/05/2025',
-    time: '15:00',
-    homeTeam: 'Classe FC',
-    awayTeam: 'União R.',
-    homeScore: 3,
-    awayScore: 2,
-    location: 'Praça Central',
-    status: 'completed',
-    stage: 'Primeira Fase',
-    round: '4ª',
-    gameNumber: 11,
-    // Don't show stats or highlights on the home card
-    showStats: false,
-    showHighlights: false,
-    galleryLink: 'https://photos.app.goo.gl/mYaFNEsMrKZT2JcWA'
-  };
+  const lastMatchData = lastMatch;
 
   // Historical match data - currently not used but kept for future implementation
   // of match history feature
@@ -138,11 +120,17 @@ function HomePage() {
               <div className="col-md-6 mb-4">
                 <h4 className="text-center mb-3" style={{ fontSize: '1.1rem', color: '#444' }}>Última Partida</h4>
                 {/* Compact Last Match Card */}
-                <MatchCard 
-                  match={lastMatchData} 
-                  onVideoClick={handleVideoClick} 
-                  onDetailsClick={toggleMatchDetails} 
-                />
+                {lastMatchData ? (
+                  <MatchCard 
+                    match={lastMatchData} 
+                    onVideoClick={handleVideoClick} 
+                    onDetailsClick={toggleMatchDetails} 
+                  />
+                ) : (
+                  <div className="text-center text-muted">
+                    <p>Nenhuma partida recente encontrada</p>
+                  </div>
+                )}
               </div>
               
               <div className="col-md-6 mb-4">

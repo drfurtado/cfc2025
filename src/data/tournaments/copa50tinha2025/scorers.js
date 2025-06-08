@@ -4,50 +4,38 @@
  */
 
 export const scorersData = {
-  // Top Scorers as of May 17, 2025 (after Round 4)
-  lastUpdated: "17/05/2025",
+  // Top Scorers as of June 8, 2025 (after Round 7)
+  lastUpdated: "08/06/2025",
   scorers: [
     {
-      name: "Batata",
+      name: "Sid",
       team: "Classe FC",
       goals: 3,
       position: 1
     },
     {
-      name: "Neno",
+      name: "Rildo",
       team: "Classe FC",
       goals: 2,
       position: 2
     },
     {
-      name: "Eleandro",
+      name: "Nato",
       team: "Classe FC",
-      goals: 1,
-      position: 3
+      goals: 2,
+      position: 2
     },
     {
-      name: "Lucio",
+      name: "Edson",
       team: "Classe FC",
       goals: 1,
-      position: 3
+      position: 4
     },
     {
-      name: "Rildo",
+      name: "Neno",
       team: "Classe FC",
       goals: 1,
-      position: 3
-    },
-    {
-      name: "Zé Eduardo",
-      team: "Classe FC",
-      goals: 1,
-      position: 3
-    },
-    {
-      name: "Mineiro",
-      team: "Classe FC",
-      goals: 1,
-      position: 3
+      position: 4
     }
   ]
 };
