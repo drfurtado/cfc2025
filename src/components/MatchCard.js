@@ -17,9 +17,9 @@ const MatchCard = ({ match, onVideoClick, onDetailsClick }) => {
     if (team === 'São Paulo') return '/images/match-logos/spaulinho.png';
     if (team === 'Os Malas') return '/images/match-logos/generic.png';
     if (team === 'União R.') return '/images/match-logos/uniao-r.png';
-    if (team === 'Tricolor') return '/images/match-logos/tricolor-new.png';
+    if (team === 'Tricolor') return '/images/match-logos/tricolor.png';
     if (team === 'Grêmio VR') return '/images/match-logos/generic.png';
-    if (team === 'Cometa') return '/images/match-logos/cometa-new.png';
+    if (team === 'Cometa') return '/images/match-logos/cometa.png';
     return '/images/match-logos/generic.png';
   };
   
@@ -100,11 +100,11 @@ const MatchCard = ({ match, onVideoClick, onDetailsClick }) => {
       <div className="calendar-match" style={{margin: '20px 0'}}>
         <div className="match-teams" style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
           <div className="team" style={{flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <div style={{width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '8px'}}>
+            <div className="team-logo-container" style={{width: '70px', height: '70px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '8px', backgroundColor: '#f8f9fa', borderRadius: '50%', padding: '8px'}}>
               <img 
                 src={getTeamLogoPath(match.homeTeam)} 
                 alt={`${match.homeTeam} logo`} 
-                style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'contain'}}
+                style={{width: '100%', height: '100%', objectFit: 'contain'}}
               />
             </div>
             <span style={{fontWeight: 600, fontSize: '0.9rem', color: '#212529', textAlign: 'center'}}>{match.homeTeam}</span>
@@ -113,11 +113,11 @@ const MatchCard = ({ match, onVideoClick, onDetailsClick }) => {
             {match.status === 'completed' ? `${match.homeScore} : ${match.awayScore}` : 'VS'}
           </div>
           <div className="team" style={{flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <div style={{width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '8px'}}>
+            <div className="team-logo-container" style={{width: '70px', height: '70px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '8px', backgroundColor: '#f8f9fa', borderRadius: '50%', padding: '8px'}}>
               <img 
                 src={getTeamLogoPath(match.awayTeam)} 
                 alt={`${match.awayTeam} logo`} 
-                style={{maxWidth: '100%', maxHeight: '100%', objectFit: 'contain'}}
+                style={{width: '100%', height: '100%', objectFit: 'contain'}}
               />
             </div>
             <span style={{fontWeight: 600, fontSize: '0.9rem', color: '#212529', textAlign: 'center'}}>{match.awayTeam}</span>

@@ -193,9 +193,9 @@ export const getTeamLogo = (team) => {
   const teamLogos = {
     'Classe FC': '/images/match-logos/classefc.svg',
     'União R.': '/images/match-logos/uniao-r.png',
-    'Tricolor': '/images/match-logos/tricolor-new.png',
+    'Tricolor': '/images/match-logos/tricolor.png',
     'Os Malas': '/images/match-logos/generic.png',
-    'Cometa': '/images/match-logos/cometa-new.png',
+    'Cometa': '/images/match-logos/cometa.png',
     'São Paulo': '/images/match-logos/spaulinho.png',
     'Grêmio VR': '/images/match-logos/generic.png',
     'Unidos do CIC': '/images/match-logos/generic.png',

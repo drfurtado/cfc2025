@@ -156,11 +156,11 @@ export const getTeamLogo = (teamName) => {
   } else if (teamName === 'União R.') {
     return '/images/match-logos/uniao-r.png';
   } else if (teamName === 'Tricolor') {
-    return '/images/match-logos/tricolor-new.png';
+    return '/images/match-logos/tricolor.png';
   } else if (teamName === 'Grêmio VR') {
     return '/images/match-logos/generic.png';
   } else if (teamName === 'Cometa') {
-    return '/images/match-logos/cometa-new.png';
+    return '/images/match-logos/cometa.png';
   } else {
     return '/images/match-logos/generic.png';
   }
