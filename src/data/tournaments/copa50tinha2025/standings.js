@@ -1,54 +1,54 @@
 /**
  * Copa 50tinha 2025 Tournament Standings
  * Generated automatically from match results
- * Last updated: 31/05/2025
+ * Last updated: 07/06/2025
  */
 
 const standingsData = { // Changed to const
-  lastUpdated: "31/05/2025",
+  lastUpdated: "07/06/2025",
   teams: [
   {
     "name": "TRIC0LOR",
-    "played": 5,
+    "played": 6,
     "wins": 5,
-    "draws": 0,
+    "draws": 1,
     "losses": 0,
     "goalsFor": 18,
     "goalsAgainst": 3,
-    "points": 15,
+    "points": 16,
     "position": 1
   },
   {
     "name": "CLASSE",
-    "played": 5,
-    "wins": 3,
+    "played": 6,
+    "wins": 4,
     "draws": 1,
     "losses": 1,
-    "goalsFor": 10,
-    "goalsAgainst": 7,
-    "points": 10,
+    "goalsFor": 19,
+    "goalsAgainst": 8,
+    "points": 13,
     "position": 2
   },
   {
-    "name": "COMETA",
-    "played": 5,
-    "wins": 3,
-    "draws": 1,
-    "losses": 1,
-    "goalsFor": 11,
-    "goalsAgainst": 13,
-    "points": 10,
+    "name": "OS MALAS",
+    "played": 6,
+    "wins": 4,
+    "draws": 0,
+    "losses": 2,
+    "goalsFor": 19,
+    "goalsAgainst": 9,
+    "points": 12,
     "position": 3
   },
   {
-    "name": "OS MALAS",
-    "played": 5,
+    "name": "COMETA",
+    "played": 6,
     "wins": 3,
-    "draws": 0,
-    "losses": 2,
-    "goalsFor": 18,
-    "goalsAgainst": 9,
-    "points": 9,
+    "draws": 2,
+    "losses": 1,
+    "goalsFor": 11,
+    "goalsAgainst": 13,
+    "points": 11,
     "position": 4
   },
   {
@@ -64,23 +64,23 @@ const standingsData = { // Changed to const
   },
   {
     "name": "SÃO PAULO",
-    "played": 5,
+    "played": 6,
     "wins": 1,
     "draws": 0,
-    "losses": 4,
+    "losses": 5,
     "goalsFor": 15,
-    "goalsAgainst": 10,
+    "goalsAgainst": 11,
     "points": 3,
     "position": 6
   },
   {
     "name": "GRÊMIO VR",
-    "played": 5,
+    "played": 6,
     "wins": 0,
     "draws": 0,
-    "losses": 5,
-    "goalsFor": 5,
-    "goalsAgainst": 43,
+    "losses": 6,
+    "goalsFor": 6,
+    "goalsAgainst": 52,
     "points": 0,
     "position": 7
   }

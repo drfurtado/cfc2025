@@ -38,7 +38,7 @@ export const scorersData = {
       position: 3
     },
     {
-      name: "Zé Luiz",
+      name: "Zé Eduardo",
       team: "Classe FC",
       goals: 1,
       position: 3

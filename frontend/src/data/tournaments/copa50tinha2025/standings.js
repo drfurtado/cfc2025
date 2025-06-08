@@ -1,86 +1,86 @@
 /**
  * Copa 50tinha 2025 Tournament Standings
  * Generated automatically from match results
- * Last updated: 24/05/2025
+ * Last updated: 07/06/2025
  */
 
 const standingsData = { // Changed to const
-  lastUpdated: "24/05/2025",
+  lastUpdated: "07/06/2025",
   teams: [
   {
     "name": "TRIC0LOR",
-    "played": 4,
-    "wins": 4,
-    "draws": 0,
+    "played": 6,
+    "wins": 5,
+    "draws": 1,
     "losses": 0,
-    "goalsFor": 16,
+    "goalsFor": 18,
     "goalsAgainst": 3,
-    "points": 12,
+    "points": 16,
     "position": 1
   },
   {
     "name": "CLASSE",
-    "played": 4,
-    "wins": 3,
+    "played": 6,
+    "wins": 4,
     "draws": 1,
-    "losses": 0,
-    "goalsFor": 10,
-    "goalsAgainst": 5,
-    "points": 10,
+    "losses": 1,
+    "goalsFor": 19,
+    "goalsAgainst": 8,
+    "points": 13,
     "position": 2
   },
   {
-    "name": "COMETA",
-    "played": 5,
-    "wins": 3,
-    "draws": 1,
-    "losses": 1,
-    "goalsFor": 11,
-    "goalsAgainst": 13,
-    "points": 10,
+    "name": "OS MALAS",
+    "played": 6,
+    "wins": 4,
+    "draws": 0,
+    "losses": 2,
+    "goalsFor": 19,
+    "goalsAgainst": 9,
+    "points": 12,
     "position": 3
   },
   {
-    "name": "OS MALAS",
-    "played": 4,
-    "wins": 2,
-    "draws": 0,
-    "losses": 2,
-    "goalsFor": 12,
-    "goalsAgainst": 9,
-    "points": 6,
+    "name": "COMETA",
+    "played": 6,
+    "wins": 3,
+    "draws": 2,
+    "losses": 1,
+    "goalsFor": 11,
+    "goalsAgainst": 13,
+    "points": 11,
     "position": 4
   },
   {
     "name": "UNIÃO R.",
-    "played": 5,
-    "wins": 1,
+    "played": 6,
+    "wins": 2,
     "draws": 0,
     "losses": 4,
-    "goalsFor": 19,
-    "goalsAgainst": 12,
-    "points": 3,
+    "goalsFor": 22,
+    "goalsAgainst": 14,
+    "points": 6,
     "position": 5
   },
   {
     "name": "SÃO PAULO",
-    "played": 4,
+    "played": 6,
     "wins": 1,
     "draws": 0,
-    "losses": 3,
-    "goalsFor": 13,
-    "goalsAgainst": 7,
+    "losses": 5,
+    "goalsFor": 15,
+    "goalsAgainst": 11,
     "points": 3,
     "position": 6
   },
   {
     "name": "GRÊMIO VR",
-    "played": 4,
+    "played": 6,
     "wins": 0,
     "draws": 0,
-    "losses": 4,
-    "goalsFor": 5,
-    "goalsAgainst": 37,
+    "losses": 6,
+    "goalsFor": 6,
+    "goalsAgainst": 52,
     "points": 0,
     "position": 7
   }
