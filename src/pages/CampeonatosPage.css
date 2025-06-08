@@ -370,12 +370,13 @@ h2.section-title:first-of-type {
   background-color: #fff;
   border: 1px solid #e0e0e0;
   border-radius: 6px;
-  padding: 12px;
+  padding: 12px 18px; /* Increase horizontal padding */
   display: flex;
   flex-direction: column;
-  gap: 8px; /* Space between rows */
+  gap: 15px; /* Increased space between rows */
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
   transition: box-shadow 0.3s ease;
+  width: 100%;
 }
 
 .match-item.compact:hover {
@@ -418,12 +419,13 @@ h2.section-title:first-of-type {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .match-team {
   display: flex;
   align-items: center;
-  flex-basis: 35%; /* Adjust as needed */
+  flex-basis: 40%; /* Increase space for team display */
 }
 
 .home-team {
@@ -439,7 +441,7 @@ h2.section-title:first-of-type {
   width: 40px;
   height: 40px;
   margin-right: 8px;
-  padding: 3px;
+  padding: 4px;
   background-color: #f8f9fa;
   border-radius: 50%;
   object-fit: contain;
@@ -453,8 +455,11 @@ h2.section-title:first-of-type {
 
 /* São Paulo logo specific fix */
 .match-team-logo.compact-logo[alt="São Paulo"] {
+  width: 45px;
+  height: 45px;
   object-fit: scale-down;
-  padding: 1px;
+  padding: 5px;
+  background-color: #fff;
 }
 
 .away-team .match-team-logo.compact-logo {
@@ -508,10 +513,22 @@ h2.section-title:first-of-type {
 }
 
 /* Styles for Compact Upcoming Matches (similar to Recent Matches) */
+.match-score-container.compact-score.upcoming-match-vs {
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 15px;
+}
+
 .match-score-container.compact-score.upcoming-match-vs span {
-  font-size: 1.2em; /* Slightly smaller than score numbers */
+  font-size: 1.2em;
   font-weight: bold;
-  color: #555; /* Different color to distinguish from scores */
+  color: #555;
+  padding: 5px 15px;
+  background-color: #f8f9fa;
+  border-radius: 20px;
 }
 
 /* Hide button text on smaller screens if needed, or adjust layout */
