@@ -563,7 +563,7 @@ const CampeonatosPage = () => {
           ))}
         </div>
 
-        {/* Upcoming Matches Section - MODIFIED STRUCTURE AND CLASSES */}
+        {/* Upcoming Matches Section - FIXED STRUCTURE AND CLASSES */}
         {upcomingMatches.length > 0 && (
           <div className="matches-section">
             <h2 className="section-title">Próximas Partidas</h2>
@@ -579,9 +579,11 @@ const CampeonatosPage = () => {
                     </span>
                   </div>
                   
-                  <div className="match-row-2">
-                    <div className="match-team home-team">
-                      <img src={getTeamLogo(match.homeTeam)} alt={match.homeTeam} className="match-team-logo compact-logo" />
+                  <div className="match-row-2 vertical-layout">
+                    <div className="match-team home-team vertical">
+                      <div className="team-logo-container">
+                        <img src={getTeamLogo(match.homeTeam)} alt={match.homeTeam} className="match-team-logo compact-logo" />
+                      </div>
                       <span className="match-team-name compact-name">{match.homeTeam}</span>
                     </div>
                     
@@ -589,15 +591,12 @@ const CampeonatosPage = () => {
                       <span>VS</span>
                     </div>
                     
-                    <div className="match-team away-team">
-                      <img src={getTeamLogo(match.awayTeam)} alt={match.awayTeam} className="match-team-logo compact-logo" />
+                    <div className="match-team away-team vertical">
+                      <div className="team-logo-container">
+                        <img src={getTeamLogo(match.awayTeam)} alt={match.awayTeam} className="match-team-logo compact-logo" />
+                      </div>
                       <span className="match-team-name compact-name">{match.awayTeam}</span>
                     </div>
-                    
-                    {/* Upcoming matches typically don't have action buttons like details/video,
-                        but if they were needed, the structure would be similar to recent matches 
-                        <div className="match-actions compact-actions"> ... </div> 
-                    */}
                   </div>
                 </div>
               ))}
