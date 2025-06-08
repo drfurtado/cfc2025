@@ -100,27 +100,47 @@ const MatchCard = ({ match, onVideoClick, onDetailsClick }) => {
       <div className="calendar-match" style={{margin: '20px 0'}}>
         <div className="match-teams" style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
           <div className="team" style={{flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <div className="team-logo-container" style={{width: '70px', height: '70px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '8px', backgroundColor: '#f8f9fa', borderRadius: '50%', padding: '8px'}}>
+            <div className="team-logo-container" style={{
+              width: match.homeTeam === 'Classe FC' ? '80px' : '70px', 
+              height: match.homeTeam === 'Classe FC' ? '80px' : '70px', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center', 
+              marginBottom: '15px', 
+              backgroundColor: '#f8f9fa', 
+              borderRadius: '50%', 
+              padding: '8px'
+            }}>
               <img 
                 src={getTeamLogoPath(match.homeTeam)} 
                 alt={`${match.homeTeam} logo`} 
                 style={{width: '100%', height: '100%', objectFit: 'contain'}}
               />
             </div>
-            <span style={{fontWeight: 600, fontSize: '0.9rem', color: '#212529', textAlign: 'center'}}>{match.homeTeam}</span>
+            <span style={{fontWeight: 600, fontSize: '0.9rem', color: '#212529', textAlign: 'center', paddingLeft: '10px', paddingRight: '10px'}}>{match.homeTeam}</span>
           </div>
           <div className="vs" style={{margin: '0 18px', color: match.status === 'completed' ? '#212529' : '#0d6efd', fontWeight: 700, fontSize: '1.1rem', background: match.status === 'completed' ? 'transparent' : 'rgba(13,110,253,0.08)', borderRadius: 20, padding: '6px 18px'}}>
             {match.status === 'completed' ? `${match.homeScore} : ${match.awayScore}` : 'VS'}
           </div>
           <div className="team" style={{flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <div className="team-logo-container" style={{width: '70px', height: '70px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '8px', backgroundColor: '#f8f9fa', borderRadius: '50%', padding: '8px'}}>
+            <div className="team-logo-container" style={{
+              width: match.awayTeam === 'Classe FC' ? '80px' : '70px', 
+              height: match.awayTeam === 'Classe FC' ? '80px' : '70px', 
+              display: 'flex', 
+              alignItems: 'center', 
+              justifyContent: 'center', 
+              marginBottom: '15px', 
+              backgroundColor: '#f8f9fa', 
+              borderRadius: '50%', 
+              padding: '8px'
+            }}>
               <img 
                 src={getTeamLogoPath(match.awayTeam)} 
                 alt={`${match.awayTeam} logo`} 
                 style={{width: '100%', height: '100%', objectFit: 'contain'}}
               />
             </div>
-            <span style={{fontWeight: 600, fontSize: '0.9rem', color: '#212529', textAlign: 'center'}}>{match.awayTeam}</span>
+            <span style={{fontWeight: 600, fontSize: '0.9rem', color: '#212529', textAlign: 'center', paddingLeft: '10px', paddingRight: '10px'}}>{match.awayTeam}</span>
           </div>
         </div>
         <div className={`match-status-compact${match.status === 'upcoming' ? ' upcoming' : ''}`} style={{textAlign: 'center', marginTop: 16, color: match.status === 'upcoming' ? '#0d6efd' : '#6c757d', fontWeight: 600, fontSize: '0.9rem'}}>
